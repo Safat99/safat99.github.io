@@ -1,193 +1,191 @@
 import { useState, useEffect } from "react";
 import "./theme-toggle.css";
 
-type Theme = 'dark' | 'rain' | 'snow';
-
-const createRainEffect = () => {
-  const canvas = document.createElement('canvas');
-  canvas.className = 'theme-effect-canvas';
-  canvas.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9999;
-  `;
-  document.body.appendChild(canvas);
-
-  const ctx = canvas.getContext('2d');
-  if (!ctx) {
-    canvas.remove();
-    return;
-  }
-  let animationFrame = 0;
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  const drops: Array<{ x: number; y: number; length: number; speed: number }> = [];
-
-  // Create drops
-  for (let i = 0; i < 100; i++) {
-    drops.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height - canvas.height,
-      length: Math.random() * 20 + 10,
-      speed: Math.random() * 3 + 2
-    });
-  }
-
-  const animateRain = () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = 'rgba(174, 194, 224, 0.5)';
-    ctx.lineWidth = 1;
-    ctx.lineCap = 'round';
-
-    drops.forEach(drop => {
-      ctx.beginPath();
-      ctx.moveTo(drop.x, drop.y);
-      ctx.lineTo(drop.x, drop.y + drop.length);
-      ctx.stroke();
-
-      drop.y += drop.speed;
-
-      if (drop.y > canvas.height) {
-        drop.y = -drop.length;
-        drop.x = Math.random() * canvas.width;
-      }
-    });
-
-    animationFrame = requestAnimationFrame(animateRain);
-  };
-
-  animateRain();
-
-  // Resize handler
-  const onResize = () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  };
-  window.addEventListener('resize', onResize);
-
-  return () => {
-    cancelAnimationFrame(animationFrame);
-    window.removeEventListener('resize', onResize);
-    canvas.remove();
-  };
-};
-
-const createSnowEffect = () => {
-  const canvas = document.createElement('canvas');
-  canvas.className = 'theme-effect-canvas';
-  canvas.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9999;
-  `;
-  document.body.appendChild(canvas);
-
-  const ctx = canvas.getContext('2d');
-  if (!ctx) {
-    canvas.remove();
-    return;
-  }
-  let animationFrame = 0;
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  const snowflakes: Array<{
-    x: number;
-    y: number;
-    radius: number;
-    speed: number;
-    wind: number;
-  }> = [];
-
-  // Create snowflakes
-  for (let i = 0; i < 150; i++) {
-    snowflakes.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height - canvas.height,
-      radius: Math.random() * 3 + 1,
-      speed: Math.random() * 1 + 0.5,
-      wind: Math.random() * 0.5 - 0.25
-    });
-  }
-
-  const animateSnow = () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-
-    snowflakes.forEach(flake => {
-      ctx.beginPath();
-      ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
-      ctx.fill();
-
-      flake.y += flake.speed;
-      flake.x += flake.wind;
-
-      if (flake.y > canvas.height) {
-        flake.y = -10;
-        flake.x = Math.random() * canvas.width;
-      }
-
-      if (flake.x > canvas.width) {
-        flake.x = 0;
-      } else if (flake.x < 0) {
-        flake.x = canvas.width;
-      }
-    });
-
-    animationFrame = requestAnimationFrame(animateSnow);
-  };
-
-  animateSnow();
-
-  // Resize handler
-  const onResize = () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  };
-  window.addEventListener('resize', onResize);
-
-  return () => {
-    cancelAnimationFrame(animationFrame);
-    window.removeEventListener('resize', onResize);
-    canvas.remove();
-  };
-};
-
-
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>(() => {
-    const savedTheme = localStorage.getItem('portfolio-theme');
-    return savedTheme === 'dark' || savedTheme === 'rain' || savedTheme === 'snow'
-      ? savedTheme
-      : 'snow';
-  });
+  const [theme, setTheme] = useState<'dark' | 'rain' | 'snow'>('snow');
+  // const [theme, setTheme] = useState<'dark' | 'light' | 'rain' | 'snow'>('dark');
   const [isOpen, setIsOpen] = useState(false);
 
+  // useEffect(() => {
+  //   // Load saved theme
+  //   const savedTheme = localStorage.getItem('portfolio-theme') as typeof theme;
+  //   if (savedTheme) {
+  //     setTheme(savedTheme);
+  //     applyTheme(savedTheme);
+  //   }
+  // }, []);
+
+
+  // snow
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('portfolio-theme', theme);
+    const savedTheme = localStorage.getItem('portfolio-theme') as typeof theme | null;
 
-    if (theme === 'rain') return createRainEffect();
-    if (theme === 'snow') return createSnowEffect();
-  }, [theme]);
+    const initialTheme = savedTheme ?? 'snow';
 
-  const handleThemeChange = (newTheme: Theme) => {
+    setTheme(initialTheme);
+    applyTheme(initialTheme);
+  }, []);
+    
+
+  const applyTheme = (newTheme: typeof theme) => {
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('portfolio-theme', newTheme);
+    
+    // Remove all effect canvases first
+    document.querySelectorAll('.theme-effect-canvas').forEach(el => el.remove());
+    
+    // Add effect based on theme
+    if (newTheme === 'rain') {
+      createRainEffect();
+    } else if (newTheme === 'snow') {
+      createSnowEffect();
+    }
+  };
+
+  const handleThemeChange = (newTheme: typeof theme) => {
     setTheme(newTheme);
+    applyTheme(newTheme);
     setIsOpen(false);
+  };
+
+  const createRainEffect = () => {
+    const canvas = document.createElement('canvas');
+    canvas.className = 'theme-effect-canvas';
+    canvas.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    `;
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d')!;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const drops: Array<{ x: number; y: number; length: number; speed: number }> = [];
+    
+    // Create drops
+    for (let i = 0; i < 100; i++) {
+      drops.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        length: Math.random() * 20 + 10,
+        speed: Math.random() * 3 + 2
+      });
+    }
+
+    function animateRain() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = 'rgba(174, 194, 224, 0.5)';
+      ctx.lineWidth = 1;
+      ctx.lineCap = 'round';
+
+      drops.forEach(drop => {
+        ctx.beginPath();
+        ctx.moveTo(drop.x, drop.y);
+        ctx.lineTo(drop.x, drop.y + drop.length);
+        ctx.stroke();
+
+        drop.y += drop.speed;
+
+        if (drop.y > canvas.height) {
+          drop.y = -drop.length;
+          drop.x = Math.random() * canvas.width;
+        }
+      });
+
+      requestAnimationFrame(animateRain);
+    }
+
+    animateRain();
+
+    // Resize handler
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  };
+
+  const createSnowEffect = () => {
+    const canvas = document.createElement('canvas');
+    canvas.className = 'theme-effect-canvas';
+    canvas.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    `;
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d')!;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const snowflakes: Array<{ 
+      x: number; 
+      y: number; 
+      radius: number; 
+      speed: number; 
+      wind: number;
+    }> = [];
+    
+    // Create snowflakes
+    for (let i = 0; i < 150; i++) {
+      snowflakes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        radius: Math.random() * 3 + 1,
+        speed: Math.random() * 1 + 0.5,
+        wind: Math.random() * 0.5 - 0.25
+      });
+    }
+
+    function animateSnow() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+
+      snowflakes.forEach(flake => {
+        ctx.beginPath();
+        ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        flake.y += flake.speed;
+        flake.x += flake.wind;
+
+        if (flake.y > canvas.height) {
+          flake.y = -10;
+          flake.x = Math.random() * canvas.width;
+        }
+
+        if (flake.x > canvas.width) {
+          flake.x = 0;
+        } else if (flake.x < 0) {
+          flake.x = canvas.width;
+        }
+      });
+
+      requestAnimationFrame(animateSnow);
+    }
+
+    animateSnow();
+
+    // Resize handler
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
   };
 
   return (
     <div className="theme-toggle">
-      <button
+      <button 
         className="theme-toggle-btn"
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle theme menu"
@@ -207,31 +205,31 @@ export default function ThemeToggle() {
 
       {isOpen && (
         <div className="theme-menu">
-          <button
+          <button 
             className={`theme-option ${theme === 'dark' ? 'active' : ''}`}
             onClick={() => handleThemeChange('dark')}
           >
             <span className="theme-icon">🌙</span>
             <span className="theme-label">Dark</span>
           </button>
-
-          {/* <button
+          
+          {/* <button 
             className={`theme-option ${theme === 'light' ? 'active' : ''}`}
             onClick={() => handleThemeChange('light')}
           >
             <span className="theme-icon">☀️</span>
             <span className="theme-label">Light</span>
           </button> */}
-
-          <button
+          
+          <button 
             className={`theme-option ${theme === 'rain' ? 'active' : ''}`}
             onClick={() => handleThemeChange('rain')}
           >
             <span className="theme-icon">🌧️</span>
             <span className="theme-label">Rain</span>
           </button>
-
-          <button
+          
+          <button 
             className={`theme-option ${theme === 'snow' ? 'active' : ''}`}
             onClick={() => handleThemeChange('snow')}
           >
