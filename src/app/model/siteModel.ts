@@ -42,6 +42,12 @@ export type ExperienceItem = {
   title: string;
   when: string;
   bullets: string[];
+  advisor?: string;
+  topic?: string;
+  areas?: string[];
+  technologies?: string[];
+  courses?: string[];
+  highlights?: string[]; // Explicitly label personal contribution vs project/team scope.
 };
 
 export type ExperienceModel = {
@@ -66,6 +72,7 @@ export type ProjectItem = {
   url?: string;
   demo?: string;
   rpaper?: string;
+  highlights?: string[]; // Project results must not imply sole individual attribution.
 };
 
 export type ProjectsModel = {
@@ -146,11 +153,16 @@ export type PublicationItem = {
   title: string;
   desc: string;
   meta: string;
-  url: string;     // DOI or publisher link
+  authors: string[];
+  year: number;
+  venue: string;
+  status: "accepted" | "published";
+  url?: string;     // No link when none is verified
   cta?: string;    // "Open DOI"
 };
 
 export type PublicationsModel = {
+  highlights?: string[];
   title: string;
   intro: string;
   hint: string;
@@ -158,7 +170,27 @@ export type PublicationsModel = {
 };
 
 
+export type EducationModel = {
+  title: string;
+  items: { institution: string; degree: string; when: string; gpa: string; location: string }[];
+};
+
+export type ResearchPresentationsModel = {
+  title: string;
+  items: { id: string; title: string; authors: string[]; year: number; venue: string; location: string; status: "presented" }[];
+};
+
+export type ScholarshipsAndAwardsModel = {
+  title: string;
+  items: { title: string; years: number[]; organization?: string; description: string; details?: string[]; highlights?: string[]; evidenceLinks?: { label: string; url: string; scope: string }[] }[];
+};
+
 export type SiteModel = {
+  education: EducationModel;
+  researchInterests: string[];
+  teachingAndMentoring: ExperienceModel;
+  researchPresentations: ResearchPresentationsModel;
+  scholarshipsAndAwards: ScholarshipsAndAwardsModel;
   brand: { name: string; href: string };
   nav: NavItem[];
 
@@ -173,14 +205,20 @@ export type SiteModel = {
   travel: TravelModel;
   contact: ContactModel; 
   recommendations: RecommendationsModel;
-  publications: PublicationsModel;   // ✅ new
+  publications: PublicationsModel;
 
 
 };
 
+// Academic/professional facts: docs/ACADEMIC_PROFILE.md.
+// Current, historical, direct-artifact, and optional personal evidence is documented in docs/PHASE_1_CONTENT_RECONCILIATION.md.
+// Compatibility keys: experience = professional work; projects = selected technical projects.
+// Empty research `when` means no date is supplied (undergraduate thesis).
 export const siteModel: SiteModel = {
-  brand: { name: "Sarker Safat Mahmud", href: "#top" },
-
+  brand: {
+    name: "Sarker Safat Mahmud",
+    href: "#top"
+  },
   nav: [
     { id: "about", label: "About", href: "#about" },
     { id: "stack", label: "Tech", href: "#stack" },
@@ -195,12 +233,12 @@ export const siteModel: SiteModel = {
   ],
 
   hero: {
-    headline: "Backend Engineer | MS in Computer Science @ Montana State University",
+    headline: "M.S. student in Computer Science @ Montana State University",
     subline: "Microservices, APIs, and applied ML research.",
     pills: [
       "Java • Spring Boot • Go (Gin)",
       "Microservices • Kafka • gRPC • JWT",
-      "Python • Flask/Django • ML",
+      "Python • Flask/Django • ML"
     ],
     cta: {
       email: "sarkersafatmahmud@montana.edu",
@@ -208,50 +246,46 @@ export const siteModel: SiteModel = {
         {
           label: "LinkedIn",
           url: "https://www.linkedin.com/in/safat99/",
-          icon: "linkedin",
+          icon: "linkedin"
         },
         {
           label: "GitHub",
           url: "https://github.com/safat99",
-          icon: "github",
+          icon: "github"
         },
         {
           label: "YouTube",
           url: "https://www.youtube.com/@safat99",
-          icon: "youtube",
+          icon: "youtube"
         },
         {
           label: "Grabcad",
           url: "https://grabcad.com/sarker.safat.mahmud-1",
-          icon: "grabcad",
+          icon: "grabcad"
         },
         {
           label: "Google Scholar",
           url: "https://scholar.google.com/citations?user=A7AvcbQAAAAJ&hl=en",
-          icon: "scholar",
-        },
-      ],
+          icon: "scholar"
+        }
+      ]
     },
-    note: "Open to backend and research opportunities",
+    note: "Research interests in AI, machine learning, and intelligent/autonomous systems."
   },
-
-
   about: {
     title: "About",
     paragraphs: [
-      "I am a backend-focused software engineer and MS in Computer Science student at Montana State University (current CGPA 3.83). I enjoy building reliable services and APIs, and I care a lot about clean design, strong fundamentals, and systems that scale.",
-      "In industry, I have worked on payment and settlement systems, OTA third-party integrations, and backend services across Java Spring Boot, Go (Gin), and Python Flask. I have also designed data models and REST APIs from requirements and shipped production services on AWS.",
-      "In research, I have worked on the Protein Scaffold Gap Filling problem using probabilistic and machine learning methods, and I am exploring 3D CNN and semi-supervised approaches for classification in hyperspectral spatial data.",
+      "I am an M.S. student in Computer Science at Montana State University (current CGPA 3.50 / 4.00), with professional backend software engineering experience.",
+      "My current M.S. thesis research focuses on efficient band selection and semi-supervised learning for hyperspectral image classification. My earlier research includes protein scaffold gap filling and multi-robot path planning.",
+      "My professional experience includes payment-service operations, online travel agency integrations, inventory management, and Flask-based APIs deployed on AWS and virtual machines."
     ],
     focusAreas: [
       "Backend development (Java Spring Boot, Go, Python)",
       "Microservices, Kafka, gRPC, and API integrations",
       "Databases and data modeling (MySQL, PostgreSQL, MongoDB, Redis)",
-      "Applied ML research and data pipelines",
-    ],
+      "Applied ML research and data pipelines"
+    ]
   },
-
-
   tech: {
     title: "Tech Stack",
     hint: "A curated overview of my technology stack, grouped by core skill areas.",
@@ -310,197 +344,268 @@ export const siteModel: SiteModel = {
   },
 
   experience: {
-    title: "Tech Experience",
+    title: "Professional Software Engineering Experience",
     items: [
       {
-        title: "Junior Software Engineer (Backend) | TechnoNext Ltd (US-Bangla Group), Bangladesh",
-        when: "Feb 2023 to Jun 2024",
+        title: "TechnoNext Ltd — Junior Software Engineer, Backend",
+        when: "February 2023 – June 2024",
         bullets: [
-          "R&D for payment service operations based on microservice architecture.",
-          "Integrated third-party airfare distribution and payment settlement APIs for an OTA project.",
-          "Contributed to backend development for an Applicant Tracking System.",
+          "Contributed to backend development for payment-service and online travel agency projects.",
+          "Participated in R&D involving microservice-based payment-service operations.",
+          "Integrated third-party airfare-distribution and payment-settlement APIs.",
+          "Contributed to backend development for an Applicant Tracking System."
         ],
-      },
-      // {
-      //   title: "Research Assistant | Directorate of Research and Extension, CUET",
-      //   when: "Jun 2023 to Jan 2024",
-      //   bullets: [
-      //     "Conducted literature reviews and analyzed recent algorithms for multi-robot path planning.",
-      //     "Designed simulation experiments and case studies for cooperative multi-robot tasks.",
-      //   ],
-      // },
-      {
-        title: "Software Engineer Intern (Backend) | Square Health Ltd, Bangladesh",
-        when: "Nov 2022 to Jan 2023",
-        bullets: [
-          "Designed an inventory management system architecture from requirements.",
-          "Created the ER diagram and implemented REST APIs using Java Spring Boot.",
-        ],
+        technologies: [
+          "Java",
+          "Spring Boot",
+          "Go",
+          "Gin",
+          "JPA",
+          "MySQL",
+          "PostgreSQL",
+          "Kafka",
+          "gRPC"
+        ]
       },
       {
-        title: "Software Engineer (Backend) | Tecognize Solutions Limited, Bangladesh",
-        when: "Jan 2022 to Jun 2022",
+        title: "Square Health Ltd — Software Engineer Intern, Backend",
+        when: "November 2022 – January 2023",
         bullets: [
-          "Designed and implemented RESTful APIs with Python Flask and deployed to AWS and multiple VMs.",
-          "Built 50+ APIs and third-party integrations (SMS, email) for a React + Flask parcel delivery web app (DurbinX).",
+          "Developed the architecture for an Inventory Management System from requirements analysis.",
+          "Designed its ER diagram.",
+          "Developed REST APIs according to the system architecture."
         ],
+        technologies: [
+          "Java",
+          "Spring Boot",
+          "JPA",
+          "MySQL",
+          "Git"
+        ]
       },
-    ],
+      {
+        title: "Tecognize Solutions Limited — Software Engineer, Backend",
+        when: "January 2022 – June 2022",
+        bullets: [
+          "Developed Flask-based RESTful APIs for web applications.",
+          "Deployed backend services on AWS and virtual machines.",
+          "For the DurbinX parcel-delivery platform, developed more than 50 APIs and implemented external service integrations including SMS and email services."
+        ],
+        technologies: [
+          "Python",
+          "Flask",
+          "PostgreSQL",
+          "Git",
+          "Docker",
+          "AWS EC2",
+          "Redis"
+        ],
+        highlights: [
+          "Personal contribution: developed 50+ APIs for DurbinX."
+        ]
+      }
+    ]
   },
 
   researchExperience: {
-    title: "Research & Mentoring Experience",
+    title: "Research Experience",
     items: [
       {
-        title: "Graduate Research Assistant | Montana State Universit (USA)",
-        when: "Jan 2025 to Aug 2025",
+        title: "M.S. Thesis Research — Montana State University",
+        when: "August 2025 – Present",
         bullets: [
-          "Researched the Protein Scaffold Gap Filling problem using probabilistic and machine learning approaches.",
-          "Conducted literature reviews on genome and protein clustering algorithms.",
-          "Explored band reduction, 3D CNN models, and semi-supervised learning for classification in hyperspectral spatial data.",
-          "Assisted in instruction, lab supervision, and grading for courses including Advanced Software Engineering, Data Structures and Algorithms, and Measurement & Instrument Lab.",
+          "Evaluated multiple band-selection methods with lightweight 3D CNN classifiers across five benchmark hyperspectral datasets under a unified experimental framework.",
+          "Investigated spectral reduction and classification under limited labeled-data conditions.",
+          "The work resulted in an accepted paper at WHISPERS 2026.",
+          "Current work extends the framework toward more computationally efficient band-selection approaches and improved semi-supervised learning strategies."
         ],
+        advisor: "Dr. Brad Whitaker",
+        topic: "Efficient Band Selection and Semi-Supervised Learning for Hyperspectral Image Classification",
+        areas: [
+          "hyperspectral image classification",
+          "band selection / dimensionality reduction",
+          "spectral-spatial learning",
+          "3D convolutional neural networks",
+          "semi-supervised learning",
+          "learning with limited labeled data"
+        ],
+        highlights: [
+          "Research scope: 5 benchmark hyperspectral datasets evaluated."
+        ]
       },
-
       {
-        title: "Research Assistant | Chittagong University of Engineering and Technology (CUET), Bangladesh",
-        when: "Jun 2023 to Jan 2024",
+        title: "Graduate Research Assistant — Montana State University",
+        when: "January 2025 – August 2025",
         bullets: [
-          "Conducted comprehensive literature reviews on multi-robot path-planning",
-          "Analyzed various latest algorithms for multi-robot systems",
-          "Designed experiments for multi-robot systems on simulation environments and applying case studies.",
+          "Investigated the Protein Scaffold Gap Filling problem using probabilistic and machine-learning approaches.",
+          "Conducted literature reviews involving genome-clustering and protein-clustering algorithms."
         ],
+        topic: "Protein Scaffold Gap Filling Problem",
+        areas: [
+          "machine learning",
+          "probabilistic methods",
+          "computational biology",
+          "clustering algorithms"
+        ]
       },
-
       {
-        title: "Mentoring Experiences",
-        when: "March 2020 to Jan 2022",
+        title: "Research Assistant — Directorate of Research and Extension, CUET",
+        when: "June 2023 – January 2024",
         bullets: [
-          "Participated in a day-long paid workshop on ‘Industry 4.0’ at the Bangladesh Industrial Technical Assistance Center (BITAC) in August and January 2022.",
-          "Trained freshman year students at our university in a five-day workshop on Arduino and basic electronics, March 2020.",
-          "Instructor at a two-day workshop on Line-Follower and Obstacle Avoider Robot at Cantonment Public Collegiate School, Chittagong, 2018.",
+          "Conducted comprehensive literature reviews on multi-robot path planning.",
+          "Analyzed state-of-the-art algorithms for multi-robot systems.",
+          "Designed simulation experiments and evaluated multi-robot case studies.",
+          "The work contributed to a review paper published in Engineering Reports (Wiley)."
         ],
+        advisor: "Dr. Sajal Chandra Banik",
+        topic: "Multi-Robot Path Planning for Cooperative Tasks",
+        areas: [
+          "multi-robot systems",
+          "path planning",
+          "cooperative robotics",
+          "autonomous systems",
+          "simulation"
+        ]
       },
-
-    ],
+      {
+        title: "Undergraduate Thesis — CUET",
+        when: "",
+        bullets: [
+          "Developed ROS/Gazebo simulation experiments for multi-robot task allocation.",
+          "Evaluated vacancy-chain and auction-based task-allocation approaches."
+        ],
+        topic: "Multi-Robot Task Allocation (MRTA) for Autonomous Robots",
+        areas: [
+          "multi-robot systems",
+          "task allocation",
+          "ROS",
+          "Gazebo",
+          "distributed autonomous systems"
+        ],
+        highlights: [
+          "Thesis evaluation: 2 task-allocation strategies compared — vacancy-chain and auction-based."
+        ]
+      }
+    ]
   },
 
   leadershipExperience: {
     title: "Leadership Experience",
     items: [
       {
-        title: "Robo Mechatronics Association, Bangladesh (RMA) | Vice President",
-        when: "Feb 2021 to Aug 2022",
+        title: "Robo Mechatronics Association, Bangladesh — Vice President",
+        when: "February 2021 – August 2022",
         bullets: [
-          "Organized various seminars, workshops and competitions to enlighten the university students with state-of-the-art mechatronics technology and industry level automation.",
-          "Led chapter of 150+ members to work towards goals that improve and promote community service, academics, and unity.",
-          "Participated in a total of 17 inter and intra-university national robotics competitions and hackathons",
+          "Organized university seminars, workshops, and competitions focused on mechatronics technology and industrial automation.",
+          "Led a chapter of 150+ members toward community service, academics, and unity.",
+          "Participated in 17 inter- and intra-university national robotics competitions and hackathons."
         ],
+        highlights: [
+          "Leadership scope: 150+ chapter members.",
+          "Personal participation: 17 robotics competitions and hackathons."
+        ]
       },
-
       {
-        title: "IEOM CUET Student Chapter | Research & Publication Secretary (details)",
+        title: "IEOM CUET Student Chapter | Research & Publication Secretary",
         when: "Feb 2021 to Aug 2022",
         bullets: [
           "Assisted the team in arranging an online Inter-University Scientific Poster Presentation Competition.",
-          "Awarded with IEOM Outstanding Student Chapter Award-GOLD during our tenure.",
-        ],
+          "The IEOM CUET Student Chapter received the Outstanding Student Chapter Award–GOLD during the tenure (chapter/team award)."
+        ]
       },
-
       {
         title: "Volunteer for Bangladesh | Institute Representative",
         when: "Mar 2019 to Jul 2019",
         bullets: [
           "Acted as a liaison, connecting campus volunteers with initiatives supporting underprivileged children’s health, education, and well-being.",
-          "Promoted environmental cleanliness and actively participated in volunteer activities to support the community.",
-        ],
+          "Promoted environmental cleanliness and actively participated in volunteer activities to support the community."
+        ]
       },
-
       {
-        title: "CUET Chess Club | Founding Technical Secretary",
-        when: "Oct 2021 to Sep 2022",
+        title: "CUET Chess Club — Founding Technical Secretary",
+        when: "October 2021 – September 2022",
         bullets: [
-          "Established a network for campus chess enthusiasts to facilitate idea exchange and organized online and offline tournaments.",
-          "Coordinated events and managed communications to foster a vibrant chess community on campus.",
-      ]},
-
-    ],
+          "Helped establish a network for chess enthusiasts on campus.",
+          "Organized online and offline tournaments and supported club communications."
+        ]
+      }
+    ]
   },
-
-  
 
   projects: {
     title: "Projects",
-    intro: "A few projects across robotics, backend systems, and applied ML.",
+    intro: "Selected projects in robotics, computer vision, machine learning, and embedded systems.",
     items: [
-
       {
-        title: "NodeMCU-based IoT Box",
-        desc: "End-to-end IoT system with custom PCB, Firebase backend, web interface, and mobile control app.",
-        meta: "IoT • Firebase • Embedded",
-        url: "https://github.com/Safat99/IoT-Box",
-        demo: "https://www.youtube.com/watch?v=9XfIP5cwh9o",
-        rpaper: "https://www.researchgate.net/publication/354860121_157-P-4_Development_and_Optimization_of_a_Real-time_Server-based_IoT_Box_A_Smart_Home_Automation_System_and_its_Subsequent_Fabrication"
-      },
-      {
-        title: "OpenCV-based Self-Driving Car",
+        title: "OpenCV-Based Self-Driving Car",
         desc: "Raspberry Pi-based autonomous robot using computer vision.",
-        meta: "Raspberry Pi • OpenCV • Python",
+        meta: "Robotics, Autonomous Systems, Computer Vision, Raspberry Pi, Python, OpenCV",
         url: "https://github.com/Safat99/openCV-based-Autonomous-car-with-Raspberry-Pi",
         demo: "https://www.youtube.com/watch?v=_uvGQ6cCDds"
-
       },
-
       {
-        title: "Mechanical Vibration Analysis of a Car body with MATLAB",
-        desc: "Measured unknown vibrations using ADXL335, a 3-axis accelerometer, and analyzed with MATLAB and Excel.",
-        meta: "MATLAB • Mechanical Engineering",
+        title: "Multi-Robot Task Allocation",
+        desc: "Undergraduate thesis project involving autonomous multi-robot task allocation using ROS and Gazebo simulations.",
+        meta: "Multi-Robot Systems, ROS, Gazebo, Task Allocation",
+        highlights: [
+          "Project scope: 2 task-allocation strategies — vacancy-chain and auction-based."
+        ]
+      },
+      {
+        title: "NodeMCU-Based IoT Box",
+        desc: "Embedded NodeMCU IoT system with a custom PCB, DHT11 sensing, and four-relay internet control using Firebase, with a JavaScript web interface and an MIT App Inventor mobile app. Presented at BIM 2021.",
+        meta: "NodeMCU • Firebase • Embedded Systems • JavaScript • MIT App Inventor",
+        url: "https://github.com/Safat99/IoT-Box",
+        demo: "https://www.youtube.com/watch?v=9XfIP5cwh9o"
+      },
+      {
+        title: "Mechanical Vibration Analysis of a Car Body",
+        desc: "Measured car-body vibrations using ADXL335 accelerometers and Arduino, with MATLAB/Excel analysis, Gaussian smoothing, bandpass filtering, and FFT.",
+        meta: "MATLAB, Sensors, Signal Analysis, Embedded Systems",
         url: "https://github.com/Safat99/Mechanical_Vibration_Analysis_with_MATLAB_and_Arduino",
-        demo: "https://www.linkedin.com/feed/update/urn:li:activity:6836175024676843520/"
+        demo: "https://www.linkedin.com/feed/update/urn:li:activity:6836175024676843520/",
+        highlights: [
+          "Project setup: 2 ADXL335 three-axis accelerometers for comparison.",
+          "Project pipeline: Gaussian smoothing, bandpass filtering, and FFT."
+        ]
       },
-
-
       {
-        title: "Audio Classification with UrbanSound8k Dataset:",
-        desc: "MLP, CNN-based sound classifier, can classify between the 10 classes sounds of UrbanSound8K dataset.",
-        meta: "MLP • CNN • TensorFlow",
-        url: "https://github.com/Safat99/audio_classifier_of_urbansound8k_dataset"
+        title: "Audio Classification — UrbanSound8K",
+        desc: "Developed MLP- and CNN-based models for classification of the ten UrbanSound8K sound classes.",
+        meta: "Machine Learning, Deep Learning, CNN, TensorFlow",
+        url: "https://github.com/Safat99/audio_classifier_of_urbansound8k_dataset",
+        highlights: [
+          "Project task: 10-class UrbanSound8K audio classification."
+        ]
       },
-
       {
-        title: "Multi-Robot Task Allocation (Undergrad Thesis)",
-        desc: "Built a ROS + Gazebo simulation for multi-robot task allocation and compared vacancy chain vs auction-based strategies in dynamic distributed settings.",
-        meta: "ROS • Gazebo • Multi-robot systems",
+        title: "Deep CNN-Based Emergency Vehicle Detection",
+        desc: "Collaborative project exploring emergency-vehicle detection with YOLOv4-generated annotations and VGG16/VGG19 classification and bounding-box models.",
+        meta: "Computer Vision • YOLOv4 • VGG16 • VGG19 • TensorFlow/Keras",
+        url: "https://github.com/Safat99/emergency_vehicle_detection",
+        highlights: [
+          "Project-level methods: YOLOv4 annotation generation and VGG16/VGG19 models; collaborative work."
+        ]
       },
-
       {
         title: "Sleep Stage Classification (CAP Sleep Database)",
-        desc: "Deep CNN-based sleep stage classifier for NFLE patients.",
-        meta: "Deep Learning • CNN • TensorFlow",
+        desc: "Historical deep CNN-based sleep-stage classification project using the CAP Sleep Database for NFLE patients.",
+        meta: "Deep Learning • CNN • CAP Sleep Database",
         url: "https://github.com/Safat99/Sleep_stage_classifciation_of_epilepsy_patient"
       },
-
-
-
       {
-        title: "Health AI Receptionist Backend (Ongoing)",
-        desc: "Microservice-based backend including face recognition and other supporting services.",
+        title: "Health AI Receptionist Backend",
+        desc: "Historical microservice-based backend project including face recognition and supporting services. Current activity status is unverified.",
         meta: "Microservices • Backend • ML",
         url: "https://github.com/Safat99/Health_AI_Receptionist"
       },
       {
         title: "Deep CNN-based Pedestrian Detection",
-        desc: "VGG16, VGG19, and ResNet50 were used. ",
-        meta: "Python • Flask • PostgreSQL • AWS",
+        desc: "Historical pedestrian-detection project exploring VGG16, VGG19, and ResNet50.",
+        meta: "Computer Vision • Deep Learning • VGG16 • VGG19 • ResNet50",
         url: "https://github.com/Safat99/pedestrian_detection_with_diff_DL_model"
-      },
-      {
-        title: "Deep CNN-based Emergency Vehicle Detection",
-        desc: "YOLO, VGG16, and VGG19 were used.",
-        meta: "Python • Flask • PostgreSQL • AWS",
-        url: "https://github.com/Safat99/emergency_vehicle_detection"
-      },
-    ],
+      }
+    ]
   },
 
   creator: {
@@ -591,42 +696,78 @@ export const siteModel: SiteModel = {
   },
 
   publications: {
-  title: "Publications",
-  intro: "Selected publications and research outputs.",
-  hint: "Use arrows to browse. Open to view the DOI page.",
-  items: [
-    {
-      id: "pub-ico-2022",
-      title:
-        "A Deep Convolutional Neural Network Based Classification Approach for Sleep Scoring of NFLE Patients",
-      meta: "Mahmud, S.S. et al. (2022) | ICO 2021, LNNS Vol 371, Springer",
-      desc: "Conference chapter presenting a CNN based approach for sleep scoring of NFLE patients.",
-      url: "https://doi.org/10.1007/978-3-030-93247-3_35",
-      cta: "Open DOI"
-    },
-    {
-      id: "pub-wiley-2024",
-      title: "Path Planning Approaches in Multi-robot System: A Review",
-      meta: "Banik, S. et al. (2024) | Engineering Reports, Wiley",
-      desc: "Review of multi-robot path planning approaches, methods, and tradeoffs.",
-      url: "https://doi.org/10.1002/eng2.13035",
-      cta: "Open DOI"
-    },
-    {
-      id: "pub-jiae-2022",
-      title:
-        "Design & Fabrication of Automatic Color & Weight-Based Sorting System on Conveyor Belt",
-      meta: "Nuva, T.J. et al. (2022) | JIAE 2(2), 147–157",
-      desc: "Design and fabrication of a conveyor belt system that sorts items by color and weight.",
-      url: "https://doi.org/10.51662/jiae.v2i2.87",
-      cta: "Open DOI"
-    }
-  ]
-},
-
-
-
-
+    title: "Publications",
+    intro: "Publications and accepted research outputs.",
+    hint: "Publication status is included in each citation.",
+    items: [
+      {
+        id: "pub-whispers-2026",
+        title: "Evaluating Band Selection for Spectral–Spatial Hyperspectral Classification under Label Scarcity",
+        authors: [
+          "Sarker Safat Mahmud",
+          "Brad M. Whitaker",
+          "John W. Sheppard"
+        ],
+        year: 2026,
+        venue: "Workshop on Hyperspectral Image and Signal Processing: Evolution in Remote Sensing (WHISPERS 2026).",
+        status: "accepted",
+        desc: "Accepted paper on band selection for spectral–spatial hyperspectral classification under label scarcity.",
+        meta: "Sarker Safat Mahmud, Brad M. Whitaker, and John W. Sheppard (2026) | Workshop on Hyperspectral Image and Signal Processing: Evolution in Remote Sensing (WHISPERS 2026). | Accepted"
+      },
+      {
+        id: "pub-wiley-2024",
+        title: "Path Planning Approaches in Multi-robot System: A Review",
+        authors: [
+          "S. Banik",
+          "S. C. Banik",
+          "S. S. Mahmud"
+        ],
+        year: 2024,
+        venue: "Engineering Reports, Wiley.",
+        status: "published",
+        desc: "Review of multi-robot path-planning approaches, comparing methods and their strengths and limitations.",
+        meta: "S. Banik, S. C. Banik, and S. S. Mahmud (2024) | Engineering Reports, Wiley. | Published",
+        url: "https://doi.org/10.1002/eng2.13035",
+        cta: "Open DOI"
+      },
+      {
+        id: "pub-ico-2022",
+        title: "A Deep Convolutional Neural Network Based Classification Approach for Sleep Scoring of NFLE Patients",
+        authors: [
+          "Sarker Safat Mahmud",
+          "Md. Rakibul Islam Prince",
+          "Md. Shamim",
+          "Sarker Shahriar Mahmud"
+        ],
+        year: 2022,
+        venue: "Intelligent Computing & Optimization (ICO 2021), Lecture Notes in Networks and Systems, Vol. 371, Springer",
+        status: "published",
+        desc: "Conference chapter presenting a CNN-based approach to sleep scoring for NFLE patients.",
+        meta: "Sarker Safat Mahmud, Md. Rakibul Islam Prince, Md. Shamim, Sarker Shahriar Mahmud (2022) | Intelligent Computing & Optimization (ICO 2021), Lecture Notes in Networks and Systems, Vol. 371, Springer | Published",
+        url: "https://doi.org/10.1007/978-3-030-93247-3_35",
+        cta: "Open DOI"
+      },
+      {
+        id: "pub-jiae-2022",
+        title: "Design & Fabrication of Automatic Color & Weight-Based Sorting System on Conveyor Belt",
+        authors: [
+          "T. J. Nuva",
+          "M. I. Ahmed",
+          "S. S. Mahmud"
+        ],
+        year: 2022,
+        venue: "Journal of Integrated and Advanced Engineering, 2(2), 147–157.",
+        status: "published",
+        desc: "Design and fabrication of a conveyor-belt system for color- and weight-based sorting.",
+        meta: "T. J. Nuva, M. I. Ahmed, and S. S. Mahmud (2022) | Journal of Integrated and Advanced Engineering, 2(2), 147–157. | Published",
+        url: "https://doi.org/10.51662/jiae.v2i2.87",
+        cta: "Open DOI"
+      }
+    ],
+    highlights: [
+      "Coauthored research outputs: 3 published + 1 accepted."
+    ]
+  },
 
  travel: {
     title: "Travel & Mindset",
@@ -723,6 +864,175 @@ export const siteModel: SiteModel = {
       { label: "Google Scholar", url: "https://scholar.google.com/citations?user=A7AvcbQAAAAJ&hl=en" },
       { label: "GrabCAD", url: "https://grabcad.com/sarker.safat.mahmud-1" },
     ],
+  },
+
+  education: {
+    title: "Education",
+    items: [
+      {
+        institution: "Montana State University",
+        degree: "M.S. in Computer Science",
+        when: "January 2025 – Present",
+        gpa: "3.50 / 4.00",
+        location: "Bozeman, Montana, USA"
+      },
+      {
+        institution: "Chittagong University of Engineering & Technology (CUET)",
+        degree: "B.Sc. in Mechatronics & Industrial Engineering",
+        when: "February 2017 – August 2022",
+        gpa: "3.09 / 4.00",
+        location: "Chittagong, Bangladesh"
+      }
+    ]
+  },
+  researchInterests: [
+    "Robotics and autonomous systems",
+    "Multi-agent and multi-robot systems",
+    "Machine learning and deep learning",
+    "Computer vision and perception",
+    "Planning, decision-making, and embodied / physical AI",
+    "Remote sensing, hyperspectral imaging, and precision-agriculture applications involving AI/ML/CV or autonomy"
+  ],
+  teachingAndMentoring: {
+    title: "Teaching and Mentoring",
+    items: [
+      {
+        title: "Graduate Teaching Assistant — Montana State University",
+        when: "January 2025 – Present",
+        bullets: [
+          "Assisted with instruction, laboratory supervision, and grading for undergraduate and graduate courses."
+        ],
+        courses: [
+          "ESOF 422 — Advanced Software Engineering: Secure Software Practices",
+          "CSCI 232 — Data Structures and Algorithms",
+          "EMEC 361 — Measurement & Instrument Lab"
+        ],
+        highlights: [
+          "Personal teaching support: 3 MSU courses."
+        ]
+      },
+      {
+        title: "Judge — FIRST LEGO League Championship, Montana State University",
+        when: "2025 and 2026",
+        bullets: [
+          "Served as a judge at the FIRST LEGO League Championship hosted at Montana State University."
+        ]
+      },
+      {
+        title: "Industry 4.0 workshops — BITAC",
+        when: "January and August 2022",
+        bullets: [
+          "Participated in paid workshops on Industry 4.0 at the Bangladesh Industrial Technical Assistance Centre (BITAC) in January and August 2022."
+        ]
+      },
+      {
+        title: "Arduino and basic-electronics workshop",
+        when: "March 2020",
+        bullets: [
+          "Trained freshman university students in a five-day hands-on Arduino and basic-electronics workshop in March 2020."
+        ]
+      },
+      {
+        title: "Basic Sensor-Based Mobile Robotics workshop",
+        when: "2018",
+        bullets: [
+          "Instructor for a two-day Basic Sensor-Based Mobile Robotics workshop at Cantonment Public Collegiate School, Chittagong, in 2018.",
+          "Historical workshop content included line-follower and obstacle-avoider robotics."
+        ]
+      }
+    ]
+  },
+
+  researchPresentations: {
+    title: "Research Presentations",
+    items: [
+      {
+        id: "bim-2021",
+        title: "Development and Optimization of a Real-time Server-based IoT Box for Smart Home Automation.",
+        authors: [
+          "Safat, S.",
+          "Das, A.",
+          "Mahmud, S. S.",
+          "Rashid, R."
+        ],
+        year: 2021,
+        venue: "International Conference on Big Data, IoT, and Machine Learning (BIM 2021)",
+        location: "Cox’s Bazar, Bangladesh",
+        status: "presented"
+      }
+    ]
+  },
+  scholarshipsAndAwards: {
+    title: "Scholarships, Awards, and Achievements",
+    items: [
+      {
+        title: "Crawford Wildlife Habitat Scholarship",
+        years: [
+          2025,
+          2026
+        ],
+        organization: "Montana State University",
+        description: "Two-time recipient of the $10,000 research scholarship.",
+        details: [
+          "2026: Hyperspectral imaging / machine learning for wildlife-habitat mapping",
+          "2025: Probabilistic / machine-learning methods for protein scaffold gap filling"
+        ],
+        highlights: [
+          "Personal award: 2× Crawford Scholarship recipient — 2025 and 2026."
+        ],
+        evidenceLinks: [
+          {
+            label: "MSU Alumni Foundation — 2025 inaugural Crawford cohort",
+            url: "https://www.msuaf.org/s/1584/m26/1col.aspx?sid=1584&gid=1&pgid=7156&cid=13495&ecid=13495&crid=0&calpgid=61&calcid=6670",
+            scope: "2025 inaugural cohort context only; 2026 receipt and two-time-recipient status are supported by the verified academic profile, not independently by this article."
+          }
+        ]
+      },
+      {
+        title: "Best Volunteer Award",
+        years: [
+          2019
+        ],
+        description: "Awarded by Volunteer for Bangladesh for “Shopner-Shoishob” Season 8, an annual children's program in Chittagong."
+      },
+      {
+        title: "Robotics Competition — 2nd Runner-Up",
+        years: [
+          2018
+        ],
+        description: "Line-Follower Robot competition, Makers Fest, IEEE Student Branch CUET."
+      },
+      {
+        title: "Formula 1 RC Race — 2nd Runner-Up",
+        years: [
+          2018
+        ],
+        description: "ASRRO, CUET."
+      },
+      {
+        title: "Inter-University Robo Fight — 2nd Runner-Up",
+        years: [
+          2017
+        ],
+        description: "International Islamic University Chittagong."
+      },
+      {
+        title: "Technical Scholarship",
+        years: [
+          2017
+        ],
+        description: "Awarded to students ranked among the top 15 in each department at CUET."
+      },
+      {
+        title: "IEOM Outstanding Student Chapter Award–GOLD",
+        years: [],
+        organization: "IEOM CUET Student Chapter",
+        description: "Chapter/team award received during the February 2021–August 2022 leadership tenure; exact award year is not established.",
+        highlights: [
+          "Team recognition: chapter award, not an individual award."
+        ]
+      }
+    ]
   },
 
 };

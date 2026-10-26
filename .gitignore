@@ -13,6 +13,7 @@ dist-ssr
 *.local
 
 docs/ACADEMIC_PROFILE.md
+docs/private-sources/
 
 # Editor directories and files
 .vscode/*

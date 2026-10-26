@@ -78,9 +78,32 @@ Prefer extending the existing architecture rather than rewriting it.
 
 ## Source of truth
 
-Academic facts must come from:
+Maintain academic facts and their provenance in `docs/ACADEMIC_PROFILE.md`,
+a comprehensive factual inventory rather than a copy of the selective public CV.
+Absence from the compact CV is not evidence that a historical claim is false.
 
-`docs/ACADEMIC_PROFILE.md`
+Use this source hierarchy:
+1. Current academic CV / ACADEMIC_PROFILE.md: authoritative for current GPA,
+   status, research, positions, publication status, and scholarship years.
+2. Previous/longer CV: valid supplementary evidence for non-conflicting historical
+   projects, technologies, experience, leadership, mentoring, and accomplishments.
+3. Direct artifacts: repositories, publisher/DOI pages, videos, conference pages,
+   and official university articles can verify details, links, results, and awards.
+4. Legacy portfolio: candidate facts and URLs; do not automatically mark them verified.
+5. Personal narratives/testimonials: separate and optional unless independently reviewed.
+
+Newer authoritative facts override older conflicting information. Distinguish
+conflicting/superseded, verified current, historically supported, directly verified,
+awaiting verification, and personal/optional evidence. Preserve useful historical
+information even when omitted from the compact CV. Verify live link identity when
+network access permits; an access failure is not proof of falsity or a broken link.
+Keep unverified candidate URLs in reconciliation notes, without claiming verification.
+
+Quantitative claims need source support. Distinguish personal contributions from
+project-level results and team awards; never turn collaborative results into an
+individual achievement. Do not infer current "ongoing" status from an older CV.
+Scope evidence articles to the years and facts they actually support; a 2025
+Crawford article does not independently verify 2026 receipt or a combined award total.
 
 Do NOT invent:
 - degrees
