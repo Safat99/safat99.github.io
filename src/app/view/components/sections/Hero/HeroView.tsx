@@ -86,15 +86,16 @@ export default function HeroView({ hero }: Props) {
               ))}
             </div>
 
-            {/* Resume Buttons */}
-            <div className="hero-resume-group" aria-label="Download resumes">
+            {/* Academic CV */}
+            <div className="hero-resume-group" aria-label="Academic CV">
               <a
                 className="hero-resume-btn"
-                href="/resume/Resume_Sarker_Safat_Mahmud.pdf"
-                download="Resume_Sarker_Safat_Mahmud.pdf"
-                aria-label="Download Resume English"
+                href={`${import.meta.env.BASE_URL}cv/Sarker_Safat_Mahmud_Academic_CV.pdf`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Academic CV (opens in a new tab)"
               >
-                Resume (ENG)
+                Academic CV
               </a>
             </div>
 
