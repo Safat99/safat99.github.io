@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import type { CreatorVideo } from "../../../../model/siteModel";
 import { toYouTubeEmbedUrl } from "../../../utils/youtube";
 import "./creator-carousel.css";
@@ -70,7 +70,7 @@ export default function CreatorSliderView({ items }: Props) {
     setLoadedIds((prev) => ({ ...prev, [id]: true }));
   };
 
-  const visibleCards = useMemo(() => {
+  const getVisibleCards = () => {
     const cards: { video: CreatorVideo; idx: number; position: string }[] = [];
 
     if (index > 0) {
@@ -84,7 +84,9 @@ export default function CreatorSliderView({ items }: Props) {
     }
 
     return cards;
-  }, [index, items, total]);
+  };
+
+  const visibleCards = getVisibleCards();
 
   return (
     <div className="creator-carousel">
