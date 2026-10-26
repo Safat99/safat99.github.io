@@ -81,7 +81,7 @@ export default function HeroView({ hero }: Props) {
                   aria-label={l.label}
                   title={l.label}
                 >
-                  <Icon name={l.icon as any} />
+                  <Icon name={l.icon} />
                 </a>
               ))}
             </div>

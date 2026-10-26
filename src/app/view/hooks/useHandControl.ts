@@ -368,7 +368,7 @@ export function useHandControl({
                 }
               }
 
-              draw(hand as any);
+              draw(hand);
             } else {
               if (detected) {
                 detected = false;

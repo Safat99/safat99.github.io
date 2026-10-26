@@ -86,7 +86,7 @@ export function useHandControlTensorFlow({
 
     const drawHandKeypoints = (
       ctx: CanvasRenderingContext2D,
-      predictions: any[],
+      predictions: handpose.AnnotatedPrediction[],
       width: number,
       height: number
     ) => {
