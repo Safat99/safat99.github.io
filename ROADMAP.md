@@ -71,9 +71,13 @@ Verification:
 
 ## Phase 3 — Academic Identity
 
-**Status:** Current
+**Status:** Implemented — Awaiting Approval
 
-Transform the top of the portfolio from an industry/backend-first identity into a research-first academic identity.
+The Hero and About now present a research-first academic identity, with visible
+academic links, scoped responsive/light/dark styling, and updated document metadata.
+Phase 3 refinement places accessible Scholar/GitHub/LinkedIn/YouTube icon buttons
+below the portrait, preserves the labeled CV button and GrabCAD contact/metadata,
+and polishes thesis/background wording and research-interest capitalization/labels.
 
 Primary scope:
 
@@ -87,6 +91,11 @@ Primary scope:
 The positioning should center on AI/ML and intelligent/autonomous systems while accurately representing current hyperspectral research and long-term robotics/multi-agent interests.
 
 ---
+
+Verification: build, lint, whitespace, and desktop/mobile browser checks pass.
+LinkedIn blocks automated access; the integrated browser does not expose normal
+PDF popup events. See HISTORY.md for verification scope. TODO.md remains unchanged
+until owner approval; Phase 4 has not started.
 
 ## Phase 4 — Academic Experience
 

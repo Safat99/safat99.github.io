@@ -5,6 +5,8 @@ export type NavItem = {
 };
 
 export type HeroModel = {
+  kicker: string;
+  location: string;
   headline: string;
   subline: string;
   pills: string[];
@@ -233,57 +235,41 @@ export const siteModel: SiteModel = {
   ],
 
   hero: {
-    headline: "M.S. student in Computer Science @ Montana State University",
-    subline: "Microservices, APIs, and applied ML research.",
+    kicker: "M.S. Computer Science · Montana State University",
+    location: "Based in Bozeman, Montana",
+    headline: "AI & Machine Learning for Intelligent Systems",
+    subline: "My current research investigates band selection and semi-supervised learning for hyperspectral image classification, with broader interests in robotics, multi-agent systems, and computer vision.",
     pills: [
-      "Java • Spring Boot • Go (Gin)",
-      "Microservices • Kafka • gRPC • JWT",
-      "Python • Flask/Django • ML"
+      "Robotics & Autonomy",
+      "Multi-Agent & Multi-Robot Systems",
+      "Computer Vision & Perception",
+      "Planning, Learning & Decision-Making"
     ],
     cta: {
       email: "sarkersafatmahmud@montana.edu",
       links: [
-        {
-          label: "LinkedIn",
-          url: "https://www.linkedin.com/in/safat99/",
-          icon: "linkedin"
-        },
-        {
-          label: "GitHub",
-          url: "https://github.com/safat99",
-          icon: "github"
-        },
-        {
-          label: "YouTube",
-          url: "https://www.youtube.com/@safat99",
-          icon: "youtube"
-        },
-        {
-          label: "Grabcad",
-          url: "https://grabcad.com/sarker.safat.mahmud-1",
-          icon: "grabcad"
-        },
-        {
-          label: "Google Scholar",
-          url: "https://scholar.google.com/citations?user=A7AvcbQAAAAJ&hl=en",
-          icon: "scholar"
-        }
+        { label: "Google Scholar", url: "https://scholar.google.com/citations?user=A7AvcbQAAAAJ&hl=en", icon: "scholar" },
+        { label: "GitHub", url: "https://github.com/safat99", icon: "github" },
+        { label: "LinkedIn", url: "https://www.linkedin.com/in/safat99/", icon: "linkedin" },
+        { label: "YouTube", url: "https://www.youtube.com/@safat99", icon: "youtube" },
+        { label: "Grabcad", url: "https://grabcad.com/sarker.safat.mahmud-1", icon: "grabcad"}
       ]
     },
-    note: "Research interests in AI, machine learning, and intelligent/autonomous systems."
+    note: "My thesis work evaluates five benchmark hyperspectral datasets; a related paper has been accepted at WHISPERS 2026."
   },
   about: {
-    title: "About",
+    title: "Research & Background",
     paragraphs: [
-      "I am an M.S. student in Computer Science at Montana State University (current CGPA 3.50 / 4.00), with professional backend software engineering experience.",
-      "My current M.S. thesis research focuses on efficient band selection and semi-supervised learning for hyperspectral image classification. My earlier research includes protein scaffold gap filling and multi-robot path planning.",
-      "My professional experience includes payment-service operations, online travel agency integrations, inventory management, and Flask-based APIs deployed on AWS and virtual machines."
+      "I’m an M.S. student in Computer Science at Montana State University, building on a B.Sc. in Mechatronics & Industrial Engineering from Chittagong University of Engineering & Technology (CUET). My interests connect machine learning and perception with the algorithms and software behind intelligent, autonomous systems.",
+      "My current thesis explores how band selection and semi-supervised learning can support hyperspectral image classification when labeled data are limited. Earlier, I worked on multi-robot path planning and compared task-allocation strategies in ROS/Gazebo simulations. These experiences shape my longer-term interests in robotics, multi-agent systems, planning, and learning.",
+      "My professional backend engineering experience, spanning more than two years, has given me a strong foundation in APIs, integrations, distributed services, and production software. I bring that engineering perspective to computational research, simulation, and the development of reliable research systems."
     ],
     focusAreas: [
-      "Backend development (Java Spring Boot, Go, Python)",
-      "Microservices, Kafka, gRPC, and API integrations",
-      "Databases and data modeling (MySQL, PostgreSQL, MongoDB, Redis)",
-      "Applied ML research and data pipelines"
+      "Hyperspectral Imaging",
+      "Remote Sensing",
+      "Precision Agriculture",
+      "Environmental & Wildlife Monitoring",
+      "AI/ML for Sensing Applications"
     ]
   },
   tech: {
