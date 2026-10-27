@@ -45,10 +45,13 @@ export type ExperienceItem = {
   when: string;
   bullets: string[];
   advisor?: string;
+  advisorUrl?: string;
   topic?: string;
   areas?: string[];
   technologies?: string[];
-  courses?: string[];
+  summary?: string;
+  courses?: { title: string; instructor: string; description: string; courseUrl?: string; instructorUrl?: string; when?: string }[];
+  contextLink?: { label: string; url: string; note: string };
   highlights?: string[]; // Explicitly label personal contribution vs project/team scope.
 };
 
@@ -222,17 +225,52 @@ export const siteModel: SiteModel = {
     href: "#top"
   },
   nav: [
-    { id: "about", label: "About", href: "#about" },
-    { id: "stack", label: "Tech", href: "#stack" },
-    { id: "experience", label: "Experience", href: "#experience" },
-    { id: "projects", label: "Projects", href: "#projects" },
-    { id: "creator", label: "Content", href: "#creator" },
-    { id: "publications", label: "Publications", href: "#publications" }, // ✅
-
-    { id: "travel", label: "Travelling", href: "#travel" },
-    { id: "recommendations", label: "Recommendations", href: "#recommendations" },
-    // { id: "contact", label: "Contact", href: "#contact" },
-  ],
+    {
+        "id": "about",
+        "label": "Background",
+        "href": "#about"
+    },
+    {
+        "id": "research",
+        "label": "Research",
+        "href": "#research"
+    },
+    {
+        "id": "education",
+        "label": "Education",
+        "href": "#education"
+    },
+    {
+        "id": "teaching",
+        "label": "Teaching",
+        "href": "#teaching"
+    },
+    {
+        "id": "experience",
+        "label": "Professional",
+        "href": "#experience"
+    },
+    {
+        "id": "stack",
+        "label": "Skills",
+        "href": "#stack"
+    },
+    {
+        "id": "leadership",
+        "label": "Leadership",
+        "href": "#leadership"
+    },
+    {
+        "id": "projects",
+        "label": "Projects",
+        "href": "#projects"
+    },
+    {
+        "id": "publications",
+        "label": "Publications",
+        "href": "#publications"
+    }
+],
 
   hero: {
     kicker: "M.S. Computer Science · Montana State University",
@@ -273,7 +311,7 @@ export const siteModel: SiteModel = {
     ]
   },
   tech: {
-    title: "Tech Stack",
+    title: "Technical Skills",
     hint: "A curated overview of my technology stack, grouped by core skill areas.",
     faces: [
       {
@@ -334,6 +372,7 @@ export const siteModel: SiteModel = {
     items: [
       {
         title: "TechnoNext Ltd — Junior Software Engineer, Backend",
+        summary: "Built backend services for payment and travel systems, working across API integrations and microservice operations. This production engineering experience informs how I structure and connect research software.",
         when: "February 2023 – June 2024",
         bullets: [
           "Contributed to backend development for payment-service and online travel agency projects.",
@@ -355,6 +394,7 @@ export const siteModel: SiteModel = {
       },
       {
         title: "Square Health Ltd — Software Engineer Intern, Backend",
+        summary: "Translated inventory-management requirements into a system architecture, relational data model, and REST APIs—experience connecting a problem specification to working software.",
         when: "November 2022 – January 2023",
         bullets: [
           "Developed the architecture for an Inventory Management System from requirements analysis.",
@@ -371,6 +411,7 @@ export const siteModel: SiteModel = {
       },
       {
         title: "Tecognize Solutions Limited — Software Engineer, Backend",
+        summary: "Developed Python services and external integrations, including more than 50 APIs for DurbinX, and deployed services on AWS and virtual machines. The work strengthened my ability to build and operate complete software systems.",
         when: "January 2022 – June 2022",
         bullets: [
           "Developed Flask-based RESTful APIs for web applications.",
@@ -389,6 +430,15 @@ export const siteModel: SiteModel = {
         highlights: [
           "Personal contribution: developed 50+ APIs for DurbinX."
         ]
+      },
+      {
+        title: "UIT User Support Associate — Montana State University",
+        when: "May 2026 – August 2026 · Part-time",
+        summary: "Supported campus computing infrastructure through systems troubleshooting, workstation configuration, and computer-lab and print-station deployment.",
+        bullets: [
+          "Diagnosed hardware, software, account, printing, and connectivity issues across Windows and macOS; documented service tickets and escalated issues when needed.",
+          "Supported workstation replacements, lab refreshes, and orientation technology setup, communicating technical issues with students, faculty, and staff."
+        ]
       }
     ]
   },
@@ -398,6 +448,7 @@ export const siteModel: SiteModel = {
     items: [
       {
         title: "M.S. Thesis Research — Montana State University",
+        summary: "I study how band selection and semi-supervised learning can support hyperspectral image classification when labeled data are scarce. A unified evaluation across five benchmark datasets led to a paper accepted at WHISPERS 2026.",
         when: "August 2025 – Present",
         bullets: [
           "Evaluated multiple band-selection methods with lightweight 3D CNN classifiers across five benchmark hyperspectral datasets under a unified experimental framework.",
@@ -406,6 +457,7 @@ export const siteModel: SiteModel = {
           "Current work extends the framework toward more computationally efficient band-selection approaches and improved semi-supervised learning strategies."
         ],
         advisor: "Dr. Brad Whitaker",
+        advisorUrl: "https://ece.montana.edu/directory/faculty/2110159/bradley-whitaker",
         topic: "Efficient Band Selection and Semi-Supervised Learning for Hyperspectral Image Classification",
         areas: [
           "hyperspectral image classification",
@@ -420,7 +472,39 @@ export const siteModel: SiteModel = {
         ]
       },
       {
-        title: "Graduate Research Assistant — Montana State University",
+        "title": "Graduate Research Assistant \u2014 TrialWear, Montana State University",
+        "when": "Spring\u2013Summer 2026",
+        "advisor": "Dr. Elizabeth Johnson (Principal Investigator)",
+        "advisorUrl": "https://www.montana.edu/nursing/directory/bozeman/2344665/elizabeth-johnson",
+        "summary": "I contributed research software to TrialWear, an interdisciplinary clinical-trial safety and wearable-technology project at MSU. I developed and extended a provider-facing Flutter prototype and a Spring Boot backend prototype to connect mobile workflows with trial and geospatial data.",
+        "bullets": [
+                "Built REST APIs and a PostgreSQL/PostGIS data layer with Flyway migrations; integrated the Flutter application through a service/repository/controller architecture.",
+                "Implemented prototype provider-access, participant/trial dashboard, device-assignment, geo-event, contact-request, and audit-event workflows, and prepared BLE discovery, connection, and data-transfer logic.",
+                "Prepared developer handover documentation. Work used development data; production deployment, production authentication/security, full clinical functionality, and complete real-hardware validation were outside the completed scope."
+        ],
+        "technologies": [
+                "Flutter",
+                "Dart",
+                "Java",
+                "Spring Boot",
+                "REST APIs",
+                "PostgreSQL",
+                "PostGIS",
+                "Flyway",
+                "Docker",
+                "BLE"
+        ],
+        "contextLink": {
+                "label": "TrialWear \u2014 public MSU project context",
+                "url": "https://tto.montana.edu/nsf-art/strp_success_stories/johnson_team.html",
+                "note": "This earlier project page provides background on the broader project; it does not document my Spring\u2013Summer 2026 contribution."
+        }
+},
+      {
+        title: "Graduate Research Assistant — Protein Scaffold Gap Filling, MSU",
+        advisor: "Dr. Binhai Zhu",
+        advisorUrl: "https://www.cs.montana.edu/bhz/homepage.html",
+        summary: "Explored probabilistic and machine-learning approaches to protein scaffold gap filling through NSF-funded research (NSF CCF-2307572), drawing on literature in genome and protein clustering. This work broadened my experience applying computational methods to scientific questions.",
         when: "January 2025 – August 2025",
         bullets: [
           "Investigated the Protein Scaffold Gap Filling problem using probabilistic and machine-learning approaches.",
@@ -435,7 +519,8 @@ export const siteModel: SiteModel = {
         ]
       },
       {
-        title: "Research Assistant — Directorate of Research and Extension, CUET",
+        title: "Research Assistant — Multi-Robot Path Planning, Directorate of Research & Extension, CUET",
+        summary: "Studied path-planning approaches for cooperative multi-robot tasks through literature analysis, simulation experiments, and case studies. The work contributed to a review published in Engineering Reports.",
         when: "June 2023 – January 2024",
         bullets: [
           "Conducted comprehensive literature reviews on multi-robot path planning.",
@@ -444,6 +529,7 @@ export const siteModel: SiteModel = {
           "The work contributed to a review paper published in Engineering Reports (Wiley)."
         ],
         advisor: "Dr. Sajal Chandra Banik",
+        advisorUrl: "https://scholar.google.com/citations?user=PZCslRcAAAAJ&hl=en",
         topic: "Multi-Robot Path Planning for Cooperative Tasks",
         areas: [
           "multi-robot systems",
@@ -454,7 +540,8 @@ export const siteModel: SiteModel = {
         ]
       },
       {
-        title: "Undergraduate Thesis — CUET",
+        title: "Undergraduate Thesis — Multi-Robot Task Allocation, CUET",
+        summary: "Built ROS/Gazebo simulation experiments to compare vacancy-chain and auction-based task allocation for autonomous robots, connecting distributed coordination algorithms with simulated robot behavior.",
         when: "",
         bullets: [
           "Developed ROS/Gazebo simulation experiments for multi-robot task allocation.",
@@ -480,6 +567,7 @@ export const siteModel: SiteModel = {
     items: [
       {
         title: "Robo Mechatronics Association, Bangladesh — Vice President",
+        summary: "Led a 150+ member chapter and organized mechatronics and automation activities. My broader robotics involvement included participation in 17 competitions and hackathons.",
         when: "February 2021 – August 2022",
         bullets: [
           "Organized university seminars, workshops, and competitions focused on mechatronics technology and industrial automation.",
@@ -493,6 +581,7 @@ export const siteModel: SiteModel = {
       },
       {
         title: "IEOM CUET Student Chapter | Research & Publication Secretary",
+        summary: "Helped organize an inter-university scientific poster competition. The chapter received the Outstanding Student Chapter Award–GOLD during my tenure; this was chapter/team recognition.",
         when: "Feb 2021 to Aug 2022",
         bullets: [
           "Assisted the team in arranging an online Inter-University Scientific Poster Presentation Competition.",
@@ -501,6 +590,7 @@ export const siteModel: SiteModel = {
       },
       {
         title: "Volunteer for Bangladesh | Institute Representative",
+        summary: "Connected campus volunteers with community initiatives supporting children’s health, education, well-being, and environmental cleanliness.",
         when: "Mar 2019 to Jul 2019",
         bullets: [
           "Acted as a liaison, connecting campus volunteers with initiatives supporting underprivileged children’s health, education, and well-being.",
@@ -509,6 +599,7 @@ export const siteModel: SiteModel = {
       },
       {
         title: "CUET Chess Club — Founding Technical Secretary",
+        summary: "Helped establish the campus chess community, organizing tournaments and supporting club communications.",
         when: "October 2021 – September 2022",
         bullets: [
           "Helped establish a network for chess enthusiasts on campus.",
@@ -880,54 +971,75 @@ export const siteModel: SiteModel = {
     "Remote sensing, hyperspectral imaging, and precision-agriculture applications involving AI/ML/CV or autonomy"
   ],
   teachingAndMentoring: {
-    title: "Teaching and Mentoring",
-    items: [
-      {
-        title: "Graduate Teaching Assistant — Montana State University",
-        when: "January 2025 – Present",
-        bullets: [
-          "Assisted with instruction, laboratory supervision, and grading for undergraduate and graduate courses."
-        ],
-        courses: [
-          "ESOF 422 — Advanced Software Engineering: Secure Software Practices",
-          "CSCI 232 — Data Structures and Algorithms",
-          "EMEC 361 — Measurement & Instrument Lab"
-        ],
-        highlights: [
-          "Personal teaching support: 3 MSU courses."
-        ]
-      },
-      {
-        title: "Judge — FIRST LEGO League Championship, Montana State University",
-        when: "2025 and 2026",
-        bullets: [
-          "Served as a judge at the FIRST LEGO League Championship hosted at Montana State University."
-        ]
-      },
-      {
-        title: "Industry 4.0 workshops — BITAC",
-        when: "January and August 2022",
-        bullets: [
-          "Participated in paid workshops on Industry 4.0 at the Bangladesh Industrial Technical Assistance Centre (BITAC) in January and August 2022."
-        ]
-      },
-      {
-        title: "Arduino and basic-electronics workshop",
-        when: "March 2020",
-        bullets: [
-          "Trained freshman university students in a five-day hands-on Arduino and basic-electronics workshop in March 2020."
-        ]
-      },
-      {
-        title: "Basic Sensor-Based Mobile Robotics workshop",
-        when: "2018",
-        bullets: [
-          "Instructor for a two-day Basic Sensor-Based Mobile Robotics workshop at Cantonment Public Collegiate School, Chittagong, in 2018.",
-          "Historical workshop content included line-follower and obstacle-avoider robotics."
-        ]
-      }
+    "title": "Teaching & Mentoring",
+    "items": [
+        {
+            "title": "Graduate Teaching Assistant — Montana State University",
+            "when": "2025–Present · Multiple teaching appointments",
+            "summary": "Supported undergraduate learning across computer science, software engineering, engineering instrumentation, and environmental science through laboratory instruction, grading, technical guidance, and student feedback across multiple MSU teaching appointments.",
+            "bullets": [],
+            "courses": [
+                {
+                    "title": "EMEC 361 — Measurement & Instrument Lab",
+                    "when": "Fall 2025 · Fall 2026",
+                    "instructor": "James Black",
+                    "courseUrl": "https://catalog.montana.edu/coursedescriptions/emec/",
+                    "instructorUrl": "https://www.montana.edu/mie/directory/1992608/james-black",
+                    "description": "Support experimental work through laboratory instruction, sensor/instrument setup, preparation, and feedback on laboratory memos."
+                },
+                {
+                    "title": "CSCI 232 — Data Structures and Algorithms",
+                    "instructor": "Reese Pearsall",
+                    "courseUrl": "https://www.cs.montana.edu/pearsall/classes/summer2025/232/syllabus.html",
+                    "instructorUrl": "https://www.cs.montana.edu/pearsall/",
+                    "description": "Helped students work with Java, data structures, and algorithms, and graded homework and project reports."
+                },
+                {
+                    "title": "ESOF 422 — Advanced Software Engineering: Cybersecurity Practices",
+                    "instructor": "Dr. Clemente (Clem) Izurieta",
+                    "courseUrl": "https://catalog.montana.edu/coursedescriptions/esof/",
+                    "instructorUrl": "https://www.cs.montana.edu/izurieta/",
+                    "description": "Provided instructional and grading support for advanced software engineering and cybersecurity practices."
+                },
+                {
+                    "title": "ENSC 245IN — Soils",
+                    "when": "Fall 2025",
+                    "instructor": "Dr. Tony Hartshorn",
+                    "courseUrl": "https://catalog.montana.edu/coursedescriptions/ensc/",
+                    "instructorUrl": "https://landresources.montana.edu/directory/faculty/1524160/anthony-hartshorn",
+                    "description": "Conducted and supported laboratory sessions and graded laboratory reports."
+                }
+            ],
+            "highlights": [
+                "Personal teaching support: 4 MSU courses."
+            ]
+        },
+        {
+            "title": "Volunteer Judge — FIRST LEGO League Championship, MSU",
+            "when": "2025 and 2026",
+            "summary": "Served as a volunteer judge at the FIRST LEGO League Championship hosted at Montana State University.",
+            "bullets": []
+        },
+        {
+            "title": "Arduino & Basic Electronics — Workshop Trainer",
+            "when": "March 2020",
+            "summary": "Trained first-year university students through a five-day hands-on Arduino and basic-electronics workshop.",
+            "bullets": []
+        },
+        {
+            "title": "Basic Sensor-Based Mobile Robotics — Workshop Instructor",
+            "when": "2018",
+            "summary": "Taught a two-day workshop at Cantonment Public Collegiate School, Chittagong, introducing sensor-based mobile robotics.",
+            "bullets": []
+        },
+        {
+            "title": "Industry 4.0 Workshops — Knowledge-Sharing Contributor",
+            "when": "January and August 2022",
+            "summary": "Participated in paid collaborative Industry 4.0 workshops at the Bangladesh Industrial Technical Assistance Centre (BITAC). During group discussions and presentations, I shared technical ideas and knowledge with leading academic and industry professionals in Bangladesh, learned from fellow participants, and explored industry skill needs and ideas for future technical training and course development.",
+            "bullets": []
+        }
     ]
-  },
+},
 
   researchPresentations: {
     title: "Research Presentations",

@@ -71,47 +71,37 @@ Verification:
 
 ## Phase 3 — Academic Identity
 
-**Status:** Implemented — Awaiting Approval
+**Status:** Complete — Approved
 
-The Hero and About now present a research-first academic identity, with visible
-academic links, scoped responsive/light/dark styling, and updated document metadata.
-Phase 3 refinement places accessible Scholar/GitHub/LinkedIn/YouTube icon buttons
-below the portrait, preserves the labeled CV button and GrabCAD contact/metadata,
-and polishes thesis/background wording and research-interest capitalization/labels.
-
-Primary scope:
-
-- academic Hero
-- About/background
-- research-interest positioning
-- primary academic links
-- page/document metadata
-- research-first wording and information hierarchy
-
-The positioning should center on AI/ML and intelligent/autonomous systems while accurately representing current hyperspectral research and long-term robotics/multi-agent interests.
+Research-first Hero, background, research directions, applied interests, accessible
+portrait profile links, and academic metadata approved by the owner.
 
 ---
 
-Verification: build, lint, whitespace, and desktop/mobile browser checks pass.
-LinkedIn blocks automated access; the integrated browser does not expose normal
-PDF popup events. See HISTORY.md for verification scope. TODO.md remains unchanged
-until owner approval; Phase 4 has not started.
-
 ## Phase 4 — Academic Experience
 
-**Status:** Pending
+**Status:** Implemented — Awaiting Approval
 
-Build and reorganize the major academic and experience sections.
+- Separated research, compact education, dedicated teaching/mentoring,
+  professional software engineering, and compact leadership sections.
+- Research order: current hyperspectral thesis, TrialWear prototype contribution,
+  protein scaffold gap filling, CUET multi-robot path planning, undergraduate MRTA.
+- Added four documented MSU courses/instructors and historical mentoring records.
+- Refinement: NSF CCF-2307572 funding context, full CUET Directorate appointment,
+  official inline course/instructor links where verified, and accurate BITAC
+  collaborative knowledge-sharing wording. James Black remains unlinked pending
+  a matching official directory/profile listing.
+- Final timeline refinement: inline advisor/PI research-profile links; parent GTA
+  record describes multiple appointments; EMEC shows Fall 2025/Fall 2026 and ENSC
+  Fall 2025. Past course descriptions use past tense. CSCI/ESOF semester labels
+  await confirmation under the requested profile-verification condition.
+- Preserved three software roles; added secondary May–August 2026 part-time UIT role.
+- Retained accessible independent accordions; summaries remain visible when closed.
+- Preserved approved Hero and existing Projects/Publications/personal components.
+- Verified build, lint, whitespace, desktop/mobile layout, themes, keyboard,
+  expansion, links, and academic navigation. Public TrialWear page is background only.
 
-Planned scope:
-
-- education
-- research experience
-- M.S. thesis
-- undergraduate thesis
-- teaching and mentoring
-- professional software-engineering experience
-- leadership
+TODO.md remains on Phase 4 pending owner approval. Phase 5 has not started.
 
 ---
 

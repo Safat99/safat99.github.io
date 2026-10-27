@@ -23,7 +23,9 @@ export function useActiveSection() {
       let active = nearBottom ? ordered.at(-1) : undefined;
       if (!nearBottom) {
         for (const target of ordered) {
-          if (target.section.getBoundingClientRect().top <= marker) active = target;
+          // Anchor offsets must also count as reaching the section on narrow screens.
+          const anchorOffset = Number.parseFloat(window.getComputedStyle(target.section).scrollMarginTop) || 0;
+          if (target.section.getBoundingClientRect().top <= Math.max(marker, anchorOffset + 2)) active = target;
         }
       }
       navLinks.forEach((link) => {

@@ -7,6 +7,8 @@ import HeroView from "./components/sections/Hero/HeroView";
 import AboutView from "./components/sections/About/AboutView";
 import TechView from "./components/sections/Tech/TechView";
 import ExperienceView from "./components/sections/Experience/ExperienceView";
+import EducationView from "./components/sections/Experience/EducationView";
+import TeachingMentoringView from "./components/sections/Experience/TeachingMentoringView";
 import PublicationView from "./components/sections/Publications/PublicationView";
 import ProjectsView from "./components/sections/Projects/ProjectsView";
 import CreatorView from "./components/sections/Creator/CreatorView";
@@ -38,12 +40,13 @@ export default function HomeView() {
       <main id="top" className="container">
         <HeroView hero={model.hero} />
         <AboutView about={model.about} />
+        <ExperienceView id="research" experience={model.researchExperience} />
+        <EducationView education={model.education} />
+        <TeachingMentoringView teaching={model.teachingAndMentoring} />
+        <ExperienceView id="experience" experience={model.experience} />
         <TechView tech={model.tech} />
-        
-        <ExperienceView experience={model.experience} researchExperience={model.researchExperience} leadershipExperience={model.leadershipExperience} />
-        
+        <ExperienceView id="leadership" experience={model.leadershipExperience} />
 
-        
         <ProjectsView projects={model.projects} />
 
         <PublicationView publication={model.publications} />

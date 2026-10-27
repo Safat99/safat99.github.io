@@ -1,83 +1,28 @@
 import { useState } from "react";
-import type { ExperienceModel, LeadershipExperienceModel } from "../../../../model/siteModel";
-import type { ResearchExperienceModel } from "../../../../model/siteModel";
+import type { ExperienceModel } from "../../../../model/siteModel";
 import SectionTitleView from "../../ui/SectionTitle/SectionTitleView";
 import ExperienceItemView from "./ExperienceItemView";
 import "./experience.css";
+import "./academic-experience.css";
 
-type Props = {
-  experience: ExperienceModel;
-  researchExperience: ResearchExperienceModel;
-  leadershipExperience: LeadershipExperienceModel;
-};
+type Props = { id: string; experience: ExperienceModel };
 
-export default function ExperienceView({ experience, researchExperience, leadershipExperience }: Props) {
-  const [openProfessionalIndex, setOpenProfessionalIndex] = useState(0);
-  const [openResearchIndex, setOpenResearchIndex] = useState(0);
-  const [openLeadershipIndex, setOpenLeadershipIndex] = useState(0);
-
+/** Each rendered section owns its own expansion state. */
+export default function ExperienceView({ id, experience }: Props) {
+  const [openIndex, setOpenIndex] = useState(0);
   return (
-    <section id="experience" className="section fade-in">
+    <section id={id} className="section fade-in academic-experience">
       <SectionTitleView title={experience.title} />
-
-
-      {/* tech experience */}
-      <div className="exp">
-        <div className="exp-list">
-          {experience.items.map((item, idx) => (
-            <ExperienceItemView
-              key={`${item.title}-${item.when}`}
-              title={item.title}
-              when={item.when}
-              bullets={item.bullets}
-              isOpen={openProfessionalIndex === idx}
-              onToggle={() => setOpenProfessionalIndex((cur) => (cur === idx ? -1 : idx))}
-            />
-          ))}
-        </div>
+      <div className="exp-list">
+        {experience.items.map((item, index) => (
+          <ExperienceItemView
+            key={`${item.title}-${item.when}`}
+            item={item}
+            isOpen={openIndex === index}
+            onToggle={() => setOpenIndex(current => current === index ? -1 : index)}
+          />
+        ))}
       </div>
-
-
-      {/* researchExperience */}
-      <div style={{ marginTop: "5rem" }}></div>
-
-      <SectionTitleView title={researchExperience.title}/>
-      <div className="exp" >
-        <div className="exp-list">
-          {researchExperience.items.map((item, idx) => (
-            <ExperienceItemView
-              key={`${item.title}-${item.when}`}
-              title={item.title}
-              when={item.when}
-              bullets={item.bullets}
-              isOpen={openResearchIndex === idx}
-              onToggle={() => setOpenResearchIndex((cur) => (cur === idx ? -1 : idx))}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* leadershipExperience */}
-      <div style={{ marginTop: "5rem" }}></div>
-
-      <SectionTitleView title={leadershipExperience.title}/>
-      <div className="exp" >
-        <div className="exp-list">
-          {leadershipExperience.items.map((item, idx) => (
-            <ExperienceItemView
-              key={`${item.title}-${item.when}`}
-              title={item.title}
-              when={item.when}
-              bullets={item.bullets}
-              isOpen={openLeadershipIndex === idx}
-              onToggle={() => setOpenLeadershipIndex((cur) => (cur === idx ? -1 : idx))}
-            />
-          ))}
-        </div>
-      </div>
-
-
-
     </section>
   );
 }
