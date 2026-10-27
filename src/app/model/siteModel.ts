@@ -980,15 +980,16 @@ export const siteModel: SiteModel = {
             "bullets": [],
             "courses": [
                 {
-                    "title": "EMEC 361 — Measurement & Instrument Lab",
+                    "title": "EMEC 360/361 — Measurement & Instrument",
                     "when": "Fall 2025 · Fall 2026",
                     "instructor": "James Black",
                     "courseUrl": "https://catalog.montana.edu/coursedescriptions/emec/",
                     "instructorUrl": "https://www.montana.edu/mie/directory/1992608/james-black",
-                    "description": "Support experimental work through laboratory instruction, sensor/instrument setup, preparation, and feedback on laboratory memos."
+                    "description": "Support experimental work through laboratory instruction, sensor/instrument setup, preparation, and feedback on laboratory memos, while also assisting with grading homework for the associated theory coursework"
                 },
                 {
                     "title": "CSCI 232 — Data Structures and Algorithms",
+                    "when": "Summer 2025",
                     "instructor": "Reese Pearsall",
                     "courseUrl": "https://www.cs.montana.edu/pearsall/classes/summer2025/232/syllabus.html",
                     "instructorUrl": "https://www.cs.montana.edu/pearsall/",
@@ -996,6 +997,7 @@ export const siteModel: SiteModel = {
                 },
                 {
                     "title": "ESOF 422 — Advanced Software Engineering: Cybersecurity Practices",
+                    "when": "Spring 2025",
                     "instructor": "Dr. Clemente (Clem) Izurieta",
                     "courseUrl": "https://catalog.montana.edu/coursedescriptions/esof/",
                     "instructorUrl": "https://www.cs.montana.edu/izurieta/",
