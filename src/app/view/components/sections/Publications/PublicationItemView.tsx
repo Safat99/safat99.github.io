@@ -20,6 +20,7 @@ function Chevron() {
 
 export default function PublicationItemView({ item, isOpen, onToggle }: Props) {
   const panelId = useId();
+  const buttonId = `${panelId}-button`;
 
   const bullets = [
     item.desc,
@@ -29,6 +30,7 @@ export default function PublicationItemView({ item, isOpen, onToggle }: Props) {
   return (
     <article className={`exp-item ${isOpen ? "is-open" : ""}`}>
       <button
+        id={buttonId}
         type="button"
         className="exp-btn"
         onClick={onToggle}
@@ -57,7 +59,8 @@ export default function PublicationItemView({ item, isOpen, onToggle }: Props) {
         id={panelId}
         className="exp-panel"
         role="region"
-        aria-label={item.title}
+        aria-labelledby={buttonId}
+        hidden={!isOpen}
       >
         <div className="exp-panel-inner">
           <ul className="exp-bullets">

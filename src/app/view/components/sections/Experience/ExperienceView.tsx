@@ -12,7 +12,9 @@ type Props = {
 };
 
 export default function ExperienceView({ experience, researchExperience, leadershipExperience }: Props) {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openProfessionalIndex, setOpenProfessionalIndex] = useState(0);
+  const [openResearchIndex, setOpenResearchIndex] = useState(0);
+  const [openLeadershipIndex, setOpenLeadershipIndex] = useState(0);
 
   return (
     <section id="experience" className="section fade-in">
@@ -28,8 +30,8 @@ export default function ExperienceView({ experience, researchExperience, leaders
               title={item.title}
               when={item.when}
               bullets={item.bullets}
-              isOpen={openIndex === idx}
-              onToggle={() => setOpenIndex((cur) => (cur === idx ? -1 : idx))}
+              isOpen={openProfessionalIndex === idx}
+              onToggle={() => setOpenProfessionalIndex((cur) => (cur === idx ? -1 : idx))}
             />
           ))}
         </div>
@@ -48,8 +50,8 @@ export default function ExperienceView({ experience, researchExperience, leaders
               title={item.title}
               when={item.when}
               bullets={item.bullets}
-              isOpen={openIndex === idx}
-              onToggle={() => setOpenIndex((cur) => (cur === idx ? -1 : idx))}
+              isOpen={openResearchIndex === idx}
+              onToggle={() => setOpenResearchIndex((cur) => (cur === idx ? -1 : idx))}
             />
           ))}
         </div>
@@ -67,8 +69,8 @@ export default function ExperienceView({ experience, researchExperience, leaders
               title={item.title}
               when={item.when}
               bullets={item.bullets}
-              isOpen={openIndex === idx}
-              onToggle={() => setOpenIndex((cur) => (cur === idx ? -1 : idx))}
+              isOpen={openLeadershipIndex === idx}
+              onToggle={() => setOpenLeadershipIndex((cur) => (cur === idx ? -1 : idx))}
             />
           ))}
         </div>

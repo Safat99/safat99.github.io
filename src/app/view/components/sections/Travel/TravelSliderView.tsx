@@ -1,3 +1,4 @@
+import { publicAssetUrl } from "../../../utils/publicAssetUrl";
 import { useState } from "react";
 import type { TravelPhoto } from "../../../../model/siteModel";
 
@@ -107,7 +108,7 @@ export default function TravelSliderView({ items }: Props) {
                     current.src.endsWith("bd_foot.jpg") ? "fix-bd-foot" : ""
                   }`}
                 >
-                  <img src={current.src} alt={current.title} loading="lazy" />
+                  <img src={publicAssetUrl(current.src)} alt={current.title} loading="lazy" />
                 </div>
               </div>
 
@@ -130,7 +131,7 @@ export default function TravelSliderView({ items }: Props) {
                 </div>
                 <div className="travel-book-right">
                   <div className="travel-image-container">
-                    <img src={current.src} alt={current.title} loading="lazy" />
+                    <img src={publicAssetUrl(current.src)} alt={current.title} loading="lazy" />
                   </div>
                 </div>
               </div>
@@ -148,7 +149,7 @@ export default function TravelSliderView({ items }: Props) {
                 </div>
                 <div className="travel-book-right">
                   <div className="travel-image-container">
-                    <img src={nextPage.src} alt={nextPage.title} loading="lazy" />
+                    <img src={publicAssetUrl(nextPage.src)} alt={nextPage.title} loading="lazy" />
                   </div>
                 </div>
               </div>
@@ -171,7 +172,7 @@ export default function TravelSliderView({ items }: Props) {
                 </div>
                 <div className="travel-book-right">
                   <div className="travel-image-container">
-                    <img src={prevPage.src} alt={prevPage.title} loading="lazy" />
+                    <img src={publicAssetUrl(prevPage.src)} alt={prevPage.title} loading="lazy" />
                   </div>
                 </div>
               </div>
@@ -189,7 +190,7 @@ export default function TravelSliderView({ items }: Props) {
                 </div>
                 <div className="travel-book-right">
                   <div className="travel-image-container">
-                    <img src={current.src} alt={current.title} loading="lazy" />
+                    <img src={publicAssetUrl(current.src)} alt={current.title} loading="lazy" />
                   </div>
                 </div>
               </div>

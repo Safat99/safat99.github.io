@@ -2,67 +2,59 @@ import { useEffect } from "react";
 
 export function useActiveSection() {
   useEffect(() => {
-    const sections = Array.from(document.querySelectorAll<HTMLElement>("section[id]"));
     const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>(".nav a"));
+    const targets = navLinks.flatMap((link) => {
+      const href = link.getAttribute("href");
+      const section = href?.startsWith("#") ? document.getElementById(href.slice(1)) : null;
+      return section ? [{ link, section }] : [];
+    });
+    if (targets.length === 0) return;
 
-    if (!("IntersectionObserver" in window) || sections.length === 0) return;
-
-    const setActive = (id: string) => {
-      navLinks.forEach((link) => {
-        const href = link.getAttribute("href");
-        if (href === `#${id}`) link.classList.add("is-active");
-        else link.classList.remove("is-active");
-      });
-    };
-
-    // store latest visibility ratio for every section
-    const ratios = new Map<string, number>();
-    sections.forEach((s) => ratios.set(s.id, 0));
-
-    const pickBest = () => {
-      let bestId = sections[0].id;
-      let bestRatio = -1;
-
-      ratios.forEach((ratio, id) => {
-        if (ratio > bestRatio) {
-          bestRatio = ratio;
-          bestId = id;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const ordered = [...targets].sort(
+        (a, b) => a.section.getBoundingClientRect().top - b.section.getBoundingClientRect().top
+      );
+      const topbarBottom = document.querySelector(".topbar")?.getBoundingClientRect().bottom ?? 0;
+      const marker = Math.max(topbarBottom, window.innerHeight * 0.25);
+      const nearBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 8;
+      // Before the first section (the hero), no section link is current.
+      let active = nearBottom ? ordered.at(-1) : undefined;
+      if (!nearBottom) {
+        for (const target of ordered) {
+          if (target.section.getBoundingClientRect().top <= marker) active = target;
         }
-      });
-
-      // if everything is 0, fallback to first section
-      if (bestId) setActive(bestId);
-    };
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const id = (entry.target as HTMLElement).id;
-          ratios.set(id, entry.isIntersecting ? entry.intersectionRatio : 0);
-        });
-
-        pickBest();
-      },
-      {
-        threshold: [0, 0.12, 0.2, 0.35, 0.5, 0.7],
-        rootMargin: "-35% 0px -50% 0px",
       }
-    );
-
-    sections.forEach((s) => observer.observe(s));
-
-    // Bottom fallback to ensure contact highlights at page end
-    const onScroll = () => {
-      const nearBottom =
-        window.innerHeight + window.scrollY >= document.body.offsetHeight - 8;
-      if (nearBottom) setActive("contact");
+      navLinks.forEach((link) => {
+        const isActive = link === active?.link;
+        link.classList.toggle("is-active", isActive);
+        if (isActive) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
     };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+    // Accordion expansion and media loading can move section boundaries without scrolling.
+    const resizeObserver = typeof ResizeObserver !== "undefined" ? new ResizeObserver(schedule) : null;
+    const main = document.querySelector("main");
+    if (main) resizeObserver?.observe(main);
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    window.addEventListener("hashchange", schedule);
+    update();
 
     return () => {
-      observer.disconnect();
-      window.removeEventListener("scroll", onScroll);
+      window.cancelAnimationFrame(frame);
+      resizeObserver?.disconnect();
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      window.removeEventListener("hashchange", schedule);
+      navLinks.forEach((link) => {
+        link.classList.remove("is-active");
+        link.removeAttribute("aria-current");
+      });
     };
   }, []);
 }

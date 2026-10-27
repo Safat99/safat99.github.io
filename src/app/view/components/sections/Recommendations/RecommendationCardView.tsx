@@ -1,3 +1,4 @@
+import { publicAssetUrl } from "../../../utils/publicAssetUrl";
 import type { RecommendationItem } from "../../../../model/siteModel";
 
 type Props = {
@@ -11,7 +12,7 @@ export default function RecommendationCardView({ recommendation }: Props) {
       <div className="recommendation-header">
         {recommendation.photo ? (
           <div className="recommendation-photo">
-            <img src={recommendation.photo} alt={recommendation.name} />
+            <img src={publicAssetUrl(recommendation.photo)} alt={recommendation.name} />
           </div>
         ) : (
           <div className="recommendation-photo recommendation-photo-placeholder">

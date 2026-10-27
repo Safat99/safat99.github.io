@@ -27,10 +27,12 @@ export default function ExperienceItemView({
   onToggle,
 }: Props) {
   const panelId = useId();
+  const buttonId = `${panelId}-button`;
 
   return (
     <article className={`exp-item ${isOpen ? "is-open" : ""}`}>
       <button
+        id={buttonId}
         type="button"
         className="exp-btn"
         onClick={onToggle}
@@ -55,7 +57,7 @@ export default function ExperienceItemView({
         </div>
       </button>
 
-      <div id={panelId} className="exp-panel" role="region" aria-label={title}>
+      <div id={panelId} className="exp-panel" role="region" aria-labelledby={buttonId} hidden={!isOpen}>
         <div className="exp-panel-inner">
           <ul className="exp-bullets">
             {bullets.map((b, idx) => (

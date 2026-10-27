@@ -115,18 +115,10 @@
   border-color: rgba(122, 162, 255, 0.25);
 }
 
-/* Expand */
-.exp-panel {
-  max-height: 0;
-  opacity: 0;
-  transform: translateY(-2px);
-  transition: max-height 260ms ease, opacity 220ms ease, transform 220ms ease;
-}
-
-.exp-item.is-open .exp-panel {
-  max-height: 560px;
-  opacity: 1;
-  transform: translateY(0);
+/* Native hidden panels leave the accessibility tree and keyboard tab order.
+   Open panels use their content height, including long text on narrow screens. */
+.exp-panel[hidden] {
+  display: none;
 }
 
 .exp-panel-inner {

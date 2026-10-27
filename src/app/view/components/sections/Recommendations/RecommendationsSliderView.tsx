@@ -1,3 +1,4 @@
+import { publicAssetUrl } from "../../../utils/publicAssetUrl";
 import { useState } from "react";
 import type { RecommendationItem } from "../../../../model/siteModel";
 import "./recommendations.css";
@@ -92,7 +93,7 @@ export default function RecommendationsSliderView({ items }: Props) {
               <div className="rec-header">
                 {item.photo ? (
                   <div className="rec-photo">
-                    <img src={item.photo} alt={item.name} />
+                    <img src={publicAssetUrl(item.photo)} alt={item.name} />
                   </div>
                 ) : (
                   <div className="rec-photo rec-photo-placeholder">
