@@ -1,0 +1,5 @@
+.related-outputs { margin-top: 14px; font-size: 0.85rem; line-height: 1.6; overflow-wrap: anywhere; }
+.related-outputs .related-output-label { font-size: 0.78rem; font-weight: 600; margin: 0 0 6px; }
+.related-outputs ul { padding: 0; margin: 0; list-style: none; }
+.related-outputs a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.related-outputs a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }

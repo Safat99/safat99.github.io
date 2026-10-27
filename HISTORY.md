@@ -103,7 +103,7 @@ unchanged in this phase. Phase 3 approved; TODO.md transitioned to Phase 4 at th
 
 ## Phase 4 — Academic experience
 
-Implemented — Awaiting Approval.
+Approved and committed by the owner before Phase 5A.
 
 - Reused typed experience records and the controller; added optional narrative
   summaries, structured course/instructor descriptions, and scoped public context.
@@ -183,3 +183,71 @@ Verification: Node 22.23.2/npm 10.9.8 build/lint/whitespace PASS without warning
 or errors. Browser at CSS 1440px/375px, light/dark: advisor names, safe link
 attributes/labels, keyboard Tab access and 2px focus, semester labels, tense,
 readability, and wrapping checked; no horizontal overflow or clipped text.
+
+
+## Phase 5A — Publications, presentations, and research cross-links
+
+Implemented; Phase 5 remains Current and incomplete. Phase 4 was approved and
+committed by the owner before this transition. TODO.md now tracks Phase 5A only.
+
+- Added a simple optional relatedOutputs list to experience/project records and
+  a small shared renderer for internal citation targets and optional DOI links.
+- Replaced publication accordions with scannable citations showing complete
+  author arrays, years, venues, concise descriptions, visible Accepted/Published
+  labels, and one clear DOI action per verified URL. Accepted status is preserved.
+- Candidate's unambiguous names are emphasized in publication author lists.
+  Retained all presentation author strings without guessing which abbreviated
+  presentation author should be emphasized or expanding their names.
+- Rendered BIM 2021 under Research Presentations, clearly separate from papers;
+  no proceedings publication asserted.
+- Four supported relationships: M.S. thesis→WHISPERS accepted paper (internal);
+  CUET multi-robot planning→Wiley review (internal + DOI);
+  CAP/NFLE sleep-stage project→Springer/ICO chapter (internal + DOI);
+  IoT Box→BIM presentation (internal).
+- No WHISPERS publication URL or BIM proceedings/DOI URL invented. Existing
+  verified DOI strings and bibliography facts reused from the academic profile.
+  No additional publication links inferred for TrialWear or protein research.
+- New output section immediately follows Research Experience; all other sections
+  retain relative ordering. Primary navigation follows the rendered section order.
+- Research links remain visible when details are closed; project changes only
+  add compact related links, preserving existing cards/pagination and content.
+- Reused the academic palette and responsive styling; new CSS is scoped to
+  outputs/related links. No dependencies, private artifacts, figures, tables,
+  project redesign, Awards UI, Phase 5B/5C, or Phase 6 implementation.
+
+Verification (Node 22.23.2 / npm 10.9.8): build PASS without warnings; lint PASS
+with zero errors/warnings; git diff --check PASS. Browser checks at CSS 1440px
+and 375px, light/dark: five visible output records (one accepted, three published,
+one presentation), all four publication author lists/emphasis, safe DOI actions,
+2px keyboard focus, no horizontal overflow or clipped citation text. All four
+internal related targets tested, including sleep/IoT links through project pages;
+anchor navigation focuses the output card below the sticky header and marks
+Publications active. No clipping in existing project cards/book containers.
+
+
+### Phase 5 attribution correction — before Phase 5B
+
+Separated reproduction-based undergraduate MRTA work (existing NuBot
+`dynamic_task_allocation` ROS/Gazebo implementation) from later independent
+experimental multi-robot software, using the owner's review. Removed the
+undergraduate research entry/project card and independent-method/evaluation
+claims from public site data; corrected About to describe experience and
+experimental exploration. Preserved legitimate robotics/coordination interests,
+CUET research assistantship, Wiley review, and existing output cross-links.
+
+The factual inventory retains accurate undergraduate historical context and
+records the separate multi-robot-path-finding repository as “Experimental
+Multi-Robot Warehouse Coordination / RL Prototype”, Experimental / Incomplete,
+with owner-reviewed implementation scope, action/state mismatch, training and
+logic limitations, and no defensible quantitative evaluation. No successful
+research/baseline/convergence/collision-free claims or public project card added.
+GitHub retrieval failed; implementation details are attributed to the owner's
+review, not independently verified in this pass. The purpose is accurate
+attribution and defensible PhD-application claims. Phase 5 remains Current;
+Phase 5B has not started. No design, architecture, or dependencies changed.
+
+Correction verification: Node 22.23.2/npm 10.9.8 build PASS without warnings;
+lint PASS with zero errors/warnings; git diff --check PASS. Targeted public-model
+search confirms undergraduate MRTA/vacancy-chain/auction claims are absent.
+The academic inventory was updated locally; it remains Git-ignored under the
+repository's existing policy and is not included in the tracked diff.

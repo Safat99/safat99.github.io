@@ -1,3 +1,4 @@
+import RelatedOutputsView from "../../ui/RelatedOutputsView";
 import type { ProjectsModel } from "../../../../model/siteModel";
 import SectionTitleView from "../../ui/SectionTitle/SectionTitleView";
 import CardView from "../../ui/Card/CardView";
@@ -23,6 +24,7 @@ export default function ProjectsView({ projects }: Props) {
       {group.map((p) => (
         <CardView key={p.title} title={p.title} subtitle={p.meta}>
           <p>{p.desc}</p>
+          <RelatedOutputsView outputs={p.relatedOutputs} />
 
           {(p.url || p.demo || p.rpaper) && (
             <div className="card-actions">

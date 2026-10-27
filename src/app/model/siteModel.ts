@@ -40,10 +40,13 @@ export type TechModel = {
   faces: TechFace[];
 };
 
+export type RelatedOutput = { label: string; targetId?: string; url?: string };
+
 export type ExperienceItem = {
   title: string;
   when: string;
   bullets: string[];
+  relatedOutputs?: RelatedOutput[];
   advisor?: string;
   advisorUrl?: string;
   topic?: string;
@@ -71,6 +74,7 @@ export type LeadershipExperienceModel = {
 };
 
 export type ProjectItem = {
+  relatedOutputs?: RelatedOutput[];
   title: string;
   desc: string;
   meta: string;
@@ -218,7 +222,6 @@ export type SiteModel = {
 // Academic/professional facts: docs/ACADEMIC_PROFILE.md.
 // Current, historical, direct-artifact, and optional personal evidence is documented in docs/PHASE_1_CONTENT_RECONCILIATION.md.
 // Compatibility keys: experience = professional work; projects = selected technical projects.
-// Empty research `when` means no date is supplied (undergraduate thesis).
 export const siteModel: SiteModel = {
   brand: {
     name: "Sarker Safat Mahmud",
@@ -234,6 +237,11 @@ export const siteModel: SiteModel = {
         "id": "research",
         "label": "Research",
         "href": "#research"
+    },
+    {
+        "id": "publications",
+        "label": "Publications",
+        "href": "#publications"
     },
     {
         "id": "education",
@@ -264,11 +272,6 @@ export const siteModel: SiteModel = {
         "id": "projects",
         "label": "Projects",
         "href": "#projects"
-    },
-    {
-        "id": "publications",
-        "label": "Publications",
-        "href": "#publications"
     }
 ],
 
@@ -299,7 +302,7 @@ export const siteModel: SiteModel = {
     title: "Research & Background",
     paragraphs: [
       "I’m an M.S. student in Computer Science at Montana State University, building on a B.Sc. in Mechatronics & Industrial Engineering from Chittagong University of Engineering & Technology (CUET). My interests connect machine learning and perception with the algorithms and software behind intelligent, autonomous systems.",
-      "My current thesis explores how band selection and semi-supervised learning can support hyperspectral image classification when labeled data are limited. Earlier, I worked on multi-robot path planning and compared task-allocation strategies in ROS/Gazebo simulations. These experiences shape my longer-term interests in robotics, multi-agent systems, planning, and learning.",
+      "My current thesis explores how band selection and semi-supervised learning can support hyperspectral image classification when labeled data are limited. Earlier, I worked on multi-robot path-planning research and gained experience with multi-robot coordination, task-allocation methods, and robotic simulation. I have also explored independent grid-based multi-robot simulation and reinforcement-learning prototypes. These experiences shape my longer-term interests in robotics, multi-agent systems, planning, and learning.",
       "My professional backend engineering experience, spanning more than two years, has given me a strong foundation in APIs, integrations, distributed services, and production software. I bring that engineering perspective to computational research, simulation, and the development of reliable research systems."
     ],
     focusAreas: [
@@ -394,7 +397,7 @@ export const siteModel: SiteModel = {
       },
       {
         title: "Square Health Ltd — Software Engineer Intern, Backend",
-        summary: "Translated inventory-management requirements into a system architecture, relational data model, and REST APIs—experience connecting a problem specification to working software.",
+        summary: "Translated inventory-management requirements into a system architecture,an entity-relationship diagram (ERD), and REST APIs; demonstrated experience connecting problem specifications to working software.",
         when: "November 2022 – January 2023",
         bullets: [
           "Developed the architecture for an Inventory Management System from requirements analysis.",
@@ -448,6 +451,7 @@ export const siteModel: SiteModel = {
     items: [
       {
         title: "M.S. Thesis Research — Montana State University",
+        relatedOutputs: [{ label: "Evaluating Band Selection for Spectral–Spatial Hyperspectral Classification under Label Scarcity — WHISPERS 2026 · Accepted", targetId: "pub-whispers-2026" }],
         summary: "I study how band selection and semi-supervised learning can support hyperspectral image classification when labeled data are scarce. A unified evaluation across five benchmark datasets led to a paper accepted at WHISPERS 2026.",
         when: "August 2025 – Present",
         bullets: [
@@ -520,6 +524,7 @@ export const siteModel: SiteModel = {
       },
       {
         title: "Research Assistant — Multi-Robot Path Planning, Directorate of Research & Extension, CUET",
+        relatedOutputs: [{ label: "Path Planning Approaches in Multi-robot System: A Review — Engineering Reports / Wiley · Published", targetId: "pub-wiley-2024", url: "https://doi.org/10.1002/eng2.13035" }],
         summary: "Studied path-planning approaches for cooperative multi-robot tasks through literature analysis, simulation experiments, and case studies. The work contributed to a review published in Engineering Reports.",
         when: "June 2023 – January 2024",
         bullets: [
@@ -537,26 +542,6 @@ export const siteModel: SiteModel = {
           "cooperative robotics",
           "autonomous systems",
           "simulation"
-        ]
-      },
-      {
-        title: "Undergraduate Thesis — Multi-Robot Task Allocation, CUET",
-        summary: "Built ROS/Gazebo simulation experiments to compare vacancy-chain and auction-based task allocation for autonomous robots, connecting distributed coordination algorithms with simulated robot behavior.",
-        when: "",
-        bullets: [
-          "Developed ROS/Gazebo simulation experiments for multi-robot task allocation.",
-          "Evaluated vacancy-chain and auction-based task-allocation approaches."
-        ],
-        topic: "Multi-Robot Task Allocation (MRTA) for Autonomous Robots",
-        areas: [
-          "multi-robot systems",
-          "task allocation",
-          "ROS",
-          "Gazebo",
-          "distributed autonomous systems"
-        ],
-        highlights: [
-          "Thesis evaluation: 2 task-allocation strategies compared — vacancy-chain and auction-based."
         ]
       }
     ]
@@ -621,15 +606,8 @@ export const siteModel: SiteModel = {
         demo: "https://www.youtube.com/watch?v=_uvGQ6cCDds"
       },
       {
-        title: "Multi-Robot Task Allocation",
-        desc: "Undergraduate thesis project involving autonomous multi-robot task allocation using ROS and Gazebo simulations.",
-        meta: "Multi-Robot Systems, ROS, Gazebo, Task Allocation",
-        highlights: [
-          "Project scope: 2 task-allocation strategies — vacancy-chain and auction-based."
-        ]
-      },
-      {
         title: "NodeMCU-Based IoT Box",
+        relatedOutputs: [{ label: "Development and Optimization of a Real-time Server-based IoT Box for Smart Home Automation — BIM 2021 · Presentation", targetId: "bim-2021" }],
         desc: "Embedded NodeMCU IoT system with a custom PCB, DHT11 sensing, and four-relay internet control using Firebase, with a JavaScript web interface and an MIT App Inventor mobile app. Presented at BIM 2021.",
         meta: "NodeMCU • Firebase • Embedded Systems • JavaScript • MIT App Inventor",
         url: "https://github.com/Safat99/IoT-Box",
@@ -666,6 +644,7 @@ export const siteModel: SiteModel = {
       },
       {
         title: "Sleep Stage Classification (CAP Sleep Database)",
+        relatedOutputs: [{ label: "A Deep Convolutional Neural Network Based Classification Approach for Sleep Scoring of NFLE Patients — Springer / ICO 2021 · Published 2022", targetId: "pub-ico-2022", url: "https://doi.org/10.1007/978-3-030-93247-3_35" }],
         desc: "Historical deep CNN-based sleep-stage classification project using the CAP Sleep Database for NFLE patients.",
         meta: "Deep Learning • CNN • CAP Sleep Database",
         url: "https://github.com/Safat99/Sleep_stage_classifciation_of_epilepsy_patient"
@@ -773,7 +752,7 @@ export const siteModel: SiteModel = {
   },
 
   publications: {
-    title: "Publications",
+    title: "Publications & Research Outputs",
     intro: "Publications and accepted research outputs.",
     hint: "Publication status is included in each citation.",
     items: [

@@ -1,20 +1,26 @@
-# Current Work — Phase 4: Academic Experience
+# Current Work — Phase 5: Research Evidence
 
-Phase 3 approved by the owner. Implement Phase 4 only; leave this task in place until approval.
+Phase 4 approved and committed by the owner. Phase 5 is Current.
 
-## Scope
+## Current scope — Phase 5A only
 
-- Preserve the approved research-first Hero and Research Background.
-- Separate Research Experience, Education, Teaching & Mentoring, Professional Experience, and Leadership.
-- Order academic experience before professional experience and skills; retain Projects then Publications and the personal sections without redesign.
-- Use docs/ACADEMIC_PROFILE.md for factual content. Include documented TrialWear prototype work (Spring–Summer 2026), four MSU courses/instructors, mentoring, three software roles, and secondary part-time UIT experience.
-- Keep narratives concise; distinguish personal contributions, prototype limitations, workshop participation, and chapter/team recognition.
-- Expose no private TrialWear artifacts. Public project context predates the candidate's contribution and is background only.
-- Reuse typed model/controller architecture and accessible accordions. Preserve responsive and light/dark readability.
+- Make Publications & Research Outputs directly scannable, preserving full authors,
+  year, venue, accepted/published status, and verified DOI URLs.
+- Render BIM 2021 separately as a research presentation, not a publication.
+- Add a small relatedOutputs model field and compact links:
+  - M.S. thesis → WHISPERS 2026 accepted paper (internal only).
+  - CUET multi-robot research → Wiley review (internal + verified DOI).
+  - Sleep-stage project → Springer/ICO paper (internal + verified DOI).
+  - IoT Box → BIM 2021 presentation (internal only).
+- Emphasize the candidate's unambiguous publication author names.
+- Move outputs directly after Research Experience; preserve remaining section order.
+- Preserve accessible keyboard/focus behavior, mobile layout, and light/dark readability.
 
-## Out of scope
+## Deferred
 
-No Phase 5, publication/project-card redesign, StatScope, additional robotics builds, paper/project cross-links, logos, award redesign, dependencies, commits, or pushes.
+Do not start Phase 5B/5C or Phase 6. No project-card redesign, StatScope,
+additional robotics builds, research figures/tables/galleries, logos, Technical
+Skills/personal redesign, or Awards UI. No dependencies, commits, or pushes.
 
 ## Verification
 
@@ -24,9 +30,11 @@ npm run lint
 git diff --check
 ```
 
-Browser-check desktop and approximately 375px: hierarchy, long research and teaching entries, public links, expansion/collapse, keyboard access, no clipping, light/dark readability, and active navigation.
+Browser-check desktop/~375px, light/dark: output cards and types, status labels,
+DOI/internal related links, presentation, full authors/author emphasis, keyboard
+focus, no overflow, and active navigation after reordering.
 
 ## Completion
 
-Update HISTORY.md and mark Phase 4 Implemented — Awaiting Approval in ROADMAP.md.
-Keep TODO.md on Phase 4 until owner approval. Report files, order, exact research/course titles, TrialWear wording, professional positioning, omissions, and verification results.
+Record Phase 5A progress in HISTORY.md and ROADMAP.md. Phase 5 remains Current,
+not complete. Keep TODO.md on Phase 5 and stop before Phase 5B pending approval.

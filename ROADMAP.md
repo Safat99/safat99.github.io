@@ -80,36 +80,34 @@ portrait profile links, and academic metadata approved by the owner.
 
 ## Phase 4 — Academic Experience
 
-**Status:** Implemented — Awaiting Approval
+**Status:** Complete — Approved and committed by the owner
 
-- Separated research, compact education, dedicated teaching/mentoring,
-  professional software engineering, and compact leadership sections.
-- Research order: current hyperspectral thesis, TrialWear prototype contribution,
-  protein scaffold gap filling, CUET multi-robot path planning, undergraduate MRTA.
-- Added four documented MSU courses/instructors and historical mentoring records.
-- Refinement: NSF CCF-2307572 funding context, full CUET Directorate appointment,
-  official inline course/instructor links where verified, and accurate BITAC
-  collaborative knowledge-sharing wording. James Black remains unlinked pending
-  a matching official directory/profile listing.
-- Final timeline refinement: inline advisor/PI research-profile links; parent GTA
-  record describes multiple appointments; EMEC shows Fall 2025/Fall 2026 and ENSC
-  Fall 2025. Past course descriptions use past tense. CSCI/ESOF semester labels
-  await confirmation under the requested profile-verification condition.
-- Preserved three software roles; added secondary May–August 2026 part-time UIT role.
-- Retained accessible independent accordions; summaries remain visible when closed.
-- Preserved approved Hero and existing Projects/Publications/personal components.
-- Verified build, lint, whitespace, desktop/mobile layout, themes, keyboard,
-  expansion, links, and academic navigation. Public TrialWear page is background only.
-
-TODO.md remains on Phase 4 pending owner approval. Phase 5 has not started.
+Separated research, education, teaching/mentoring, professional experience, and
+leadership. Completed advisor/course links, teaching timelines and tense,
+TrialWear prototype attribution/privacy, NSF funding context, CUET appointment,
+BITAC knowledge sharing, and secondary UIT experience. Preserved approved Hero.
 
 ---
 
 ## Phase 5 — Research Evidence
 
-**Status:** Pending
+**Status:** Current
 
 Make research outputs and technical evidence directly scannable.
+
+### Phase 5A — Implemented, awaiting review
+
+- Publications & Research Outputs now follows Research Experience.
+- Four fully visible publication citations retain full authors, year, venue,
+  accepted/published status, author emphasis, and three verified DOI actions.
+- BIM 2021 appears separately as a research presentation, not a publication.
+- Compact related-output links connect thesis→WHISPERS, CUET→Wiley,
+  sleep-stage project→Springer/ICO, and IoT Box→BIM presentation.
+- WHISPERS and BIM use internal targets without invented publication URLs.
+- Desktop/mobile, light/dark, keyboard, anchor focus, navigation, and checks pass.
+
+Phase 5 is not complete. TODO.md stays on Phase 5. Phase 5B/5C and Phase 6
+have not started; further implementation requires owner direction.
 
 Planned scope:
 

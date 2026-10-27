@@ -41,6 +41,7 @@ export default function HomeView() {
         <HeroView hero={model.hero} />
         <AboutView about={model.about} />
         <ExperienceView id="research" experience={model.researchExperience} />
+        <PublicationView publication={model.publications} presentations={model.researchPresentations} />
         <EducationView education={model.education} />
         <TeachingMentoringView teaching={model.teachingAndMentoring} />
         <ExperienceView id="experience" experience={model.experience} />
@@ -49,7 +50,6 @@ export default function HomeView() {
 
         <ProjectsView projects={model.projects} />
 
-        <PublicationView publication={model.publications} />
 
         <CreatorView creator={model.creator} />
 

@@ -1,4 +1,5 @@
 import { useId } from "react";
+import RelatedOutputsView from "../../ui/RelatedOutputsView";
 import type { ExperienceItem } from "../../../../model/siteModel";
 
 type Props = { item: ExperienceItem; isOpen: boolean; onToggle: () => void };
@@ -21,6 +22,7 @@ export default function ExperienceItemView({ item, isOpen, onToggle }: Props) {
           ) : item.advisor}
         </p>}
         {item.summary && <p>{item.summary}</p>}
+        <RelatedOutputsView outputs={item.relatedOutputs} />
       </div>
       {hasDetails && <>
         <button id={buttonId} type="button" className="academic-details-button"
