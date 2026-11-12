@@ -1,6 +1,6 @@
 # Project History
 
-## Phase 1 — Content model
+## Phase 1: Content model
 
 Completed.
 
@@ -15,7 +15,7 @@ Verification:
 - build PASS
 - lint PASS
 
-## Phase 1.5 — Historical recovery
+## Phase 1.5: Historical recovery
 
 Completed.
 
@@ -32,7 +32,7 @@ Verification:
 - lint PASS
 - diff check PASS
 
-## Phase 2 — Technical foundation
+## Phase 2: Technical foundation
 
 Implementation completed; awaiting owner approval before advancing TODO.
 
@@ -58,7 +58,7 @@ Verification (Node 22.23.2 / npm 10.9.8):
 TODO remains Phase 2 until approval. Phase 3 has not started.
 
 
-## Phase 3 — Academic identity
+## Phase 3: Academic identity
 
 Approved by the owner before Phase 4 implementation.
 
@@ -101,7 +101,7 @@ Confirm the intended published canonical URL before deployment; the Vite base is
 unchanged in this phase. Phase 3 approved; TODO.md transitioned to Phase 4 at the owner’s request.
 
 
-## Phase 4 — Academic experience
+## Phase 4: Academic experience
 
 Approved and committed by the owner before Phase 5A.
 
@@ -143,7 +143,7 @@ tracking respects those offsets, including on narrow screens.
 Public MSU TrialWear page verified; earlier project context is not evidence of
 Safat's 2026 participation. TODO.md stays on Phase 4 pending approval.
 
-Phase 4 refinement (still Implemented — Awaiting Approval): added NSF CCF-2307572
+Phase 4 refinement (still Implemented | Awaiting Approval): added NSF CCF-2307572
 funding context to protein scaffold research without publication/authorship claims
 or private evidence; expanded the CUET title to include the Directorate of Research
 & Extension; retained research order/topic. Added optional courseUrl/instructorUrl
@@ -162,7 +162,7 @@ new-tab attributes, keyboard Tab access and visible 2px focus; no horizontal
 overflow or clipped teaching/research text. NSF identifier, CUET topic/order,
 and corrected BITAC title/description confirmed in the rendered page.
 
-Final Phase 4 factual/timeline refinement — Implemented — Awaiting Approval:
+Final Phase 4 factual/timeline refinement | Implemented | Awaiting Approval:
 - Added optional advisorUrl and course when fields, with inline advisor/PI names
   linked to research profiles (new tab, noopener/noreferrer, accessible labels,
   existing visible focus styling). TrialWear context remains separate.
@@ -185,7 +185,7 @@ attributes/labels, keyboard Tab access and 2px focus, semester labels, tense,
 readability, and wrapping checked; no horizontal overflow or clipped text.
 
 
-## Phase 5A — Publications, presentations, and research cross-links
+## Phase 5A: Publications, presentations, and research cross-links
 
 Implemented; Phase 5 remains Current and incomplete. Phase 4 was approved and
 committed by the owner before this transition. TODO.md now tracks Phase 5A only.
@@ -225,7 +225,7 @@ anchor navigation focuses the output card below the sticky header and marks
 Publications active. No clipping in existing project cards/book containers.
 
 
-### Phase 5 attribution correction — before Phase 5B
+### Phase 5 attribution correction: before Phase 5B
 
 Separated reproduction-based undergraduate MRTA work (existing NuBot
 `dynamic_task_allocation` ROS/Gazebo implementation) from later independent
@@ -251,3 +251,124 @@ lint PASS with zero errors/warnings; git diff --check PASS. Targeted public-mode
 search confirms undergraduate MRTA/vacancy-chain/auction claims are absent.
 The academic inventory was updated locally; it remains Git-ignored under the
 repository's existing policy and is not included in the tracked diff.
+
+
+## Phase 5B: Selected Projects & Research Software
+
+Implemented | Awaiting Approval. Phase 5 remains Current/incomplete. Phase 5A
+approved and committed by the owner before this work.
+
+Audit completed before implementation: all nine requested public repository trees
+and selected implementation files inspected. StatScope Flutter/Dart calculations
+and screens; autonomous-car lane/motor integration; IoT firmware/interface;
+vibration Arduino/MATLAB pipeline; sleep EDF/annotation/exploratory LSTM;
+collaborative emergency VGG16/VGG19 dual-head workflow; UrbanSound MFCC/inference;
+Health Flask-RESTX/MediaPipe service and Java scaffold; pedestrian VGG16 regression.
+The ignored factual inventory records source tree revisions and method limitations.
+No external code execution, numerical validation, training, or hardware tests.
+
+Classification:
+- PRIMARY: StatScope; OpenCV lane-following car; CAP/NFLE sleep scoring;
+  collaborative emergency-vehicle detection; NodeMCU IoT Box; mechanical vibration.
+- SECONDARY: UrbanSound8K (useful inference/GUI but external training assets);
+  Health AI Receptionist face-detection prototype (not a complete recognition/
+  microservice system); pedestrian VGG16 experiments (overlap with stronger CV work).
+- HISTORICAL/EARLY: Line Follower, Arduino GameBot/TinkerCAD, PIR alarm projects.
+  SoccerBot and standalone RoboFight builds need project-specific evidence.
+- OMIT/INTERNAL: reproduction-based undergraduate MRTA and incomplete warehouse/RL.
+  TrialWear stays in Research Experience without a duplicate project/private artifacts.
+
+Model: single typed project inventory uses selection (primary/secondary/historical),
+2–3 category tags per selected project, concise contribution, methods/tools,
+optional status, precise evidenceLinks, and existing relatedOutputs. Nine records
+retain six primary and three secondary projects; historical facts stay in the
+inventory document. No duplicate runtime archive model or relationship framework.
+
+UI: reused CardView and academic section palette for a two-column desktop / one-
+column mobile grid with all six selected cards visible. Removed project pagination
+from this section without deleting the reusable FlipBook component. Precise GitHub,
+Live Demo, Video Demo links use safe new tabs and accessible project-specific labels.
+Short Springer/ICO and BIM labels point to existing output cards, avoiding duplicate
+citations. Existing thesis/WHISPERS and CUET/Wiley references remain untouched.
+No page reordering, new route/filter/archive, dependency, visual-gallery, Awards,
+Skills, Creator, Travel, Phase 5C, or Phase 6 implementation.
+
+Evidence: all nine repo API/source requests succeeded; StatScope live HTML returns
+its Flutter deployment. Car/IoT/vibration video oEmbed identifies the owner and
+matching project titles; full playback not tested. Used vibration YouTube in place
+of redundant login-dependent LinkedIn; original evidence preserved in inventory.
+Early Line Follower/PIR video metadata verified; GameBot candidate returned oEmbed
+400, retained as historical candidate without claiming live verification.
+
+Attribution corrections: car is tutorial-inspired lane following, not general
+self-driving novelty; sleep repository's exploratory LSTM is not the full published
+CNN implementation; emergency methods are collaborative, not sole personal results;
+StatScope estimates are normal approximations, not validated statistical research
+results. Health complete face-recognition/microservice claims and pedestrian three-
+model code comparisons are not promoted. No new quantitative performance claims.
+
+Verification: Node 22.23.2/npm 10.9.8 build PASS without warnings; lint PASS with
+zero errors/warnings; git diff --check PASS. Browser at CSS 1440px/375px in
+light/dark: six cards, 2–3 category tags, correct two-/one-column layout, no
+horizontal overflow or clipped titles/content, safe named external links and
+2px keyboard focus. Projects active navigation PASS. Both project output links
+reach/focus the existing Springer/BIM cards and activate Publications; all five
+existing research outputs remain. Scoped tag/list color fix prevents legacy
+shared-card colors from reducing light-theme contrast. StatScope live page loads
+a Flutter view; no numerical correctness or training/hardware result validated.
+The detailed academic inventory update is local/Git-ignored under existing policy.
+
+
+### Phase 5B final wording/presentation refinement
+
+Implemented | Awaiting Approval; Phase 5 remains Current.
+Added optional project subtitle and reused CardView subtitle rendering directly
+below headings with scoped secondary typography. Display order/title → subtitle:
+1. OpenCV-Based Autonomous Car with Raspberry Pi → Vision-Based Lane-Following Robot
+2. StatScope → Statistical Power & Study Planning
+3. Sleep-Stage Classification for NFLE Patients → CAP Sleep Database
+4. Emergency Vehicle Detection → Classification & Bounding-Box Prediction
+5. NodeMCU IoT Box → Smart Home Automation System
+6. Mechanical Vibration Analysis → Arduino & ADXL335 Car-Body Sensing
+
+Order conveys robotics-first presentation, not research ranking. Contribution
+paragraphs now have semantic bold labels; Methods & tools unchanged. Fixed missing
+space in the Square Health architecture/ERD summary. Six projects, static two-/one-
+column grid, classifications, all attribution/qualification text, evidence/output
+URLs, and secondary/historical inventory preserved. No Phase 5C/6 or archive work.
+
+Refinement verification: Node 22.23.2/npm 10.9.8 build PASS without warnings;
+lint PASS with zero errors/warnings; git diff --check PASS. Browser CSS 1440px/
+375px in light/dark confirms exact six-project order, subtitles directly below
+headings with secondary typography, six semantic Contribution labels, preserved
+Methods & tools labels, ten safe external evidence links and unchanged related
+output targets, two-/one-column grid, 2px keyboard focus, and no clipping/overflow.
+
+
+### Phase 5B: BIM conference-paper evidence correction
+
+Phase 5 Current; Phase 5B Implemented | Awaiting Approval. Corrected the separate
+BIM output to Conference Paper · September 2021 · Presented, with the exact
+ResearchGate record title and a single Full Text · ResearchGate action. NodeMCU
+retains its implementation text, tools, GitHub/video URLs and internal output link;
+its label now says Conference Paper · BIM 2021 · Presented. Main publication
+collection and “3 published + 1 accepted” count unchanged. No DOI/indexing/journal
+or indexed proceedings claim added. No Phase 5C, redesign, commit, or push.
+
+Evidence: ResearchGate record 354860121 explicitly identifies Conference Paper,
+September 2021, BIM 2021 and public full-text uploads. Acceptance/presentation
+is owner-confirmed. Seven authors are reported, but accessible text reveals
+only four profiles; both PDF links failed retrieval and direct requests/browser
+were blocked (403/temporary access restriction). Exact complete paper byline
+cannot be verified yet. Older four-name source array retained for reconciliation
+but suppressed publicly rather than presenting it as complete. The UI refers
+visitors to the full-text record for authors. Owner-provided paper/byline needed
+to finish the authorship requirement; no missing author names/order guessed.
+Updated the ignored factual inventory to supersede presentation-only taxonomy.
+
+BIM correction verification: Node 22.23.2/npm 10.9.8 build PASS without warnings;
+lint PASS with zero errors/warnings; git diff --check PASS. Browser CSS 1440px/
+375px confirms corrected NodeMCU label/target, one ResearchGate full-text action,
+noopener/noreferrer + new-tab behavior, 2px keyboard focus, long-title wrapping,
+no clipping/overflow, and unchanged main collection (3 Published + 1 Accepted).
+Complete seven-author wrapping cannot be checked until the paper byline is supplied.

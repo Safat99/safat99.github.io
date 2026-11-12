@@ -1,0 +1,42 @@
+/* Reuse academic colors and shared cards; only the curated project grid is scoped here. */
+.selected-project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.academic-projects .selected-project-card {
+  min-width: 0;
+  height: auto;
+  padding: 20px;
+  background: transparent;
+  border: 1px solid var(--experience-border);
+  box-shadow: none;
+  transform: none;
+  overflow: visible;
+}
+.academic-projects .card-head { padding: 0; margin: 0 0 12px; border: 0; }
+.academic-projects .card-head-left { min-width: 0; }
+.academic-projects .card-body { padding: 0; }
+.academic-projects .card-title { overflow-wrap: anywhere; margin: 0; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0 0 14px; }
+.project-tags li { border: 1px solid var(--experience-border); border-radius: 999px; padding: 3px 8px; color: var(--experience-muted); font-size: 0.75rem; line-height: 1.5; }
+.academic-projects .project-status { color: var(--experience-accent); font-size: 0.8rem; font-weight: 600; }
+.academic-projects .project-contribution { font-size: 0.9rem; }
+.academic-projects .project-technologies { font-size: 0.8rem; }
+.project-evidence { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 12px; }
+.project-evidence a { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; font-size: 0.85rem; }
+.academic-projects .related-outputs { border-top: 1px solid var(--experience-border); padding-top: 12px; }
+@media (max-width: 800px) {
+  .selected-project-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 480px) {
+  .academic-projects .selected-project-card { padding: 16px; }
+}
+/* Override legacy shared-card list colors in the scoped light/dark palette. */
+.academic-projects .project-tags { padding: 0; margin: 0 0 14px; }
+.academic-projects .project-tags li,
+.academic-projects .related-outputs li { color: var(--experience-muted); }
+
+.academic-projects .card-subtitle {
+  color: var(--experience-muted);
+  font-size: 0.85rem;
+  font-weight: 400;
+  margin: 6px 0 0;
+  overflow-wrap: anywhere;
+}

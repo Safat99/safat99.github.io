@@ -22,8 +22,8 @@ import ThemeToggle from "./components/ui/ThemeToggle/ThemeToggle";
 import BackToTopView from "./components/ui/BackToTop/BackToTopView";
 
 export default function HomeView() {
-  useFadeInOnScroll(); // 👈 activate fade logic
-  useActiveSection(); // 👈 activate fade logic
+  useFadeInOnScroll(); // activate fade logic
+  useActiveSection(); //  activate fade logic
 
   const model = getSiteModel();
 

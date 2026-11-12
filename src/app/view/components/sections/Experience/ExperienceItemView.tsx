@@ -17,7 +17,7 @@ export default function ExperienceItemView({ item, isOpen, onToggle }: Props) {
         {item.advisor && <p className="academic-meta">
           {item.advisor.includes("Principal Investigator") ? "PI" : "Advisor"}: {item.advisorUrl ? (
             <a href={item.advisorUrl} target="_blank" rel="noopener noreferrer"
-              aria-label={`${item.advisor} — research profile (opens in a new tab)`}
+              aria-label={`${item.advisor}: research profile (opens in a new tab)`}
               title="Research profile (opens in a new tab)">{item.advisor}</a>
           ) : item.advisor}
         </p>}
@@ -35,9 +35,9 @@ export default function ExperienceItemView({ item, isOpen, onToggle }: Props) {
             {item.bullets.length > 0 && <ul className="exp-bullets">{item.bullets.map(bullet => <li key={bullet}>{bullet}</li>)}</ul>}
             {item.courses && <div className="academic-courses">{item.courses.map(course => (
               <section key={course.title} className="academic-course">
-                <h4>{course.courseUrl ? <a href={course.courseUrl} target="_blank" rel="noopener noreferrer" aria-label={`${course.title} — official course catalog (opens in a new tab)`} title="Official course catalog (opens in a new tab)">{course.title}</a> : course.title}</h4>
+                <h4>{course.courseUrl ? <a href={course.courseUrl} target="_blank" rel="noopener noreferrer" aria-label={`${course.title}: official course catalog (opens in a new tab)`} title="Official course catalog (opens in a new tab)">{course.title}</a> : course.title}</h4>
                 {course.when && <p className="academic-meta">{course.when}</p>}
-                <p className="academic-meta">Instructor: {course.instructorUrl ? <a href={course.instructorUrl} target="_blank" rel="noopener noreferrer" aria-label={`${course.instructor} — official MSU page (opens in a new tab)`} title="Official MSU page (opens in a new tab)">{course.instructor}</a> : course.instructor}</p>
+                <p className="academic-meta">Instructor: {course.instructorUrl ? <a href={course.instructorUrl} target="_blank" rel="noopener noreferrer" aria-label={`${course.instructor}: official MSU page (opens in a new tab)`} title="Official MSU page (opens in a new tab)">{course.instructor}</a> : course.instructor}</p>
                 <p>{course.description}</p>
               </section>
             ))}</div>}

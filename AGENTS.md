@@ -1,4 +1,4 @@
-Academic Portfolio — Codex Instructions
+Academic Portfolio | Codex Instructions
 
 ## Project purpose
 

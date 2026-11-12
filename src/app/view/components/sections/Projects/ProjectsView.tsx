@@ -2,61 +2,34 @@ import RelatedOutputsView from "../../ui/RelatedOutputsView";
 import type { ProjectsModel } from "../../../../model/siteModel";
 import SectionTitleView from "../../ui/SectionTitle/SectionTitleView";
 import CardView from "../../ui/Card/CardView";
-import FlipBookView from "../../ui/FlipBook/FlipBookView";
-// import "./flipbook-premium.css";
+import "../Experience/academic-experience.css";
+import "./projects.css";
 
-type Props = {
-  projects: ProjectsModel;
-};
-
-function chunk<T>(arr: T[], size: number): T[][] {
-  const out: T[][] = [];
-  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
-  return out;
-}
+type Props = { projects: ProjectsModel };
 
 export default function ProjectsView({ projects }: Props) {
-  // 3 cards per page
-  const pagesData = chunk(projects.items, 3);
-
-  const pages = pagesData.map((group, pageIdx) => (
-    <div key={`projects-page-${pageIdx}`} className="grid">
-      {group.map((p) => (
-        <CardView key={p.title} title={p.title} subtitle={p.meta}>
-          <p>{p.desc}</p>
-          <RelatedOutputsView outputs={p.relatedOutputs} />
-
-          {(p.url || p.demo || p.rpaper) && (
-            <div className="card-actions">
-              {p.url && (
-                <a href={p.url} target="_blank" rel="noreferrer">
-                  View Project
-                </a>
-              )}
-
-              {p.demo && (
-                <a href={p.demo} target="_blank" rel="noreferrer">
-                  Watch Demo
-                </a>
-              )}
-
-              {p.rpaper && (
-                <a href={p.rpaper} target="_blank" rel="noreferrer">
-                  Research Paper
-                </a>
-              )}
-            </div>
-          )}
-        </CardView>
-      ))}
-    </div>
-  ));
-
+  const selected = projects.items.filter(project => project.selection === "primary");
   return (
-    <section id="projects" className="section fade-in">
+    <section id="projects" className="section fade-in academic-experience academic-projects">
       <SectionTitleView title={projects.title} subtitle={projects.intro} />
-
-      <FlipBookView id="projects-flipbook" pages={pages} />
+      <div className="selected-project-grid">
+        {selected.map(project => (
+          <CardView key={project.title} title={project.title} subtitle={project.subtitle} className="selected-project-card">
+            <ul className="project-tags" aria-label="Project categories">
+              {project.tags.map(tag => <li key={tag}>{tag}</li>)}
+            </ul>
+            {project.status && <p className="project-status">{project.status}</p>}
+            <p>{project.desc}</p>
+            {project.contribution && <p className="project-contribution"><strong>Contribution:</strong> {project.contribution}</p>}
+            {project.technologies && <p className="project-technologies"><strong>Methods & tools:</strong> {project.technologies.join(" · ")}</p>}
+            {project.evidenceLinks && <div className="project-evidence" aria-label={`Evidence for ${project.title}`}>
+              {project.evidenceLinks.map(link => <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer"
+                aria-label={`${link.label}: ${project.title} (opens in a new tab)`}>{link.label} <span aria-hidden="true">↗</span></a>)}
+            </div>}
+            <RelatedOutputsView outputs={project.relatedOutputs} />
+          </CardView>
+        ))}
+      </div>
     </section>
   );
 }

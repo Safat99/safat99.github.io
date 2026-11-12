@@ -4,7 +4,7 @@ This roadmap tracks the major implementation phases for the research-first acade
 
 ---
 
-## Phase 1 — Reconcile Content and Extend the Model
+## Phase 1: Reconcile Content and Extend the Model
 
 **Status:** Complete
 
@@ -23,7 +23,7 @@ Key outcomes:
 
 ---
 
-## Phase 1.5 — Historical Content Recovery and Evidence Reconciliation
+## Phase 1.5: Historical Content Recovery and Evidence Reconciliation
 
 **Status:** Complete
 
@@ -42,7 +42,7 @@ Key outcomes:
 
 ---
 
-## Phase 2 — Technical Foundation
+## Phase 2: Technical Foundation
 
 **Status:** Complete
 
@@ -62,25 +62,25 @@ Key outcomes:
 
 Verification:
 
-- `npm run build` — PASS
-- `npm run lint` — PASS
-- `git diff --check` — PASS
-- browser verification — PASS
+- `npm run build` | PASS
+- `npm run lint` | PASS
+- `git diff --check` | PASS
+- browser verification | PASS
 
 ---
 
-## Phase 3 — Academic Identity
+## Phase 3: Academic Identity
 
-**Status:** Complete — Approved
+**Status:** Complete | Approved
 
 Research-first Hero, background, research directions, applied interests, accessible
 portrait profile links, and academic metadata approved by the owner.
 
 ---
 
-## Phase 4 — Academic Experience
+## Phase 4: Academic Experience
 
-**Status:** Complete — Approved and committed by the owner
+**Status:** Complete | Approved and committed by the owner
 
 Separated research, education, teaching/mentoring, professional experience, and
 leadership. Completed advisor/course links, teaching timelines and tense,
@@ -89,13 +89,13 @@ BITAC knowledge sharing, and secondary UIT experience. Preserved approved Hero.
 
 ---
 
-## Phase 5 — Research Evidence
+## Phase 5: Research Evidence
 
 **Status:** Current
 
 Make research outputs and technical evidence directly scannable.
 
-### Phase 5A — Implemented, awaiting review
+### Phase 5A: Complete, approved and committed by the owner
 
 - Publications & Research Outputs now follows Research Experience.
 - Four fully visible publication citations retain full authors, year, venue,
@@ -106,8 +106,21 @@ Make research outputs and technical evidence directly scannable.
 - WHISPERS and BIM use internal targets without invented publication URLs.
 - Desktop/mobile, light/dark, keyboard, anchor focus, navigation, and checks pass.
 
-Phase 5 is not complete. TODO.md stays on Phase 5. Phase 5B/5C and Phase 6
-have not started; further implementation requires owner direction.
+### Phase 5B: Implemented | Awaiting Approval
+
+- Audited nine public repositories and corrected claims to match source evidence.
+- Six selected homepage projects in display order: OpenCV autonomous car,
+  StatScope, NFLE sleep scoring, emergency vehicles, IoT Box, mechanical vibration.
+  Refined title/subtitle hierarchy and visible Contribution labels preserve the
+  static grid, classifications, safeguards, and existing evidence/output links.
+- Typed selection/category/contribution/evidence records preserve three secondary
+  archive candidates; early builds and omitted work classified in factual inventory.
+- Responsive shared-card grid, academic colors, precise evidence links, short
+  output references; publication relationships preserved.
+- No public archive, filters, galleries, extra robotics builds, or private artifacts.
+
+Phase 5 remains Current and incomplete. TODO.md stays on Phase 5B pending approval.
+Phase 5C and Phase 6 have not started.
 
 Planned scope:
 
@@ -132,7 +145,7 @@ Important relationships include:
 
 ---
 
-## Phase 6 — Presentation and Final Verification
+## Phase 6: Presentation and Final Verification
 
 **Status:** Pending
 

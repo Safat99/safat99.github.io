@@ -74,14 +74,16 @@ export type LeadershipExperienceModel = {
 };
 
 export type ProjectItem = {
-  relatedOutputs?: RelatedOutput[];
   title: string;
+  subtitle?: string;
   desc: string;
-  meta: string;
-  url?: string;
-  demo?: string;
-  rpaper?: string;
-  highlights?: string[]; // Project results must not imply sole individual attribution.
+  selection: "primary" | "secondary" | "historical";
+  tags: string[];
+  contribution?: string;
+  technologies?: string[];
+  status?: string;
+  evidenceLinks?: { label: "GitHub" | "Live Demo" | "Video Demo"; url: string }[];
+  relatedOutputs?: RelatedOutput[];
 };
 
 export type ProjectsModel = {
@@ -186,7 +188,7 @@ export type EducationModel = {
 
 export type ResearchPresentationsModel = {
   title: string;
-  items: { id: string; title: string; authors: string[]; year: number; venue: string; location: string; status: "presented" }[];
+  items: { id: string; title: string; authors: string[]; year: number; venue: string; location: string; status: "presented"; type?: "conferencePaper" | "presentation"; month?: string; fullTextUrl?: string; authorVerificationPending?: boolean }[];
 };
 
 export type ScholarshipsAndAwardsModel = {
@@ -374,9 +376,9 @@ export const siteModel: SiteModel = {
     title: "Professional Software Engineering Experience",
     items: [
       {
-        title: "TechnoNext Ltd — Junior Software Engineer, Backend",
+        title: "TechnoNext Ltd | Junior Software Engineer, Backend",
         summary: "Built backend services for payment and travel systems, working across API integrations and microservice operations. This production engineering experience informs how I structure and connect research software.",
-        when: "February 2023 – June 2024",
+        when: "February 2023 - June 2024",
         bullets: [
           "Contributed to backend development for payment-service and online travel agency projects.",
           "Participated in R&D involving microservice-based payment-service operations.",
@@ -396,9 +398,9 @@ export const siteModel: SiteModel = {
         ]
       },
       {
-        title: "Square Health Ltd — Software Engineer Intern, Backend",
-        summary: "Translated inventory-management requirements into a system architecture,an entity-relationship diagram (ERD), and REST APIs; demonstrated experience connecting problem specifications to working software.",
-        when: "November 2022 – January 2023",
+        title: "Square Health Ltd | Software Engineer Intern, Backend",
+        summary: "Translated inventory-management requirements into a system architecture, an entity-relationship diagram (ERD), and REST APIs; demonstrated experience connecting problem specifications to working software.",
+        when: "November 2022 - January 2023",
         bullets: [
           "Developed the architecture for an Inventory Management System from requirements analysis.",
           "Designed its ER diagram.",
@@ -413,9 +415,9 @@ export const siteModel: SiteModel = {
         ]
       },
       {
-        title: "Tecognize Solutions Limited — Software Engineer, Backend",
+        title: "Tecognize Solutions Limited | Software Engineer, Backend",
         summary: "Developed Python services and external integrations, including more than 50 APIs for DurbinX, and deployed services on AWS and virtual machines. The work strengthened my ability to build and operate complete software systems.",
-        when: "January 2022 – June 2022",
+        when: "January 2022 - June 2022",
         bullets: [
           "Developed Flask-based RESTful APIs for web applications.",
           "Deployed backend services on AWS and virtual machines.",
@@ -435,8 +437,8 @@ export const siteModel: SiteModel = {
         ]
       },
       {
-        title: "UIT User Support Associate — Montana State University",
-        when: "May 2026 – August 2026 · Part-time",
+        title: "UIT User Support Associate | Montana State University",
+        when: "May 2026 - August 2026 · Part-time",
         summary: "Supported campus computing infrastructure through systems troubleshooting, workstation configuration, and computer-lab and print-station deployment.",
         bullets: [
           "Diagnosed hardware, software, account, printing, and connectivity issues across Windows and macOS; documented service tickets and escalated issues when needed.",
@@ -450,10 +452,10 @@ export const siteModel: SiteModel = {
     title: "Research Experience",
     items: [
       {
-        title: "M.S. Thesis Research — Montana State University",
-        relatedOutputs: [{ label: "Evaluating Band Selection for Spectral–Spatial Hyperspectral Classification under Label Scarcity — WHISPERS 2026 · Accepted", targetId: "pub-whispers-2026" }],
+        title: "M.S. Thesis Research | Montana State University",
+        relatedOutputs: [{ label: "Evaluating Band Selection for Spectral-Spatial Hyperspectral Classification under Label Scarcity | WHISPERS 2026 · Accepted", targetId: "pub-whispers-2026" }],
         summary: "I study how band selection and semi-supervised learning can support hyperspectral image classification when labeled data are scarce. A unified evaluation across five benchmark datasets led to a paper accepted at WHISPERS 2026.",
-        when: "August 2025 – Present",
+        when: "August 2025 - Present",
         bullets: [
           "Evaluated multiple band-selection methods with lightweight 3D CNN classifiers across five benchmark hyperspectral datasets under a unified experimental framework.",
           "Investigated spectral reduction and classification under limited labeled-data conditions.",
@@ -476,8 +478,8 @@ export const siteModel: SiteModel = {
         ]
       },
       {
-        "title": "Graduate Research Assistant \u2014 TrialWear, Montana State University",
-        "when": "Spring\u2013Summer 2026",
+        "title": "Graduate Research Assistant | TrialWear, Montana State University",
+        "when": "Spring-Summer 2026",
         "advisor": "Dr. Elizabeth Johnson (Principal Investigator)",
         "advisorUrl": "https://www.montana.edu/nursing/directory/bozeman/2344665/elizabeth-johnson",
         "summary": "I contributed research software to TrialWear, an interdisciplinary clinical-trial safety and wearable-technology project at MSU. I developed and extended a provider-facing Flutter prototype and a Spring Boot backend prototype to connect mobile workflows with trial and geospatial data.",
@@ -499,17 +501,17 @@ export const siteModel: SiteModel = {
                 "BLE"
         ],
         "contextLink": {
-                "label": "TrialWear \u2014 public MSU project context",
+                "label": "TrialWear's public MSU project context",
                 "url": "https://tto.montana.edu/nsf-art/strp_success_stories/johnson_team.html",
-                "note": "This earlier project page provides background on the broader project; it does not document my Spring\u2013Summer 2026 contribution."
+                "note": "This earlier project page provides background on the broader project; it does not document my Spring-Summer 2026 contribution."
         }
 },
       {
-        title: "Graduate Research Assistant — Protein Scaffold Gap Filling, MSU",
+        title: "Graduate Research Assistant | Protein Scaffold Gap Filling, MSU",
         advisor: "Dr. Binhai Zhu",
         advisorUrl: "https://www.cs.montana.edu/bhz/homepage.html",
         summary: "Explored probabilistic and machine-learning approaches to protein scaffold gap filling through NSF-funded research (NSF CCF-2307572), drawing on literature in genome and protein clustering. This work broadened my experience applying computational methods to scientific questions.",
-        when: "January 2025 – August 2025",
+        when: "January 2025 - August 2025",
         bullets: [
           "Investigated the Protein Scaffold Gap Filling problem using probabilistic and machine-learning approaches.",
           "Conducted literature reviews involving genome-clustering and protein-clustering algorithms."
@@ -523,10 +525,10 @@ export const siteModel: SiteModel = {
         ]
       },
       {
-        title: "Research Assistant — Multi-Robot Path Planning, Directorate of Research & Extension, CUET",
-        relatedOutputs: [{ label: "Path Planning Approaches in Multi-robot System: A Review — Engineering Reports / Wiley · Published", targetId: "pub-wiley-2024", url: "https://doi.org/10.1002/eng2.13035" }],
+        title: "Research Assistant | Directorate of Research & Extension, CUET",
+        relatedOutputs: [{ label: "Path Planning Approaches in Multi-robot System: A Review - Engineering Reports / Wiley · Published", targetId: "pub-wiley-2024", url: "https://doi.org/10.1002/eng2.13035" }],
         summary: "Studied path-planning approaches for cooperative multi-robot tasks through literature analysis, simulation experiments, and case studies. The work contributed to a review published in Engineering Reports.",
-        when: "June 2023 – January 2024",
+        when: "June 2023 - January 2024",
         bullets: [
           "Conducted comprehensive literature reviews on multi-robot path planning.",
           "Analyzed state-of-the-art algorithms for multi-robot systems.",
@@ -551,9 +553,9 @@ export const siteModel: SiteModel = {
     title: "Leadership Experience",
     items: [
       {
-        title: "Robo Mechatronics Association, Bangladesh — Vice President",
+        title: "Robo Mechatronics Association, Bangladesh | Vice President",
         summary: "Led a 150+ member chapter and organized mechatronics and automation activities. My broader robotics involvement included participation in 17 competitions and hackathons.",
-        when: "February 2021 – August 2022",
+        when: "February 2021 - August 2022",
         bullets: [
           "Organized university seminars, workshops, and competitions focused on mechatronics technology and industrial automation.",
           "Led a chapter of 150+ members toward community service, academics, and unity.",
@@ -566,11 +568,11 @@ export const siteModel: SiteModel = {
       },
       {
         title: "IEOM CUET Student Chapter | Research & Publication Secretary",
-        summary: "Helped organize an inter-university scientific poster competition. The chapter received the Outstanding Student Chapter Award–GOLD during my tenure; this was chapter/team recognition.",
+        summary: "Helped organize an inter-university scientific poster competition. The chapter received the Outstanding Student Chapter Award-GOLD during my tenure; this was chapter/team recognition.",
         when: "Feb 2021 to Aug 2022",
         bullets: [
           "Assisted the team in arranging an online Inter-University Scientific Poster Presentation Competition.",
-          "The IEOM CUET Student Chapter received the Outstanding Student Chapter Award–GOLD during the tenure (chapter/team award)."
+          "The IEOM CUET Student Chapter received the Outstanding Student Chapter Award, \"GOLD\" during the tenure (chapter/team award)."
         ]
       },
       {
@@ -583,9 +585,9 @@ export const siteModel: SiteModel = {
         ]
       },
       {
-        title: "CUET Chess Club — Founding Technical Secretary",
+        title: "CUET Chess Club | Founding Technical Secretary",
         summary: "Helped establish the campus chess community, organizing tournaments and supporting club communications.",
-        when: "October 2021 – September 2022",
+        when: "October 2021 - September 2022",
         bullets: [
           "Helped establish a network for chess enthusiasts on campus.",
           "Organized online and offline tournaments and supported club communications."
@@ -595,74 +597,251 @@ export const siteModel: SiteModel = {
   },
 
   projects: {
-    title: "Projects",
-    intro: "Selected projects in robotics, computer vision, machine learning, and embedded systems.",
-    items: [
-      {
-        title: "OpenCV-Based Self-Driving Car",
-        desc: "Raspberry Pi-based autonomous robot using computer vision.",
-        meta: "Robotics, Autonomous Systems, Computer Vision, Raspberry Pi, Python, OpenCV",
-        url: "https://github.com/Safat99/openCV-based-Autonomous-car-with-Raspberry-Pi",
-        demo: "https://www.youtube.com/watch?v=_uvGQ6cCDds"
-      },
-      {
-        title: "NodeMCU-Based IoT Box",
-        relatedOutputs: [{ label: "Development and Optimization of a Real-time Server-based IoT Box for Smart Home Automation — BIM 2021 · Presentation", targetId: "bim-2021" }],
-        desc: "Embedded NodeMCU IoT system with a custom PCB, DHT11 sensing, and four-relay internet control using Firebase, with a JavaScript web interface and an MIT App Inventor mobile app. Presented at BIM 2021.",
-        meta: "NodeMCU • Firebase • Embedded Systems • JavaScript • MIT App Inventor",
-        url: "https://github.com/Safat99/IoT-Box",
-        demo: "https://www.youtube.com/watch?v=9XfIP5cwh9o"
-      },
-      {
-        title: "Mechanical Vibration Analysis of a Car Body",
-        desc: "Measured car-body vibrations using ADXL335 accelerometers and Arduino, with MATLAB/Excel analysis, Gaussian smoothing, bandpass filtering, and FFT.",
-        meta: "MATLAB, Sensors, Signal Analysis, Embedded Systems",
-        url: "https://github.com/Safat99/Mechanical_Vibration_Analysis_with_MATLAB_and_Arduino",
-        demo: "https://www.linkedin.com/feed/update/urn:li:activity:6836175024676843520/",
-        highlights: [
-          "Project setup: 2 ADXL335 three-axis accelerometers for comparison.",
-          "Project pipeline: Gaussian smoothing, bandpass filtering, and FFT."
-        ]
-      },
-      {
-        title: "Audio Classification — UrbanSound8K",
-        desc: "Developed MLP- and CNN-based models for classification of the ten UrbanSound8K sound classes.",
-        meta: "Machine Learning, Deep Learning, CNN, TensorFlow",
-        url: "https://github.com/Safat99/audio_classifier_of_urbansound8k_dataset",
-        highlights: [
-          "Project task: 10-class UrbanSound8K audio classification."
-        ]
-      },
-      {
-        title: "Deep CNN-Based Emergency Vehicle Detection",
-        desc: "Collaborative project exploring emergency-vehicle detection with YOLOv4-generated annotations and VGG16/VGG19 classification and bounding-box models.",
-        meta: "Computer Vision • YOLOv4 • VGG16 • VGG19 • TensorFlow/Keras",
-        url: "https://github.com/Safat99/emergency_vehicle_detection",
-        highlights: [
-          "Project-level methods: YOLOv4 annotation generation and VGG16/VGG19 models; collaborative work."
-        ]
-      },
-      {
-        title: "Sleep Stage Classification (CAP Sleep Database)",
-        relatedOutputs: [{ label: "A Deep Convolutional Neural Network Based Classification Approach for Sleep Scoring of NFLE Patients — Springer / ICO 2021 · Published 2022", targetId: "pub-ico-2022", url: "https://doi.org/10.1007/978-3-030-93247-3_35" }],
-        desc: "Historical deep CNN-based sleep-stage classification project using the CAP Sleep Database for NFLE patients.",
-        meta: "Deep Learning • CNN • CAP Sleep Database",
-        url: "https://github.com/Safat99/Sleep_stage_classifciation_of_epilepsy_patient"
-      },
-      {
-        title: "Health AI Receptionist Backend",
-        desc: "Historical microservice-based backend project including face recognition and supporting services. Current activity status is unverified.",
-        meta: "Microservices • Backend • ML",
-        url: "https://github.com/Safat99/Health_AI_Receptionist"
-      },
-      {
-        title: "Deep CNN-based Pedestrian Detection",
-        desc: "Historical pedestrian-detection project exploring VGG16, VGG19, and ResNet50.",
-        meta: "Computer Vision • Deep Learning • VGG16 • VGG19 • ResNet50",
-        url: "https://github.com/Safat99/pedestrian_detection_with_diff_DL_model"
-      }
-    ]
-  },
+  "title": "Selected Projects & Research Software",
+  "intro": "Selected implementations across robotics, sensing, machine learning, and research software, with code, demonstrations, and related outputs.",
+  "items": [
+    {
+      "title": "OpenCV-Based Autonomous Car with Raspberry Pi",
+      "selection": "primary",
+      "tags": [
+        "Robotics",
+        "Autonomous Systems",
+        "Computer Vision"
+      ],
+      "desc": "A Raspberry Pi robot that connects camera-based lane estimates to differential motor control.",
+      "contribution": "Adapted a tutorial-inspired pipeline using HSV masking, perspective warping, histogram-based lane estimates, and smoothing, with proportional steering control. Developed with assistance acknowledged in the repository.",
+      "technologies": [
+        "Python",
+        "OpenCV",
+        "Raspberry Pi",
+        "GPIO/PWM"
+      ],
+      "evidenceLinks": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/Safat99/openCV-based-Autonomous-car-with-Raspberry-Pi"
+        },
+        {
+          "label": "Video Demo",
+          "url": "https://www.youtube.com/watch?v=_uvGQ6cCDds"
+        }
+      ],
+      "subtitle": "Vision-Based Lane-Following Robot"
+    },
+    {
+      "title": "StatScope",
+      "selection": "primary",
+      "tags": [
+        "Research Software",
+        "Statistical Computing"
+      ],
+      "desc": "An interactive tool for exploring hypothesis-testing errors, statistical power, and sample-size planning.",
+      "contribution": "Built Flutter/Dart interfaces for distribution visualization, approximate sample-size calculations, and CSV-based treatment-pair comparisons with effect-size and replication estimates.",
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "Normal approximations",
+        "CSV analysis"
+      ],
+      "evidenceLinks": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/Safat99/statscope"
+        },
+        {
+          "label": "Live Demo",
+          "url": "https://safat99.github.io/statscope/"
+        }
+      ],
+      "subtitle": "Statistical Power & Study Planning"
+    },
+    {
+      "title": "Sleep-Stage Classification for NFLE Patients",
+      "selection": "primary",
+      "tags": [
+        "Machine Learning",
+        "Signal Processing"
+      ],
+      "desc": "A collaborative sleep-scoring study using recordings from the CAP Sleep Database for NFLE patients.",
+      "contribution": "Coauthored the related CNN study. The public repository preserves EDF/annotation preparation and exploratory Keras LSTM code; it is not presented as a complete reproduction of the published CNN.",
+      "technologies": [
+        "Python",
+        "MNE",
+        "Pandas",
+        "TensorFlow/Keras"
+      ],
+      "evidenceLinks": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/Safat99/Sleep_stage_classifciation_of_epilepsy_patient"
+        }
+      ],
+      "relatedOutputs": [
+        {
+          "label": "Related Publication · Springer / ICO 2021 · Published 2022",
+          "targetId": "pub-ico-2022",
+          "url": "https://doi.org/10.1007/978-3-030-93247-3_35"
+        }
+      ],
+      "subtitle": "CAP Sleep Database"
+    },
+    {
+      "title": "Emergency Vehicle Detection",
+      "selection": "primary",
+      "tags": [
+        "Computer Vision",
+        "Deep Learning"
+      ],
+      "status": "Collaborative project",
+      "desc": "A vehicle-image workflow combining emergency/non-emergency classification with bounding-box prediction.",
+      "contribution": "Contributed to a collaborative project whose repository documents YOLOv4-generated annotations and VGG16/VGG19 models with classification and box-regression heads. Methods describe the team workflow, not sole individual implementation or results.",
+      "technologies": [
+        "TensorFlow/Keras",
+        "OpenCV",
+        "YOLOv4",
+        "VGG16/VGG19"
+      ],
+      "evidenceLinks": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/Safat99/emergency_vehicle_detection"
+        }
+      ],
+      "subtitle": "Classification & Bounding-Box Prediction"
+    },
+    {
+      "title": "NodeMCU IoT Box",
+      "selection": "primary",
+      "tags": [
+        "Embedded Systems",
+        "IoT",
+        "Sensors"
+      ],
+      "desc": "A fabricated controller for internet-connected relay switching and temperature/humidity monitoring.",
+      "contribution": "Built NodeMCU firmware and interfaces around Firebase, DHT11 sensing, and four-relay control. Repository documentation includes custom PCB design/fabrication, a web dashboard, and an MIT App Inventor app.",
+      "technologies": [
+        "ESP8266/NodeMCU",
+        "Firebase",
+        "JavaScript",
+        "MIT App Inventor"
+      ],
+      "evidenceLinks": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/Safat99/IoT-Box"
+        },
+        {
+          "label": "Video Demo",
+          "url": "https://www.youtube.com/watch?v=9XfIP5cwh9o"
+        }
+      ],
+      "relatedOutputs": [
+        {
+          "label": "Conference Paper · BIM 2021 · Presented",
+          "targetId": "bim-2021"
+        }
+      ],
+      "subtitle": "Smart Home Automation System"
+    },
+    {
+      "title": "Mechanical Vibration Analysis",
+      "selection": "primary",
+      "tags": [
+        "Sensors",
+        "Signal Processing",
+        "Embedded Systems"
+      ],
+      "desc": "A sensor-to-analysis workflow for examining measured car-body vibration in time and frequency domains.",
+      "contribution": "Collected two ADXL335 accelerometer signals through Arduino and CSV, then analyzed them using Gaussian smoothing, bandpass filtering, FFT, and MATLAB/Excel plots.",
+      "technologies": [
+        "ADXL335",
+        "Arduino",
+        "MATLAB",
+        "Excel"
+      ],
+      "evidenceLinks": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/Safat99/Mechanical_Vibration_Analysis_with_MATLAB_and_Arduino"
+        },
+        {
+          "label": "Video Demo",
+          "url": "https://www.youtube.com/watch?v=p5eDBFT5zkI"
+        }
+      ],
+      "subtitle": "Arduino & ADXL335 Car-Body Sensing"
+    },
+    {
+      "title": "Audio Classification | UrbanSound8K",
+      "selection": "secondary",
+      "tags": [
+        "Machine Learning",
+        "Signal Processing"
+      ],
+      "status": "Historical prototype",
+      "desc": "Ten-class sound-classification project with MFCC preprocessing, CNN inference, and a Tkinter interface.",
+      "contribution": "Current repository supports MFCC padding/truncation and pretrained-CNN inference. Training/model assets are external; historical MLP/CNN work is preserved in the factual inventory without new performance claims.",
+      "technologies": [
+        "Python",
+        "librosa",
+        "TensorFlow/Keras",
+        "Tkinter"
+      ],
+      "evidenceLinks": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/Safat99/audio_classifier_of_urbansound8k_dataset"
+        }
+      ]
+    },
+    {
+      "title": "Health AI Receptionist | Face-Detection Prototype",
+      "selection": "secondary",
+      "tags": [
+        "Computer Vision",
+        "Backend Systems"
+      ],
+      "status": "Partial prototype",
+      "desc": "Historical face-detection service and backend scaffold, preserved as a future archive candidate.",
+      "contribution": "Inspected code supports a Flask-RESTX API with MediaPipe/OpenCV detection and face-crop helpers. The Java side is a Spring Boot scaffold; a complete recognition or microservice system is not established.",
+      "technologies": [
+        "Python",
+        "Flask-RESTX",
+        "MediaPipe",
+        "Spring Boot scaffold"
+      ],
+      "evidenceLinks": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/Safat99/Health_AI_Receptionist"
+        }
+      ]
+    },
+    {
+      "title": "Pedestrian Detection | VGG16 Experiments",
+      "selection": "secondary",
+      "tags": [
+        "Computer Vision",
+        "Deep Learning"
+      ],
+      "status": "Historical experiments",
+      "desc": "Pedestrian image/annotation preparation and transfer-learning experiments for bounding-box prediction.",
+      "contribution": "Inspected training code uses an ImageNet VGG16 backbone and regression head. Older VGG19/ResNet50 exploration remains historical source context, not a verified code comparison.",
+      "technologies": [
+        "Python",
+        "TensorFlow/Keras",
+        "VGG16",
+        "OpenCV"
+      ],
+      "evidenceLinks": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/Safat99/pedestrian_detection_with_diff_DL_model"
+        }
+      ]
+    }
+  ]
+},
 
   creator: {
     title: "Content Creator",
@@ -758,7 +937,7 @@ export const siteModel: SiteModel = {
     items: [
       {
         id: "pub-whispers-2026",
-        title: "Evaluating Band Selection for Spectral–Spatial Hyperspectral Classification under Label Scarcity",
+        title: "Evaluating Band Selection for Spectral-Spatial Hyperspectral Classification under Label Scarcity",
         authors: [
           "Sarker Safat Mahmud",
           "Brad M. Whitaker",
@@ -767,7 +946,7 @@ export const siteModel: SiteModel = {
         year: 2026,
         venue: "Workshop on Hyperspectral Image and Signal Processing: Evolution in Remote Sensing (WHISPERS 2026).",
         status: "accepted",
-        desc: "Accepted paper on band selection for spectral–spatial hyperspectral classification under label scarcity.",
+        desc: "Accepted paper on band selection for spectral-spatial hyperspectral classification under label scarcity.",
         meta: "Sarker Safat Mahmud, Brad M. Whitaker, and John W. Sheppard (2026) | Workshop on Hyperspectral Image and Signal Processing: Evolution in Remote Sensing (WHISPERS 2026). | Accepted"
       },
       {
@@ -812,10 +991,10 @@ export const siteModel: SiteModel = {
           "S. S. Mahmud"
         ],
         year: 2022,
-        venue: "Journal of Integrated and Advanced Engineering, 2(2), 147–157.",
+        venue: "Journal of Integrated and Advanced Engineering, 2(2), 147-157.",
         status: "published",
         desc: "Design and fabrication of a conveyor-belt system for color- and weight-based sorting.",
-        meta: "T. J. Nuva, M. I. Ahmed, and S. S. Mahmud (2022) | Journal of Integrated and Advanced Engineering, 2(2), 147–157. | Published",
+        meta: "T. J. Nuva, M. I. Ahmed, and S. S. Mahmud (2022) | Journal of Integrated and Advanced Engineering, 2(2), 147-157. | Published",
         url: "https://doi.org/10.51662/jiae.v2i2.87",
         cta: "Open DOI"
       }
@@ -928,14 +1107,14 @@ export const siteModel: SiteModel = {
       {
         institution: "Montana State University",
         degree: "M.S. in Computer Science",
-        when: "January 2025 – Present",
+        when: "January 2025 - Present",
         gpa: "3.50 / 4.00",
         location: "Bozeman, Montana, USA"
       },
       {
         institution: "Chittagong University of Engineering & Technology (CUET)",
         degree: "B.Sc. in Mechatronics & Industrial Engineering",
-        when: "February 2017 – August 2022",
+        when: "February 2017 - August 2022",
         gpa: "3.09 / 4.00",
         location: "Chittagong, Bangladesh"
       }
@@ -953,13 +1132,13 @@ export const siteModel: SiteModel = {
     "title": "Teaching & Mentoring",
     "items": [
         {
-            "title": "Graduate Teaching Assistant — Montana State University",
-            "when": "2025–Present · Multiple teaching appointments",
+            "title": "Graduate Teaching Assistant | Montana State University",
+            "when": "2025-Present · Multiple teaching appointments",
             "summary": "Supported undergraduate learning across computer science, software engineering, engineering instrumentation, and environmental science through laboratory instruction, grading, technical guidance, and student feedback across multiple MSU teaching appointments.",
             "bullets": [],
             "courses": [
                 {
-                    "title": "EMEC 360/361 — Measurement & Instrument",
+                    "title": "EMEC 360/361 - Measurement & Instrument",
                     "when": "Fall 2025 · Fall 2026",
                     "instructor": "James Black",
                     "courseUrl": "https://catalog.montana.edu/coursedescriptions/emec/",
@@ -967,7 +1146,7 @@ export const siteModel: SiteModel = {
                     "description": "Support experimental work through laboratory instruction, sensor/instrument setup, preparation, and feedback on laboratory memos, while also assisting with grading homework for the associated theory coursework"
                 },
                 {
-                    "title": "CSCI 232 — Data Structures and Algorithms",
+                    "title": "CSCI 232 - Data Structures and Algorithms",
                     "when": "Summer 2025",
                     "instructor": "Reese Pearsall",
                     "courseUrl": "https://www.cs.montana.edu/pearsall/classes/summer2025/232/syllabus.html",
@@ -975,7 +1154,7 @@ export const siteModel: SiteModel = {
                     "description": "Helped students work with Java, data structures, and algorithms, and graded homework and project reports."
                 },
                 {
-                    "title": "ESOF 422 — Advanced Software Engineering: Cybersecurity Practices",
+                    "title": "ESOF 422 - Advanced Software Engineering: Cybersecurity Practices",
                     "when": "Spring 2025",
                     "instructor": "Dr. Clemente (Clem) Izurieta",
                     "courseUrl": "https://catalog.montana.edu/coursedescriptions/esof/",
@@ -983,7 +1162,7 @@ export const siteModel: SiteModel = {
                     "description": "Provided instructional and grading support for advanced software engineering and cybersecurity practices."
                 },
                 {
-                    "title": "ENSC 245IN — Soils",
+                    "title": "ENSC 245IN - Soils",
                     "when": "Fall 2025",
                     "instructor": "Dr. Tony Hartshorn",
                     "courseUrl": "https://catalog.montana.edu/coursedescriptions/ensc/",
@@ -996,25 +1175,25 @@ export const siteModel: SiteModel = {
             ]
         },
         {
-            "title": "Volunteer Judge — FIRST LEGO League Championship, MSU",
+            "title": "Volunteer Judge | FIRST LEGO League Championship, MSU",
             "when": "2025 and 2026",
             "summary": "Served as a volunteer judge at the FIRST LEGO League Championship hosted at Montana State University.",
             "bullets": []
         },
         {
-            "title": "Arduino & Basic Electronics — Workshop Trainer",
+            "title": "Arduino & Basic Electronics | Workshop Trainer",
             "when": "March 2020",
             "summary": "Trained first-year university students through a five-day hands-on Arduino and basic-electronics workshop.",
             "bullets": []
         },
         {
-            "title": "Basic Sensor-Based Mobile Robotics — Workshop Instructor",
+            "title": "Basic Sensor-Based Mobile Robotics | Workshop Instructor",
             "when": "2018",
             "summary": "Taught a two-day workshop at Cantonment Public Collegiate School, Chittagong, introducing sensor-based mobile robotics.",
             "bullets": []
         },
         {
-            "title": "Industry 4.0 Workshops — Knowledge-Sharing Contributor",
+            "title": "Industry 4.0 Workshops | Knowledge-Sharing Contributor",
             "when": "January and August 2022",
             "summary": "Participated in paid collaborative Industry 4.0 workshops at the Bangladesh Industrial Technical Assistance Centre (BITAC). During group discussions and presentations, I shared technical ideas and knowledge with leading academic and industry professionals in Bangladesh, learned from fellow participants, and explored industry skill needs and ideas for future technical training and course development.",
             "bullets": []
@@ -1027,7 +1206,13 @@ export const siteModel: SiteModel = {
     items: [
       {
         id: "bim-2021",
-        title: "Development and Optimization of a Real-time Server-based IoT Box for Smart Home Automation.",
+        type: "conferencePaper",
+        month: "September",
+        fullTextUrl: "https://www.researchgate.net/publication/354860121_157-P-4_Development_and_Optimization_of_a_Real-time_Server-based_IoT_Box_A_Smart_Home_Automation_System_and_its_Subsequent_Fabrication",
+        // Preserve older source data until the seven-author paper byline can be verified.
+        // The incomplete list is not rendered publicly while this flag is true.
+        authorVerificationPending: true,
+        title: "157-P-4; Development and Optimization of a Real-time Server-based IoT Box: A Smart Home Automation System and its Subsequent Fabrication",
         authors: [
           "Safat, S.",
           "Das, A.",
@@ -1057,11 +1242,11 @@ export const siteModel: SiteModel = {
           "2025: Probabilistic / machine-learning methods for protein scaffold gap filling"
         ],
         highlights: [
-          "Personal award: 2× Crawford Scholarship recipient — 2025 and 2026."
+          "Personal award: 2× Crawford Scholarship recipient | 2025 and 2026."
         ],
         evidenceLinks: [
           {
-            label: "MSU Alumni Foundation — 2025 inaugural Crawford cohort",
+            label: "MSU Alumni Foundation | 2025 inaugural Crawford cohort",
             url: "https://www.msuaf.org/s/1584/m26/1col.aspx?sid=1584&gid=1&pgid=7156&cid=13495&ecid=13495&crid=0&calpgid=61&calcid=6670",
             scope: "2025 inaugural cohort context only; 2026 receipt and two-time-recipient status are supported by the verified academic profile, not independently by this article."
           }
@@ -1075,21 +1260,21 @@ export const siteModel: SiteModel = {
         description: "Awarded by Volunteer for Bangladesh for “Shopner-Shoishob” Season 8, an annual children's program in Chittagong."
       },
       {
-        title: "Robotics Competition — 2nd Runner-Up",
+        title: "Robotics Competition | 2nd Runner-Up",
         years: [
           2018
         ],
         description: "Line-Follower Robot competition, Makers Fest, IEEE Student Branch CUET."
       },
       {
-        title: "Formula 1 RC Race — 2nd Runner-Up",
+        title: "Formula 1 RC Race | 2nd Runner-Up",
         years: [
           2018
         ],
         description: "ASRRO, CUET."
       },
       {
-        title: "Inter-University Robo Fight — 2nd Runner-Up",
+        title: "Inter-University Robo Fight - 2nd Runner-Up",
         years: [
           2017
         ],
@@ -1103,10 +1288,10 @@ export const siteModel: SiteModel = {
         description: "Awarded to students ranked among the top 15 in each department at CUET."
       },
       {
-        title: "IEOM Outstanding Student Chapter Award–GOLD",
+        title: "IEOM Outstanding Student Chapter Award: GOLD",
         years: [],
         organization: "IEOM CUET Student Chapter",
-        description: "Chapter/team award received during the February 2021–August 2022 leadership tenure; exact award year is not established.",
+        description: "Chapter/team award received during the February 2021-August 2022 leadership tenure; exact award year is not established.",
         highlights: [
           "Team recognition: chapter award, not an individual award."
         ]

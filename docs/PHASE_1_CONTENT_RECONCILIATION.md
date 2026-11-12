@@ -57,27 +57,27 @@ code is solely Safat's work or that all results have been reproduced.
 
 Additional successful checks:
 
-- https://www.youtube.com/watch?v=_uvGQ6cCDds — matching autonomous-car title.
-- https://www.youtube.com/watch?v=9XfIP5cwh9o — matching IoT Box title.
-- https://www.youtube.com/watch?v=p5eDBFT5zkI — matching vibration title.
+- https://www.youtube.com/watch?v=_uvGQ6cCDds | matching autonomous-car title.
+- https://www.youtube.com/watch?v=9XfIP5cwh9o | matching IoT Box title.
+- https://www.youtube.com/watch?v=p5eDBFT5zkI | matching vibration title.
   All three returned player `status: OK`, `playableInEmbed: true`; not a manual
   end-to-end playback test. The general phrase “Video unavailable” in HTML alone
   was not used as proof of unavailability.
-- https://www.linkedin.com/feed/update/urn:li:activity:6836175024676843520/ —
+- https://www.linkedin.com/feed/update/urn:li:activity:6836175024676843520/ |
   HTTP 200, matching Safat/vibration/signal-processing page title; restored demo.
-- https://ieomsociety.org/cuetbd/ — official roster explicitly lists Safat as
+- https://ieomsociety.org/cuetbd/ | official roster explicitly lists Safat as
   Research & Publication Secretary; role independently confirmed. Dates, completed
   poster event involvement, and GOLD award still rely on the longer CV.
-- https://link.springer.com/chapter/10.1007/978-3-030-93247-3_35 — browsing confirms
+- https://link.springer.com/chapter/10.1007/978-3-030-93247-3_35 | browsing confirms
   ICO 2021, 2022 publication, topic, and two distinct Mahmud authors. Full names
   now distinguish Sarker Safat Mahmud from Sarker Shahriar Mahmud. The DOI GET
   redirects but command-line rendering encounters a challenge; that does not
   negate publisher metadata inspected in the review.
-- https://onlinelibrary.wiley.com/doi/10.1002/eng2.13035 — publisher inspected in
+- https://onlinelibrary.wiley.com/doi/10.1002/eng2.13035 | publisher inspected in
   recovery review; authors, methods/limitations, first published 11 November 2024.
   Issue dated 2025 is a separate bibliographic date. Command-line recheck returned
   403; existing source-confirmed DOI retained, not described as inaccessible everywhere.
-- https://doi.org/10.51662/jiae.v2i2.87 — HTTP 200 resolves to the matching article
+- https://doi.org/10.51662/jiae.v2i2.87 | HTTP 200 resolves to the matching article
   at https://asasijournal.id/index.php/jiae/article/view/87; existing DOI retained.
 
 ## Conflicting / Superseded

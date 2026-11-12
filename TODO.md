@@ -1,26 +1,26 @@
-# Current Work — Phase 5: Research Evidence
+# Current Work: Phase 5: Research Evidence
 
-Phase 4 approved and committed by the owner. Phase 5 is Current.
+**Phase 5: Current | not complete**
 
-## Current scope — Phase 5A only
+Phase 5A is approved and committed by the owner.
 
-- Make Publications & Research Outputs directly scannable, preserving full authors,
-  year, venue, accepted/published status, and verified DOI URLs.
-- Render BIM 2021 separately as a research presentation, not a publication.
-- Add a small relatedOutputs model field and compact links:
-  - M.S. thesis → WHISPERS 2026 accepted paper (internal only).
-  - CUET multi-robot research → Wiley review (internal + verified DOI).
-  - Sleep-stage project → Springer/ICO paper (internal + verified DOI).
-  - IoT Box → BIM 2021 presentation (internal only).
-- Emphasize the candidate's unambiguous publication author names.
-- Move outputs directly after Research Experience; preserve remaining section order.
-- Preserve accessible keyboard/focus behavior, mobile layout, and light/dark readability.
+## Phase 5B: Selected Projects & Research Software
 
-## Deferred
+**Status: Implemented | Awaiting Approval**
 
-Do not start Phase 5B/5C or Phase 6. No project-card redesign, StatScope,
-additional robotics builds, research figures/tables/galleries, logos, Technical
-Skills/personal redesign, or Awards UI. No dependencies, commits, or pushes.
+- Audited all nine requested public repositories before implementation.
+- Selected six homepage projects: OpenCV autonomous car, StatScope,
+  NFLE sleep scoring, collaborative emergency-vehicle detection,
+  NodeMCU IoT Box, and mechanical vibration analysis.
+- Retained UrbanSound8K, Health AI face-detection prototype, and pedestrian
+  detection as secondary records for a future archive, without rendering them.
+- Classified early builds and omitted/internal work in the factual inventory.
+- Added simple selection/tags/contribution/status/technology/evidence metadata.
+- Reused shared cards and academic colors in a responsive static grid; no gallery.
+- Refined exact owner-requested titles/subtitles, robotics-first display order
+  (not research ranking), and visible Contribution labels; preserved attribution.
+- Preserved Phase 5A output relationships with short project output labels.
+- Recorded limitations and attribution; no invented metrics or novelty.
 
 ## Verification
 
@@ -30,11 +30,15 @@ npm run lint
 git diff --check
 ```
 
-Browser-check desktop/~375px, light/dark: output cards and types, status labels,
-DOI/internal related links, presentation, full authors/author emphasis, keyboard
-focus, no overflow, and active navigation after reordering.
+Browser-check CSS 1440px/~375px, light/dark: six selected cards, tags, titles,
+repository/live/video links, output relationships, focus, wrapping, overflow,
+external-link attributes, and active Projects navigation.
 
-## Completion
+## Deferred / stop condition
 
-Record Phase 5A progress in HISTORY.md and ROADMAP.md. Phase 5 remains Current,
-not complete. Keep TODO.md on Phase 5 and stop before Phase 5B pending approval.
+Keep this TODO on Phase 5 pending owner approval. Do not start Phase 5C or
+Phase 6. Do not build /projects routing/filtering/archive UI, historical-build
+section, large galleries/results, logos, Awards/Skills/Travel/Creator redesign,
+or add dependencies. Do not restore undergraduate MRTA or publish the incomplete
+warehouse/RL prototype. Do not duplicate TrialWear or expose private materials.
+No commit or push.
