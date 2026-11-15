@@ -193,7 +193,10 @@ export type ResearchPresentationsModel = {
 
 export type ScholarshipsAndAwardsModel = {
   title: string;
-  items: { title: string; years: number[]; organization?: string; description: string; details?: string[]; highlights?: string[]; evidenceLinks?: { label: string; url: string; scope: string }[] }[];
+  intro: string;
+  scholarships: { title: string; year: number; organization: string; researchFocus: string; evidenceLink?: { label: string; url: string; scope: string } }[];
+  awards: { title: string; year?: number; organization?: string; description: string; recognition?: "individual" | "chapter/team" }[];
+  competitions: { year: number; title: string; organization: string }[];
 };
 
 export type SiteModel = {
@@ -251,6 +254,11 @@ export const siteModel: SiteModel = {
         "href": "#education"
     },
     {
+        "id": "awards",
+        "label": "Awards",
+        "href": "#awards"
+    },
+    {
         "id": "teaching",
         "label": "Teaching",
         "href": "#teaching"
@@ -259,6 +267,11 @@ export const siteModel: SiteModel = {
         "id": "experience",
         "label": "Professional",
         "href": "#experience"
+    },
+    {
+        "id": "projects",
+        "label": "Projects",
+        "href": "#projects"
     },
     {
         "id": "stack",
@@ -270,11 +283,6 @@ export const siteModel: SiteModel = {
         "label": "Leadership",
         "href": "#leadership"
     },
-    {
-        "id": "projects",
-        "label": "Projects",
-        "href": "#projects"
-    }
 ],
 
   hero: {
@@ -1227,75 +1235,51 @@ export const siteModel: SiteModel = {
     ]
   },
   scholarshipsAndAwards: {
-    title: "Scholarships, Awards, and Achievements",
-    items: [
+    title: "Scholarships & Awards",
+    intro: "Two-time recipient of the Crawford Wildlife Habitat Scholarship, with research themes spanning protein scaffold analysis and machine learning for wildlife habitat mapping.",
+    scholarships: [
       {
         title: "Crawford Wildlife Habitat Scholarship",
-        years: [
-          2025,
-          2026
-        ],
+        year: 2025,
         organization: "Montana State University",
-        description: "Two-time recipient of the $10,000 research scholarship.",
-        details: [
-          "2026: Hyperspectral imaging / machine learning for wildlife-habitat mapping",
-          "2025: Probabilistic / machine-learning methods for protein scaffold gap filling"
-        ],
-        highlights: [
-          "Personal award: 2× Crawford Scholarship recipient | 2025 and 2026."
-        ],
-        evidenceLinks: [
-          {
-            label: "MSU Alumni Foundation | 2025 inaugural Crawford cohort",
-            url: "https://www.msuaf.org/s/1584/m26/1col.aspx?sid=1584&gid=1&pgid=7156&cid=13495&ecid=13495&crid=0&calpgid=61&calcid=6670",
-            scope: "2025 inaugural cohort context only; 2026 receipt and two-time-recipient status are supported by the verified academic profile, not independently by this article."
-          }
-        ]
+        researchFocus: "Probabilistic and machine learning approaches for protein scaffold gap filling.",
+        evidenceLink: {
+          label: "MSU Alumni Foundation Article",
+          url: "https://www.msuaf.org/s/1584/m26/1col.aspx?sid=1584&gid=1&pgid=7156&cid=13495&ecid=13495&crid=0&calpgid=61&calcid=6670",
+          scope: "Confirms the 2025 inaugural cohort and this 2025 research topic. It does not independently verify the 2026 award."
+        }
+      },
+      {
+        title: "Crawford Wildlife Habitat Scholarship",
+        year: 2026,
+        organization: "Montana State University",
+        researchFocus: "Hyperspectral imaging and machine learning for wildlife habitat mapping."
+      }
+    ],
+    awards: [
+      {
+        title: "CUET Technical Scholarship",
+        year: 2017,
+        organization: "Chittagong University of Engineering & Technology",
+        description: "The supplied academic CV describes this scholarship as awarded to students ranked among the top 15 in each department."
       },
       {
         title: "Best Volunteer Award",
-        years: [
-          2019
-        ],
-        description: "Awarded by Volunteer for Bangladesh for “Shopner-Shoishob” Season 8, an annual children's program in Chittagong."
+        year: 2019,
+        organization: "Volunteer for Bangladesh",
+        description: "Awarded for “Shopner-Shoishob” Season 8, an annual children's program in Chittagong."
       },
       {
-        title: "Robotics Competition | 2nd Runner-Up",
-        years: [
-          2018
-        ],
-        description: "Line-Follower Robot competition, Makers Fest, IEEE Student Branch CUET."
-      },
-      {
-        title: "Formula 1 RC Race | 2nd Runner-Up",
-        years: [
-          2018
-        ],
-        description: "ASRRO, CUET."
-      },
-      {
-        title: "Inter-University Robo Fight - 2nd Runner-Up",
-        years: [
-          2017
-        ],
-        description: "International Islamic University Chittagong."
-      },
-      {
-        title: "Technical Scholarship",
-        years: [
-          2017
-        ],
-        description: "Awarded to students ranked among the top 15 in each department at CUET."
-      },
-      {
-        title: "IEOM Outstanding Student Chapter Award: GOLD",
-        years: [],
+        title: "Outstanding Student Chapter Award: GOLD",
         organization: "IEOM CUET Student Chapter",
-        description: "Chapter/team award received during the February 2021-August 2022 leadership tenure; exact award year is not established.",
-        highlights: [
-          "Team recognition: chapter award, not an individual award."
-        ]
+        description: "Chapter/team recognition received during the February 2021 to August 2022 leadership tenure. The exact award year is not established.",
+        recognition: "chapter/team"
       }
+    ],
+    competitions: [
+      { year: 2018, title: "2nd Runner-Up, Line-Follower Robotics Competition", organization: "Makers Fest, IEEE Student Branch CUET" },
+      { year: 2018, title: "2nd Runner-Up, Formula 1 RC Race", organization: "ASRRO, CUET" },
+      { year: 2017, title: "2nd Runner-Up, Inter-University Robo Fight", organization: "International Islamic University Chittagong" }
     ]
   },
 

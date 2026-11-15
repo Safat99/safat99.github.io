@@ -29,7 +29,7 @@ This structure keeps the project readable and easy to extend.
 ## Key Features
 
 - Responsive layout for desktop and mobile
-- Dark and light theme toggle
+- Light, Dark, or system-following appearance, with optional Rain or Snow atmosphere
 - Flipbook style sections for Projects and Travel
 - Smooth animations on scroll
 - Clean navigation using HashRouter

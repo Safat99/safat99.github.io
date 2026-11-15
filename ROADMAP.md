@@ -104,9 +104,9 @@ Make research outputs and technical evidence directly scannable.
 - Compact related-output links connect thesis→WHISPERS, CUET→Wiley,
   sleep-stage project→Springer/ICO, and IoT Box→BIM presentation.
 - WHISPERS and BIM use internal targets without invented publication URLs.
-- Desktop/mobile, light/dark, keyboard, anchor focus, navigation, and checks pass.
+- Desktop/mobile layout, keyboard focus, anchor navigation, and build checks pass; no conventional light/dark theme verification is claimed.
 
-### Phase 5B: Implemented | Awaiting Approval
+### Phase 5B: Complete, approved and committed by the owner
 
 - Audited nine public repositories and corrected claims to match source evidence.
 - Six selected homepage projects in display order: OpenCV autonomous car,
@@ -119,8 +119,22 @@ Make research outputs and technical evidence directly scannable.
   output references; publication relationships preserved.
 - No public archive, filters, galleries, extra robotics builds, or private artifacts.
 
-Phase 5 remains Current and incomplete. TODO.md stays on Phase 5B pending approval.
-Phase 5C and Phase 6 have not started.
+Phase 5 is Complete after owner approval of 5A, 5B, and 5C. Phase 6 is Not Started.
+
+### Phase 5C: Approved
+
+- Added a dedicated Scholarships & Awards section between Education and
+  Teaching & Mentoring; the final order places Selected Projects after Professional Experience.
+- Featured the 2025 and 2026 Crawford Wildlife Habitat Scholarships separately,
+  with distinct research themes and a two-time-recipient statement.
+- Linked the 2025 MSU Alumni Foundation article with its evidence scope explicit;
+  it supports the 2025 inaugural cohort and project only, not the 2026 award.
+- Added the 2017 CUET Technical Scholarship, three grouped robotics competition
+  placements, the 2019 Best Volunteer Award, and IEOM GOLD as chapter/team
+  recognition with no invented award year.
+- Added Awards navigation and a footer quick link. Kept the other recognition
+  compact and did not add a statistics dashboard or unsupported metrics.
+- Phase 5A, 5B, and 5C are Approved. Phase 5 is Complete; Phase 6 is Not Started.
 
 Planned scope:
 
@@ -147,7 +161,33 @@ Important relationships include:
 
 ## Phase 6: Presentation and Final Verification
 
-**Status:** Pending
+**Status:** Current
+
+### Phase 6A: Visual Foundation, Theme Architecture, and Responsive Cleanup
+
+**Status:** Implemented | Awaiting Approval
+
+- Added independent Light/Dark/Auto base appearance and None/Rain/Snow atmosphere
+  preferences. Auto follows the operating system; existing Rain/Snow effects remain
+  available as optional overlays.
+- Migrated legacy theme preferences and persisted the two new preferences separately.
+- Consolidated shared semantic color tokens and applied them to academic sections,
+  navigation, technical skills, personal carousels, and footer surfaces.
+- Added reduced-motion handling for CSS transitions/animations and atmospheric canvas
+  effects.
+- Bounded the Creator and Recommendations carousel tracks and made their cards shrink
+  to the available viewport, addressing mobile page overflow at its source.
+- Phase 6B media integration and Phase 6C weather synchronization remain Not Started.
+
+Verification completed with Node 22.23.2/npm 10.9.8: build, lint, and diff checks
+pass. Browser checks at 1440, 1024, 768, and 375 CSS pixels found no document-wide
+horizontal overflow; Light, Dark, Auto under both system schemes, Rain, Snow,
+preference persistence, reduced-motion reload behavior, keyboard operation, and
+both carousel controls were exercised. The browser emulator changes media-query
+matches without dispatching live `MediaQueryList` change events, so dynamic
+Auto/reduced-motion updates were verified through the registered listeners in
+code and by reloading under each emulated preference rather than by a live OS
+preference change.
 
 Complete visual refinement and production readiness.
 
@@ -157,10 +197,14 @@ Planned scope:
 - organization/company logos where useful
 - optional personal-content decisions
 - mobile refinement
+- media architecture: organized project/research/teaching/awards asset locations,
+  optimized formats, responsive images, accessible alt text/captions, selective
+  homepage media, and external video embeds/links instead of large stored video files
 - accessibility
-- reduced-motion behavior
 - metadata and social sharing
 - final navigation/footer synchronization
 - GitHub Pages deployment paths
+- Phase 6C: optional weather-aware atmosphere synchronization, deferred; no
+  geolocation, network weather lookup, or automatic atmosphere switching in 6A
 - final CV/DOI/repository/demo link verification
 - production deployment QA

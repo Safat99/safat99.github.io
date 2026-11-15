@@ -1,44 +1,47 @@
-# Current Work: Phase 5: Research Evidence
+# Current Work: Phase 6 | Presentation and Final Verification
 
-**Phase 5: Current | not complete**
+**Phase 6: Current**
 
-Phase 5A is approved and committed by the owner.
-
-## Phase 5B: Selected Projects & Research Software
+## Phase 6A: Visual Foundation, Theme Architecture, and Responsive Cleanup
 
 **Status: Implemented | Awaiting Approval**
 
-- Audited all nine requested public repositories before implementation.
-- Selected six homepage projects: OpenCV autonomous car, StatScope,
-  NFLE sleep scoring, collaborative emergency-vehicle detection,
-  NodeMCU IoT Box, and mechanical vibration analysis.
-- Retained UrbanSound8K, Health AI face-detection prototype, and pedestrian
-  detection as secondary records for a future archive, without rendering them.
-- Classified early builds and omitted/internal work in the factual inventory.
-- Added simple selection/tags/contribution/status/technology/evidence metadata.
-- Reused shared cards and academic colors in a responsive static grid; no gallery.
-- Refined exact owner-requested titles/subtitles, robotics-first display order
-  (not research ranking), and visible Contribution labels; preserved attribution.
-- Preserved Phase 5A output relationships with short project output labels.
-- Recorded limitations and attribution; no invented metrics or novelty.
+- Separate base appearance (Light, Dark, Auto) from atmosphere (None, Rain, Snow).
+- Persist appearance and atmosphere independently; Auto follows system preference.
+- Preserve Rain/Snow canvas effects and suppress them when reduced motion is set.
+- Consolidate semantic theme colors across academic, navigation, skill, and personal
+  section surfaces.
+- Correct the Creator and Recommendations carousel track sizing/clipping at source
+  to remove mobile page-wide horizontal overflow.
+- Preserve the Phase 5 approved content and section order.
 
 ## Verification
 
+Use `.nvmrc` (Node 22.23.2), then run:
+
 ```bash
+node -v
 npm run build
 npm run lint
 git diff --check
 ```
 
-Browser-check CSS 1440px/~375px, light/dark: six selected cards, tags, titles,
-repository/live/video links, output relationships, focus, wrapping, overflow,
-external-link attributes, and active Projects navigation.
+Verification completed at 1440px, 1024px, 768px, and 375px with no page-wide
+horizontal overflow. Light, Dark, Auto under both system schemes, Rain, Snow,
+reduced-motion reload behavior, preference persistence, theme-control keyboard
+focus/Escape behavior, navigation, academic section layout, and both carousel
+controls were checked. The browser emulator did not dispatch live media-query
+change events; Auto/reduced-motion behavior was checked after reload under each
+simulated preference.
 
-## Deferred / stop condition
+## Deferred phases
 
-Keep this TODO on Phase 5 pending owner approval. Do not start Phase 5C or
-Phase 6. Do not build /projects routing/filtering/archive UI, historical-build
-section, large galleries/results, logos, Awards/Skills/Travel/Creator redesign,
-or add dependencies. Do not restore undergraduate MRTA or publish the incomplete
-warehouse/RL prototype. Do not duplicate TrialWear or expose private materials.
-No commit or push.
+- Phase 6B media integration: optimized responsive images, organized asset
+  directories, accessible descriptions/captions, and selective homepage media.
+- Phase 6C atmosphere refinement: optional weather-aware synchronization only
+  after explicit product decisions. No geolocation or weather service is required
+  for normal site operation.
+- Later deployment, metadata, and production QA.
+
+Phase 6B has not started. Phase 6C has not started. Do not commit or push before
+owner approval.

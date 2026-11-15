@@ -564,6 +564,48 @@
   width: 32px;
   border-radius: 5px;
 }
+
+:root[data-theme="light"] #travel .flag {
+  color: var(--text-primary);
+  background: var(--surface-raised);
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-soft);
+}
+
+:root[data-theme="light"] #travel .flag-name,
+:root[data-theme="light"] #travel .travel-book-counter {
+  color: var(--text-secondary);
+}
+
+:root[data-theme="light"] #travel .quote {
+  background: var(--surface-raised);
+  border-left-color: var(--accent);
+  box-shadow: var(--shadow-soft);
+}
+
+:root[data-theme="light"] #travel .quote blockquote {
+  color: var(--text-primary);
+}
+
+:root[data-theme="light"] #travel .quote figcaption {
+  color: var(--text-secondary);
+}
+
+:root[data-theme="light"] #travel .travel-book-btn {
+  color: var(--text-primary);
+  background: var(--surface-raised);
+  border-color: var(--border-color);
+}
+
+:root[data-theme="light"] #travel .travel-dot {
+  background: var(--chip-surface);
+  border-color: var(--border-color);
+}
+
+:root[data-theme="light"] #travel .travel-dot.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
 /* Responsive Design */
 @media (max-width: 1024px) {
   .travel-book-spread {

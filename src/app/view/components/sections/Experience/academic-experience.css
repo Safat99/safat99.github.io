@@ -1,10 +1,10 @@
 /* Scope experience styles so publication accordions retain their presentation. */
 .section.academic-experience {
-  --experience-bg: #111b2c;
-  --experience-text: #edf2fa;
-  --experience-muted: #c6d1e2;
-  --experience-accent: #aecaff;
-  --experience-border: #506079;
+  --experience-bg: var(--surface);
+  --experience-text: var(--text-primary);
+  --experience-muted: var(--text-secondary);
+  --experience-accent: var(--accent);
+  --experience-border: var(--border-color);
   color: var(--experience-text);
   background: var(--experience-bg);
   border-radius: var(--radius-lg);
@@ -32,14 +32,6 @@
 .academic-experience .academic-technologies { font-size: 0.85rem; overflow-wrap: anywhere; }
 .academic-courses { display: grid; gap: 20px; padding-top: 20px; }
 .academic-education-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) .section.academic-experience {
-    --experience-bg: #f5f7fb; --experience-text: #14243a; --experience-muted: #34455c; --experience-accent: #164a83; --experience-border: #8493a8;
-  }
-}
-:root[data-theme="light"] .section.academic-experience {
-  --experience-bg: #f5f7fb; --experience-text: #14243a; --experience-muted: #34455c; --experience-accent: #164a83; --experience-border: #8493a8;
-}
 @media (max-width: 700px) {
   .academic-education-grid { grid-template-columns: minmax(0, 1fr); }
   .academic-entry-header, .academic-education-card { padding: 16px; }

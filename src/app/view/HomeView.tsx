@@ -11,6 +11,7 @@ import EducationView from "./components/sections/Experience/EducationView";
 import TeachingMentoringView from "./components/sections/Experience/TeachingMentoringView";
 import PublicationView from "./components/sections/Publications/PublicationView";
 import ProjectsView from "./components/sections/Projects/ProjectsView";
+import ScholarshipsAwardsView from "./components/sections/Awards/ScholarshipsAwardsView";
 import CreatorView from "./components/sections/Creator/CreatorView";
 import TravelView from "./components/sections/Travel/TravelView";
 // import ContactView from "./components/sections/Contact/ContactView";
@@ -43,13 +44,12 @@ export default function HomeView() {
         <ExperienceView id="research" experience={model.researchExperience} />
         <PublicationView publication={model.publications} presentations={model.researchPresentations} />
         <EducationView education={model.education} />
+        <ScholarshipsAwardsView awards={model.scholarshipsAndAwards} />
         <TeachingMentoringView teaching={model.teachingAndMentoring} />
         <ExperienceView id="experience" experience={model.experience} />
+        <ProjectsView projects={model.projects} />
         <TechView tech={model.tech} />
         <ExperienceView id="leadership" experience={model.leadershipExperience} />
-
-        <ProjectsView projects={model.projects} />
-
 
         <CreatorView creator={model.creator} />
 

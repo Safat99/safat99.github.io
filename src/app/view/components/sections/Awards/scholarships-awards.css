@@ -1,0 +1,103 @@
+.academic-awards .scholarship-grid,
+.academic-awards .recognition-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.academic-awards .scholarship-card,
+.academic-awards .recognition-card {
+  min-width: 0;
+  border: 1px solid var(--experience-border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.academic-awards .scholarship-card {
+  border-top: 3px solid var(--experience-accent);
+}
+
+.academic-awards .award-year {
+  color: var(--experience-accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-top: 0;
+}
+
+.academic-awards .award-organization,
+.academic-awards .recognition-meta {
+  font-size: 0.85rem;
+}
+
+.academic-awards .award-evidence {
+  margin-top: 14px;
+}
+
+.academic-awards .award-evidence a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 5px;
+}
+
+.academic-awards .award-evidence p {
+  font-size: 0.8rem;
+  margin: 2px 0 0;
+}
+
+.academic-awards .recognition-heading {
+  margin: 30px 0 14px;
+}
+
+.academic-awards .recognition-card h4 {
+  overflow-wrap: anywhere;
+}
+
+.academic-awards .recognition-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: var(--experience-accent);
+  font-weight: 600;
+}
+
+.academic-awards .competition-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+
+.academic-awards .competition-card li {
+  padding: 10px 0;
+  border-top: 1px solid var(--experience-border);
+}
+
+.academic-awards .competition-card li strong,
+.academic-awards .competition-card li span {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.academic-awards .competition-card li span {
+  color: var(--experience-muted);
+  font-size: 0.85rem;
+  margin-top: 3px;
+}
+
+.academic-awards :focus-visible {
+  outline: 2px solid var(--experience-accent);
+  outline-offset: 4px;
+}
+
+@media (max-width: 700px) {
+  .academic-awards .scholarship-grid,
+  .academic-awards .recognition-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .academic-awards .scholarship-card,
+  .academic-awards .recognition-card {
+    padding: 16px;
+  }
+}

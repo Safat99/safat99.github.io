@@ -1,11 +1,11 @@
 /* Scoped identity styles: retain the site's typography, cards, and spacing. */
 .hero.academic-hero,
 .section.academic-about {
-  --identity-bg: #111b2c;
-  --identity-text: #edf2fa;
-  --identity-muted: #c6d1e2;
-  --identity-accent: #aecaff;
-  --identity-border: #506079;
+  --identity-bg: var(--surface);
+  --identity-text: var(--text-primary);
+  --identity-muted: var(--text-secondary);
+  --identity-accent: var(--accent);
+  --identity-border: var(--border-color);
   color: var(--identity-text);
   background: var(--identity-bg);
   border-radius: var(--radius-lg);
@@ -122,26 +122,6 @@
 .academic-applications { margin-top: 24px; }
 .hero.academic-hero :focus-visible,
 .section.academic-about :focus-visible { outline: 2px solid var(--identity-accent); outline-offset: 4px; }
-
-/* Honor light system preference; explicit Dark selection takes precedence. */
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) .hero.academic-hero,
-  :root:not([data-theme="dark"]) .section.academic-about {
-    --identity-bg: #f5f7fb;
-    --identity-text: #14243a;
-    --identity-muted: #34455c;
-    --identity-accent: #164a83;
-    --identity-border: #8493a8;
-  }
-}
-:root[data-theme="light"] .hero.academic-hero,
-:root[data-theme="light"] .section.academic-about {
-  --identity-bg: #f5f7fb;
-  --identity-text: #14243a;
-  --identity-muted: #34455c;
-  --identity-accent: #164a83;
-  --identity-border: #8493a8;
-}
 
 @media (max-width: 800px) {
   .hero.academic-hero { min-height: 0; display: block; }

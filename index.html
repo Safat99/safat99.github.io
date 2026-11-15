@@ -3,6 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (() => {
+        try {
+          const oldMode = localStorage.getItem("portfolio-theme");
+          const savedBase = localStorage.getItem("portfolio-base-theme");
+          const base = ["light", "dark", "auto"].includes(savedBase)
+            ? savedBase
+            : oldMode === "dark" ? "dark" : "auto";
+          const savedAtmosphere = localStorage.getItem("portfolio-atmosphere");
+          const atmosphere = ["none", "rain", "snow"].includes(savedAtmosphere)
+            ? savedAtmosphere
+            : oldMode === "rain" || oldMode === "snow" ? oldMode : "none";
+          const resolved = base === "auto"
+            ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+            : base;
+          document.documentElement.dataset.baseTheme = base;
+          document.documentElement.dataset.theme = resolved;
+          document.documentElement.dataset.atmosphere = atmosphere;
+          document.documentElement.style.colorScheme = resolved;
+        } catch {
+          document.documentElement.dataset.baseTheme = "auto";
+          document.documentElement.dataset.theme = "light";
+          document.documentElement.dataset.atmosphere = "none";
+        }
+      })();
+    </script>
     
     <!-- Primary Meta Tags -->
     <title>Sarker Safat Mahmud | AI/ML &amp; Intelligent Systems Research</title>

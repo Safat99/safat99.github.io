@@ -13,9 +13,9 @@
   position: relative;
   overflow: hidden;
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.03);
-  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-color);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-soft);
 }
 
 .tech-card-bg {
@@ -53,15 +53,15 @@
   margin: 0;
   font-size: 1.05rem;
   font-weight: 650;
-  color: #fff;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  color: var(--text-primary);
+  text-shadow: none;
 }
 
 .tech-card-badge {
   font-size: 0.75rem;
-  color: #7aa2ff;
-  background: rgba(122, 162, 255, 0.18);
-  border: 1px solid rgba(122, 162, 255, 0.35);
+  color: var(--accent-strong);
+  background: var(--chip-surface);
+  border: 1px solid var(--border-color);
   padding: 0.25rem 0.6rem;
   border-radius: 999px;
   font-weight: 500;
@@ -76,13 +76,13 @@
 
 .tech-card-chip {
   font-size: 0.85rem;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.11);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--text-secondary);
+  background: var(--chip-surface);
+  border: 1px solid var(--border-color);
   padding: 0.45rem 0.7rem;
   border-radius: 12px;
   font-weight: 500;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.65);
+  text-shadow: none;
   backdrop-filter: blur(8px);
   transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
 }
@@ -91,6 +91,10 @@
   transform: translateY(-2px);
   background: rgba(122, 162, 255, 0.16);
   border-color: rgba(122, 162, 255, 0.38);
+}
+
+:root[data-theme="light"] .tech-card-bg {
+  opacity: 0.1;
 }
 
 @media (max-width: 1000px) {

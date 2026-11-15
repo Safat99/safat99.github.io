@@ -14,15 +14,15 @@
 
 .exp-item {
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface);
   box-shadow: var(--shadow-soft);
   overflow: hidden;
 }
 
 .exp-item.is-open {
-  border-color: rgba(122, 162, 255, 0.18);
-  background: rgba(122, 162, 255, 0.06);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border-color));
+  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
 }
 
 .exp-btn {
@@ -45,7 +45,7 @@
 }
 
 .exp-btn:focus-visible {
-  outline: 2px solid rgba(122, 162, 255, 0.55);
+  outline: 2px solid var(--focus-ring);
   outline-offset: 3px;
   border-radius: 14px;
 }
@@ -64,7 +64,7 @@
 
 .exp-role {
   font-weight: 700;
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1rem;
   line-height: 1.25;
 }
@@ -83,8 +83,8 @@
 .exp-pill {
   font-size: 0.78rem;
   color: var(--muted);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--chip-surface);
+  border: 1px solid var(--border-color);
   padding: 6px 10px;
   border-radius: 999px;
 }
@@ -97,9 +97,9 @@
   display: grid;
   place-items: center;
 
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #fff;
+  background: var(--surface-raised);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
 
   transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
 }
@@ -123,13 +123,13 @@
 
 .exp-panel-inner {
   padding: 0 16px 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .exp-bullets {
   margin: 14px 0 0;
   padding-left: 18px;
-  color: #d0d4e0;
+  color: var(--text-secondary);
   line-height: 1.6;
   display: grid;
   gap: 8px;

@@ -86,7 +86,7 @@ Verification (Node 22.23.2 / npm 10.9.8):
   git diff --check PASS.
 - Browser layout checks at effective CSS widths 1440px and 375px: no Hero/About
   overflow; sampled text/link contrast >8:1 light and >10:1 dark after transitions.
-- Refinement browser checks PASS at 1440px/375px in light/dark: photo/icon alignment,
+- Refinement browser checks PASS at 1440px/375px: photo/icon alignment,
   no overflow, icon-only accessible names/tooltips, 44px buttons, visible 2px Tab
   focus, four direction pills/five applied-interest pills, CV/PDF and email copy.
 - About navigation and active state PASS; email mailto/copy/live status PASS.
@@ -135,7 +135,7 @@ Approved and committed by the owner before Phase 5A.
   dependencies, awards, and private materials. Phase 5 not started.
 
 Verification: Node 22.23.2/npm 10.9.8 build and lint PASS without warnings;
-whitespace check PASS. Browser checks at CSS 1440px and 375px in light/dark:
+whitespace check PASS. Browser checks at CSS 1440px and 375px:
 no horizontal overflow or clipped expanded content; four course entries readable;
 Enter/Space expansion, independent state, 2px focus, and academic navigation checked.
 New academic anchor offsets accommodate the wrapping sticky navigation; active-section
@@ -157,7 +157,7 @@ Architecture, styling, section order, private artifacts, and Phase 5 scope uncha
 
 Refinement verification: build PASS with no warnings; lint PASS with zero
 errors/warnings; git diff --check PASS. Browser checks at CSS 1440px/375px in
-light/dark: seven course/instructor links have clear accessible names, safe
+seven course/instructor links have clear accessible names, safe
 new-tab attributes, keyboard Tab access and visible 2px focus; no horizontal
 overflow or clipped teaching/research text. NSF identifier, CUET topic/order,
 and corrected BITAC title/description confirmed in the rendered page.
@@ -180,7 +180,7 @@ Final Phase 4 factual/timeline refinement | Implemented | Awaiting Approval:
 - Preserved design, section architecture/order, research topics, Phase 5 scope,
   owner-edited course/instructor links, and BITAC wording. No private evidence.
 Verification: Node 22.23.2/npm 10.9.8 build/lint/whitespace PASS without warnings
-or errors. Browser at CSS 1440px/375px, light/dark: advisor names, safe link
+or errors. Browser at CSS 1440px/375px: advisor names, safe link
 attributes/labels, keyboard Tab access and 2px focus, semester labels, tense,
 readability, and wrapping checked; no horizontal overflow or clipped text.
 
@@ -217,7 +217,7 @@ committed by the owner before this transition. TODO.md now tracks Phase 5A only.
 
 Verification (Node 22.23.2 / npm 10.9.8): build PASS without warnings; lint PASS
 with zero errors/warnings; git diff --check PASS. Browser checks at CSS 1440px
-and 375px, light/dark: five visible output records (one accepted, three published,
+and 375px: five visible output records (one accepted, three published,
 one presentation), all four publication author lists/emphasis, safe DOI actions,
 2px keyboard focus, no horizontal overflow or clipped citation text. All four
 internal related targets tested, including sleep/IoT links through project pages;
@@ -309,7 +309,7 @@ model code comparisons are not promoted. No new quantitative performance claims.
 
 Verification: Node 22.23.2/npm 10.9.8 build PASS without warnings; lint PASS with
 zero errors/warnings; git diff --check PASS. Browser at CSS 1440px/375px in
-light/dark: six cards, 2–3 category tags, correct two-/one-column layout, no
+six cards, 2–3 category tags, correct two-/one-column layout, no
 horizontal overflow or clipped titles/content, safe named external links and
 2px keyboard focus. Projects active navigation PASS. Both project output links
 reach/focus the existing Springer/BIM cards and activate Publications; all five
@@ -339,7 +339,7 @@ URLs, and secondary/historical inventory preserved. No Phase 5C/6 or archive wor
 
 Refinement verification: Node 22.23.2/npm 10.9.8 build PASS without warnings;
 lint PASS with zero errors/warnings; git diff --check PASS. Browser CSS 1440px/
-375px in light/dark confirms exact six-project order, subtitles directly below
+375px confirms exact six-project order, subtitles directly below
 headings with secondary typography, six semantic Contribution labels, preserved
 Methods & tools labels, ten safe external evidence links and unchanged related
 output targets, two-/one-column grid, 2px keyboard focus, and no clipping/overflow.
@@ -372,3 +372,76 @@ lint PASS with zero errors/warnings; git diff --check PASS. Browser CSS 1440px/
 noopener/noreferrer + new-tab behavior, 2px keyboard focus, long-title wrapping,
 no clipping/overflow, and unchanged main collection (3 Published + 1 Accepted).
 Complete seven-author wrapping cannot be checked until the paper byline is supplied.
+
+
+## Phase 5C: Scholarships, Awards & Academic Recognition
+
+Approved in the Phase 5 closeout. Added a dedicated Scholarships & Awards
+section; the final Phase 5 order places it after Education and before Teaching &
+Mentoring. The 2025 and 2026 Crawford Wildlife Habitat Scholarships are separate
+featured entries with their distinct protein-scaffold and hyperspectral wildlife
+habitat research themes. The Alumni Foundation article links only from the 2025
+entry and its visible scope note limits its evidence to the inaugural cohort and
+2025 project. No combined award amount is shown.
+
+Added the 2017 CUET Technical Scholarship with its selection detail explicitly
+attributed to the supplied academic CV; grouped the three 2017/2018 robotics
+competition runner-up placements; included the 2019 Best Volunteer Award; and
+identified IEOM GOLD as a chapter/team award without inventing an award year.
+Added Awards to primary navigation and the footer quick links. The closeout
+reorders sections so Awards precedes Teaching and Projects follows Professional
+Experience.
+
+
+## Phase 5 closeout: final order and approval
+
+Approved by the owner. Phase 5A, Phase 5B, and Phase 5C are Approved; Phase 5
+is Complete. No Phase 6 implementation was started. Homepage and navigation now
+follow: Hero; Research Background; Research Experience; Publications & Research
+Outputs; Education; Scholarships & Awards; Teaching & Mentoring; Professional
+Experience; Selected Projects & Research Software; Technical Skills; Leadership;
+then existing personal/secondary sections. Approved section copy was not rewritten.
+
+Theme-documentation correction: the existing selector provides dark, rain, and
+snow visual modes, not a conventional Light/Dark theme system. Earlier Phase 5
+references to light/dark browser testing are corrected and are not evidence of
+testing a Light theme. Closeout browser checks covered the existing Snow and Dark
+modes. Phase 6 should evaluate Light/Dark base themes, Auto/system preference,
+optional Rain/Snow atmospheres, and prefers-reduced-motion. Weather-aware
+atmosphere synchronization remains deferred.
+
+At 375px, the reordered academic sections fit their viewport and the Awards
+navigation link becomes active at its section. A page-wide horizontal overflow
+remains in the existing Creator and Recommendations carousels; this predates
+the section reorder and is recorded for Phase 6 mobile refinement.
+
+Phase 6 media planning: organize project/research/teaching/awards assets when
+needed; optimize image formats and responsive sources; use external video
+embedding/linking instead of storing large videos; provide accessible alt text
+and captions; and use selective homepage media rather than galleries on every
+card. No media assets or empty directories were added.
+
+
+## Phase 6A: Visual Foundation, Theme Architecture, and Responsive Cleanup
+
+Implemented | Awaiting Approval. Added persisted Light/Dark/Auto appearance and
+independent None/Rain/Snow atmosphere controls, with Auto following the system
+color preference. Legacy Dark/Rain/Snow storage values migrate without losing a
+previous Rain/Snow choice. Shared semantic tokens now drive the academic sections,
+navigation, technical skills, Creator/Recommendations cards, footer, and theme
+control. Reduced-motion settings suppress atmospheric canvas effects and reduce
+CSS animation/transition motion. No geolocation or weather service was added.
+
+The Creator and Recommendations carousel tracks now size to their parent viewport
+and clip only off-track card transforms, rather than expanding the document width.
+Phase 5 section order and approved academic content are unchanged. Phase 6B media
+integration and Phase 6C weather synchronization remain deferred.
+
+Verification: Node 22.23.2/npm 10.9.8; `npm run build`, `npm run lint`, and
+`git diff --check` pass. Desktop/tablet/mobile browser checks at 1440, 1024, 768,
+and 375 CSS pixels found no page-wide overflow. Light and Dark, Auto under both
+system schemes, Rain, Snow, persistence, reduced-motion reload behavior, keyboard
+focus/Escape, section layout, navigation, and carousel controls were checked. The
+browser emulator did not emit live media-query change events, so Auto and reduced
+motion were checked by reload under each emulated preference; dynamic OS-change
+behavior remains backed by the registered media-query listeners.

@@ -65,6 +65,11 @@ export default function FooterView({ contact, brand }: Props) {
                   Projects
                 </button>
               </li>
+              <li>
+                <button onClick={() => scrollToSection('awards')} className="footer-link">
+                  Scholarships & Awards
+                </button>
+              </li>
             </ul>
           </div>
 
