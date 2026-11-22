@@ -12,7 +12,7 @@ export default function CreatorView({ creator }: Props) {
       <SectionTitleView title={creator.title} subtitle={creator.intro} />
       <p className="hint">{creator.hint}</p>
 
-      <CreatorSliderView items={creator.videos} />
+      <CreatorSliderView items={creator.videos.filter((video) => video.homepageSelected)} />
     </section>
   );
 }

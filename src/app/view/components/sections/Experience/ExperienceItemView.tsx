@@ -23,6 +23,7 @@ export default function ExperienceItemView({ item, isOpen, onToggle }: Props) {
         </p>}
         {item.summary && <p>{item.summary}</p>}
         <RelatedOutputsView outputs={item.relatedOutputs} />
+        {item.detailSlug && <p className="academic-detail-link"><a href={`#/detail/${item.detailSlug}`} aria-label={`Explore details: ${item.title}`}>Explore RMA history <span aria-hidden="true">→</span></a></p>}
       </div>
       {hasDetails && <>
         <button id={buttonId} type="button" className="academic-details-button"
@@ -39,6 +40,10 @@ export default function ExperienceItemView({ item, isOpen, onToggle }: Props) {
                 {course.when && <p className="academic-meta">{course.when}</p>}
                 <p className="academic-meta">Instructor: {course.instructorUrl ? <a href={course.instructorUrl} target="_blank" rel="noopener noreferrer" aria-label={`${course.instructor}: official MSU page (opens in a new tab)`} title="Official MSU page (opens in a new tab)">{course.instructor}</a> : course.instructor}</p>
                 <p>{course.description}</p>
+                {course.media && <figure className="academic-course-media">
+                  <img src={`${import.meta.env.BASE_URL}${course.media.src}`} alt={course.media.alt} width={course.media.width} height={course.media.height} loading="lazy" />
+                  <figcaption>{course.media.caption}</figcaption>
+                </figure>}
               </section>
             ))}</div>}
             {item.technologies && <p className="academic-technologies"><strong>Tools:</strong> {item.technologies.join(" · ")}</p>}

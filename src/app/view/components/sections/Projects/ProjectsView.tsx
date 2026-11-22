@@ -27,6 +27,7 @@ export default function ProjectsView({ projects }: Props) {
                 aria-label={`${link.label}: ${project.title} (opens in a new tab)`}>{link.label} <span aria-hidden="true">↗</span></a>)}
             </div>}
             <RelatedOutputsView outputs={project.relatedOutputs} />
+            {project.detailSlug && <p className="project-detail-link"><a href={`#/detail/${project.detailSlug}`} aria-label={`Explore project details: ${project.title}`}>Explore project <span aria-hidden="true">→</span></a></p>}
           </CardView>
         ))}
       </div>

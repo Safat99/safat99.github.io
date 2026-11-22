@@ -424,7 +424,7 @@ card. No media assets or empty directories were added.
 
 ## Phase 6A: Visual Foundation, Theme Architecture, and Responsive Cleanup
 
-Implemented | Awaiting Approval. Added persisted Light/Dark/Auto appearance and
+Approved. Added persisted Light/Dark/Auto appearance and
 independent None/Rain/Snow atmosphere controls, with Auto following the system
 color preference. Legacy Dark/Rain/Snow storage values migrate without losing a
 previous Rain/Snow choice. Shared semantic tokens now drive the academic sections,
@@ -445,3 +445,93 @@ focus/Escape, section layout, navigation, and carousel controls were checked. Th
 browser emulator did not emit live media-query change events, so Auto and reduced
 motion were checked by reload under each emulated preference; dynamic OS-change
 behavior remains backed by the registered media-query listeners.
+
+
+## Phase 6B.1: Technical Toolkit, Credentials, and Legacy Homepage Triage
+
+Implemented | Awaiting Approval. Replaced the technology-card wall with a compact
+four-group Technical Toolkit and no proficiency ratings. No certificates with exact
+title, issuer, date, and verification URL were found in tracked project content or
+ACADEMIC_PROFILE.md, so none are displayed; credential inventory remains pending
+evidence and separate from Scholarships & Awards.
+
+Renamed the post-Leadership Creator section to Technical Outreach & Content and
+curated it to three public videos accompanying established robotics, IoT, and sensing
+projects. Personal videos remain stored but are hidden from the academic homepage.
+Travel and Recommendations are no longer rendered on the homepage; their data and
+components remain available for later secondary pages. Updated footer shortcuts and
+replaced its legacy backend-first tagline. Approved academic content and section
+order were not changed.
+
+Phase 6B.2 media candidates are selected research, projects, teaching/outreach, and
+leadership. Proposed asset convention: `src/assets/media/` with profile, research,
+projects, teaching, leadership, and outreach subfolders as assets are actually
+needed; use optimized responsive images with useful alt text/captions and external
+video hosting. No media, logos, empty directories, or certificates were added.
+At the end of Phase 6B.1, Phase 6B.2 and Phase 6C had not started; the Phase 6B.2
+implementation record follows.
+
+## Phase 6B.2: Public Media and Project Detail Pages
+
+Implemented | Awaiting Approval. Added a reusable data-driven detail page for the six
+primary projects and a separate RMA / undergraduate robotics history page. Hash routes
+(`#/detail/<slug>`) preserve direct loads and refreshes under GitHub Pages while
+existing section-anchor navigation remains available. Project cards and the RMA
+leadership entry now provide keyboard-accessible links into their detail pages.
+
+Integrated the existing approved EMEC 361 instrumentation WebP into Teaching &
+Mentoring with the shortlist caption/alt text, intrinsic 1600 × 1200 dimensions, and
+lazy loading. No new public derivative was created. All project/RMA images that remain
+marked for human review, the Protein Scaffold poster, student/participant media,
+private documents, and raw videos remain private. No hyperspectral visual was supplied.
+
+Detail pages use current model/repository evidence, preserve collaborative attribution,
+and link to verified repository/demo/output records. StatScope is described as an
+educational research-planning tool rather than validated statistical software. The
+IoT Box output remains a presented BIM 2021 conference paper with public ResearchGate
+full text and no verified DOI/indexed proceedings claim. The three proposed technical
+credentials remain pending exact records and verification URLs, so they are not shown.
+No verified institutional logos were available locally.
+
+### Phase 6B.2 evidence-page refinement
+
+Refined the approved detail-page foundation after owner review. Added a small set of
+visually reviewed figures from the project's public repositories, with local optimized
+derivatives, source-to-output dimensions/size/transformation provenance in the private
+media shortlist, intrinsic dimensions, lazy loading, descriptive alt text, captions,
+and full-size image links. The pages now include no-autoplay YouTube players for the
+documented autonomous-car, IoT Box, and vibration demonstrations. StatScope embeds its
+working public simulator; no screenshot was fabricated because its README screenshot
+targets are absent from the current repository tree. Its Google Docs tutorials remain
+unlinked pending editorial correction of statistical interpretations noted in the
+private audit.
+
+Moved the approved oscilloscope figure into the EMEC 361 course record, so it no longer
+appears to represent the full multi-course teaching appointment. RMA imagery and the
+hyperspectral visual remain withheld/absent. No raw videos, private media-source files,
+or private documents were exposed. Phase 6B.2 remains Implemented | Awaiting Approval;
+Phase 6B.3 and 6C remain Not Started.
+Browser checks confirmed the YouTube player frames and controls load, but this QA
+browser lacked the selected video codec, so actual video decoding/playback could not
+be verified here.
+
+### Phase 6B.2 content-quality and quantitative-evidence audit
+
+Audited current homepage sections, all research/professional/teaching/leadership
+records, all seven detail pages, the current academic profile, owner-updated project
+resources, public repository documentation, and publisher evidence. Added publisher-
+documented contribution roles for the CUET multi-robot review; distinguished the
+autonomous-car's earlier HSV/histogram method from its final white-pixel lane follower,
+clarified its operating modes, StatScope's four workflow categories, aggregate sleep-dataset scope,
+and team-reported emergency-project experiment settings. Reworded current hyperspectral
+work as exploration rather than a measured improvement. No improvement percentages or
+unverified model scores were added; sleep-paper performance and emergency “BBox
+Accuracy” values remain withheld pending primary-source/metric and attribution review.
+Detailed private provenance, quality ratings, false-precision review, and owner follow-
+up opportunities are in ignored `media-source/QUANTITATIVE_EVIDENCE_AUDIT.md`. Phase
+6B.2 remains Implemented | Awaiting Approval; Phase 6B.3 and 6C remain Not Started.
+Node 22.23.2 build/lint and diff checks pass. Browser checks at 1440px and 375px
+covered the homepage, all seven detail routes, Light/Dark/Auto persistence, local
+media, and detail/back navigation without page overflow or app exceptions. YouTube
+embeds logged an unsupported AV1/codec warning in this browser, so actual decoding
+was not verified.

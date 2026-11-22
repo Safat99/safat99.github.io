@@ -22,6 +22,8 @@
 .project-evidence { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 12px; }
 .project-evidence a { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; font-size: 0.85rem; }
 .academic-projects .related-outputs { border-top: 1px solid var(--experience-border); padding-top: 12px; }
+.academic-projects .project-detail-link { margin: 10px 0 0; font-size: .9rem; }
+.academic-projects .project-detail-link a { color: var(--experience-accent); text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 800px) {
   .selected-project-grid { grid-template-columns: minmax(0, 1fr); }
 }

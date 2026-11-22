@@ -1,47 +1,48 @@
-# Current Work: Phase 6 | Presentation and Final Verification
+# Current Work: Phase 6B.2 | Public Media, Project Details, and Evidence Integration
 
 **Phase 6: Current**
 
-## Phase 6A: Visual Foundation, Theme Architecture, and Responsive Cleanup
+## Phase 6B.2: Public Media Selection, Visual Evidence, and Detail Pages
 
 **Status: Implemented | Awaiting Approval**
 
-- Separate base appearance (Light, Dark, Auto) from atmosphere (None, Rain, Snow).
-- Persist appearance and atmosphere independently; Auto follows system preference.
-- Preserve Rain/Snow canvas effects and suppress them when reduced motion is set.
-- Consolidate semantic theme colors across academic, navigation, skill, and personal
-  section surfaces.
-- Correct the Creator and Recommendations carousel track sizing/clipping at source
-  to remove mobile page-wide horizontal overflow.
-- Preserve the Phase 5 approved content and section order.
+- Use selected, reviewed derivatives from `public/assets/media/`; private originals
+  and `media-source/` remain outside application imports.
+- Keep the approved EMEC 361 instrumentation figure scoped to the EMEC 361 course card.
+- Keep the six primary project cards and academic homepage order; provide reusable
+  evidence-led detail pages for those projects and the RMA history page.
+- Add selective repository figures with source-to-derivative provenance, inline
+  non-autoplay YouTube demos for documented videos, and an embedded StatScope live
+  demo. Do not use missing screenshots or private/unreviewed RMA media.
+- Use hash detail routes (`#/detail/<slug>`) to preserve GitHub Pages refresh safety
+  and existing section anchors without a routing dependency.
+- Show only credential records supported by exact source details and verification
+  links. The three proposed credentials remain pending evidence and are not rendered.
+- Preserve external video hosting; do not copy archive videos or add auto-play.
+- StatScope screenshots are absent from the current repository tree. Its linked
+  Google Docs tutorial material needs editorial correction/review before public
+  linking. No hyperspectral media is available; no substitute image should be made.
+- The contribution/quantitative-evidence content audit is complete. Its private
+  provenance and evidence gaps are recorded in the ignored
+  `media-source/QUANTITATIVE_EVIDENCE_AUDIT.md`; no performance-improvement percentages
+  or unverified scores were added. This refinement passes build, lint, diff checks,
+  and browser checks at 1440px and 375px; repeat verification if Phase 6B.2 content
+  changes again.
 
 ## Verification
 
-Use `.nvmrc` (Node 22.23.2), then run:
-
-```bash
-node -v
-npm run build
-npm run lint
-git diff --check
-```
-
-Verification completed at 1440px, 1024px, 768px, and 375px with no page-wide
-horizontal overflow. Light, Dark, Auto under both system schemes, Rain, Snow,
-reduced-motion reload behavior, preference persistence, theme-control keyboard
-focus/Escape behavior, navigation, academic section layout, and both carousel
-controls were checked. The browser emulator did not dispatch live media-query
-change events; Auto/reduced-motion behavior was checked after reload under each
-simulated preference.
+Use Node 22.23.2 from `.nvmrc`; run `npm run build`, `npm run lint`, and
+`git diff --check`. Browser-check desktop/mobile, Light/Dark, homepage, each detail
+route, direct load/refresh, return navigation, evidence links, media paths, focus,
+reduced motion, console errors, and horizontal overflow.
 
 ## Deferred phases
 
-- Phase 6B media integration: optimized responsive images, organized asset
-  directories, accessible descriptions/captions, and selective homepage media.
-- Phase 6C atmosphere refinement: optional weather-aware synchronization only
-  after explicit product decisions. No geolocation or weather service is required
-  for normal site operation.
+- Phase 6B.3 News / Recent Updates: not started.
+- Phase 6C atmosphere refinement: optional weather-aware synchronization only after
+  explicit product decisions. No geolocation or weather service is required for
+  normal site operation.
 - Later deployment, metadata, and production QA.
 
-Phase 6B has not started. Phase 6C has not started. Do not commit or push before
-owner approval.
+Phase 6B.1 remains awaiting approval. Phase 6B.2 is implemented and awaiting approval;
+Phase 6B.3 and Phase 6C have not started. Do not commit or push before owner approval.

@@ -34,7 +34,7 @@ export default function FooterView({ contact, brand }: Props) {
               {brand.name}
             </h3>
             <p className="footer-tagline">
-              Software Developer building reliable systems with modern frameworks and multidisciplinary thinking
+              AI/ML and intelligent-systems research, supported by experience building reliable software systems.
             </p>
             <p className="footer-location">
               📍 Bozeman, Montana, USA
@@ -52,7 +52,7 @@ export default function FooterView({ contact, brand }: Props) {
               </li>
               <li>
                 <button onClick={() => scrollToSection('stack')} className="footer-link">
-                  Tech Stack
+                  Technical Toolkit
                 </button>
               </li>
               <li>
@@ -79,17 +79,7 @@ export default function FooterView({ contact, brand }: Props) {
             <ul className="footer-links">
               <li>
                 <button onClick={() => scrollToSection('creator')} className="footer-link">
-                  Content
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollToSection('travel')} className="footer-link">
-                  Travel
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollToSection('recommendations')} className="footer-link">
-                  Recommendations
+                  Technical Outreach
                 </button>
               </li>
               {/* <li>

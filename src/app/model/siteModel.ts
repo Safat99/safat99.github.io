@@ -30,7 +30,6 @@ export type AboutModel = {
 
 export type TechFace = {
   title: string;
-  badge: string;
   items: string[];
 };
 
@@ -53,9 +52,10 @@ export type ExperienceItem = {
   areas?: string[];
   technologies?: string[];
   summary?: string;
-  courses?: { title: string; instructor: string; description: string; courseUrl?: string; instructorUrl?: string; when?: string }[];
+  courses?: { title: string; instructor: string; description: string; courseUrl?: string; instructorUrl?: string; when?: string; media?: { src: string; alt: string; caption: string; width: number; height: number } }[];
   contextLink?: { label: string; url: string; note: string };
   highlights?: string[]; // Explicitly label personal contribution vs project/team scope.
+  detailSlug?: string;
 };
 
 export type ExperienceModel = {
@@ -84,6 +84,27 @@ export type ProjectItem = {
   status?: string;
   evidenceLinks?: { label: "GitHub" | "Live Demo" | "Video Demo"; url: string }[];
   relatedOutputs?: RelatedOutput[];
+  detailSlug?: string;
+};
+
+export type DetailPageSection = { title: string; paragraphs?: string[]; bullets?: string[] };
+export type DetailPageMedia = { src: string; alt: string; caption: string; width: number; height: number };
+export type DetailPageVideo = { title: string; youtubeId: string };
+export type DetailPageInteractiveDemo = { title: string; url: string; description: string };
+export type DetailPage = {
+  slug: string;
+  title: string;
+  eyebrow: string;
+  summary: string;
+  context?: string;
+  contribution?: string;
+  sections: DetailPageSection[];
+  media?: DetailPageMedia[];
+  videos?: DetailPageVideo[];
+  interactiveDemo?: DetailPageInteractiveDemo;
+  technologies?: string[];
+  links?: { label: string; url: string }[];
+  relatedOutputs?: RelatedOutput[];
 };
 
 export type ProjectsModel = {
@@ -97,6 +118,7 @@ export type CreatorVideo = {
   title: string;
   desc: string;
   url: string;
+  homepageSelected?: boolean;
 };
 
 export type CreatorModel = {
@@ -220,6 +242,7 @@ export type SiteModel = {
   contact: ContactModel; 
   recommendations: RecommendationsModel;
   publications: PublicationsModel;
+  detailPages: DetailPage[];
 
 
 };
@@ -275,7 +298,7 @@ export const siteModel: SiteModel = {
     },
     {
         "id": "stack",
-        "label": "Skills",
+        "label": "Toolkit",
         "href": "#stack"
     },
     {
@@ -324,58 +347,60 @@ export const siteModel: SiteModel = {
     ]
   },
   tech: {
-    title: "Technical Skills",
-    hint: "A curated overview of my technology stack, grouped by core skill areas.",
+    title: "Technical Toolkit",
+    hint: "Tools and technologies supported by research, project, and professional experience.",
     faces: [
       {
-        title: "Backend",
-        badge: "APIs • Services • Architecture",
+        title: "AI / ML & Scientific Computing",
         items: [
-          "Java (Spring Boot, Spring Cloud)",
-          "Go (Gin)",
-          "Python (Flask, Django)",
-          "REST APIs",
-          "gRPC",
-          "Kafka",
-          "JWT • Spring Security",
-        ],
-      },
-      {
-        title: "Databases",
-        badge: "Relational • NoSQL • Cache",
-        items: [
-          "MySQL",
-          "PostgreSQL",
-          "MongoDB",
-          "Redis",
-          "Google Firebase",
-        ],
-      },
-      {
-        title: "ML & Data",
-        badge: "Research • Prototypes",
-        items: [
-          "NumPy • Pandas • Matplotlib",
-          "scikit-learn",
+          "Python",
+          "NumPy",
+          "Pandas",
+          "Matplotlib",
+          "Scikit-learn",
           "TensorFlow",
           "OpenCV",
           "MATLAB",
         ],
       },
       {
-        title: "DevOps",
-        badge: "Build • Deploy",
-        items: ["Docker", "AWS EC2", "Linux", "Git"],
+        title: "Robotics & Embedded Systems",
+        items: [
+          "ROS",
+          "Gazebo",
+          "Arduino",
+          "Raspberry Pi",
+          "Sensors & Instrumentation",
+          "Embedded Systems",
+        ],
       },
       {
-        title: "Robotics",
-        badge: "Simulation • Systems",
-        items: ["ROS", "Gazebo", "Raspberry Pi"],
+        title: "Software & Distributed Systems",
+        items: [
+          "Java",
+          "Spring Boot",
+          "Spring Cloud",
+          "Python / Flask",
+          "Go / Gin",
+          "REST APIs",
+          "gRPC",
+          "Kafka",
+          "Microservices",
+          "Spring Security / JWT",
+        ],
       },
       {
-        title: "Tools",
-        badge: "Everyday Workflow",
-        items: ["IntelliJ", "VS Code", "Postman", "Google Colab"],
+        title: "Data & Infrastructure",
+        items: [
+          "PostgreSQL",
+          "MySQL",
+          "MongoDB",
+          "Redis",
+          "Firebase",
+          "Docker",
+          "AWS EC2",
+          "Git",
+        ],
       },
     ],
   },
@@ -424,12 +449,12 @@ export const siteModel: SiteModel = {
       },
       {
         title: "Tecognize Solutions Limited | Software Engineer, Backend",
-        summary: "Developed Python services and external integrations, including more than 50 APIs for DurbinX, and deployed services on AWS and virtual machines. The work strengthened my ability to build and operate complete software systems.",
+        summary: "Developed Python/Flask APIs, integrated SMS and email services for DurbinX, and deployed backend services on AWS and virtual machines.",
         when: "January 2022 - June 2022",
         bullets: [
           "Developed Flask-based RESTful APIs for web applications.",
           "Deployed backend services on AWS and virtual machines.",
-          "For the DurbinX parcel-delivery platform, developed more than 50 APIs and implemented external service integrations including SMS and email services."
+          "Integrated external SMS and email services for the DurbinX parcel-delivery platform."
         ],
         technologies: [
           "Python",
@@ -462,13 +487,12 @@ export const siteModel: SiteModel = {
       {
         title: "M.S. Thesis Research | Montana State University",
         relatedOutputs: [{ label: "Evaluating Band Selection for Spectral-Spatial Hyperspectral Classification under Label Scarcity | WHISPERS 2026 · Accepted", targetId: "pub-whispers-2026" }],
-        summary: "I study how band selection and semi-supervised learning can support hyperspectral image classification when labeled data are scarce. A unified evaluation across five benchmark datasets led to a paper accepted at WHISPERS 2026.",
+        summary: "My thesis examines band selection and semi-supervised learning for hyperspectral image classification when labeled data are scarce.",
         when: "August 2025 - Present",
         bullets: [
-          "Evaluated multiple band-selection methods with lightweight 3D CNN classifiers across five benchmark hyperspectral datasets under a unified experimental framework.",
+          "Evaluated multiple band-selection methods with lightweight 3D CNN classifiers under a unified experimental framework.",
           "Investigated spectral reduction and classification under limited labeled-data conditions.",
-          "The work resulted in an accepted paper at WHISPERS 2026.",
-          "Current work extends the framework toward more computationally efficient band-selection approaches and improved semi-supervised learning strategies."
+          "Current work explores computationally efficient band-selection approaches and further semi-supervised learning strategies."
         ],
         advisor: "Dr. Brad Whitaker",
         advisorUrl: "https://ece.montana.edu/directory/faculty/2110159/bradley-whitaker",
@@ -539,8 +563,8 @@ export const siteModel: SiteModel = {
         when: "June 2023 - January 2024",
         bullets: [
           "Conducted comprehensive literature reviews on multi-robot path planning.",
-          "Analyzed state-of-the-art algorithms for multi-robot systems.",
-          "Designed simulation experiments and evaluated multi-robot case studies.",
+          "Analyzed state-of-the-art algorithms for multi-robot systems and designed simulation experiments for case studies.",
+          "Wiley's author-contribution statement credits my work in data curation, investigation, software, visualization, formal analysis, and manuscript review/editing.",
           "The work contributed to a review paper published in Engineering Reports (Wiley)."
         ],
         advisor: "Dr. Sajal Chandra Banik",
@@ -562,7 +586,8 @@ export const siteModel: SiteModel = {
     items: [
       {
         title: "Robo Mechatronics Association, Bangladesh | Vice President",
-        summary: "Led a 150+ member chapter and organized mechatronics and automation activities. My broader robotics involvement included participation in 17 competitions and hackathons.",
+        detailSlug: "rma-undergraduate-robotics",
+        summary: "Led RMA activities focused on mechatronics and automation, alongside broader robotics competition and hackathon participation.",
         when: "February 2021 - August 2022",
         bullets: [
           "Organized university seminars, workshops, and competitions focused on mechatronics technology and industrial automation.",
@@ -610,6 +635,7 @@ export const siteModel: SiteModel = {
   "items": [
     {
       "title": "OpenCV-Based Autonomous Car with Raspberry Pi",
+      "detailSlug": "opencv-autonomous-car",
       "selection": "primary",
       "tags": [
         "Robotics",
@@ -638,6 +664,7 @@ export const siteModel: SiteModel = {
     },
     {
       "title": "StatScope",
+      "detailSlug": "statscope",
       "selection": "primary",
       "tags": [
         "Research Software",
@@ -665,6 +692,7 @@ export const siteModel: SiteModel = {
     },
     {
       "title": "Sleep-Stage Classification for NFLE Patients",
+      "detailSlug": "sleep-stage-classification",
       "selection": "primary",
       "tags": [
         "Machine Learning",
@@ -695,6 +723,7 @@ export const siteModel: SiteModel = {
     },
     {
       "title": "Emergency Vehicle Detection",
+      "detailSlug": "emergency-vehicle-detection",
       "selection": "primary",
       "tags": [
         "Computer Vision",
@@ -719,6 +748,7 @@ export const siteModel: SiteModel = {
     },
     {
       "title": "NodeMCU IoT Box",
+      "detailSlug": "nodemcu-iot-box",
       "selection": "primary",
       "tags": [
         "Embedded Systems",
@@ -753,6 +783,7 @@ export const siteModel: SiteModel = {
     },
     {
       "title": "Mechanical Vibration Analysis",
+      "detailSlug": "mechanical-vibration-analysis",
       "selection": "primary",
       "tags": [
         "Sensors",
@@ -851,19 +882,128 @@ export const siteModel: SiteModel = {
   ]
 },
 
+  detailPages: [
+    {
+      slug: "opencv-autonomous-car",
+      title: "OpenCV-Based Autonomous Car with Raspberry Pi",
+      eyebrow: "Robotics · Computer Vision",
+      summary: "A Raspberry Pi lane-following robot that connects camera-based lane estimates to differential motor control.",
+      contribution: "Adapted a tutorial-inspired vision and steering pipeline, with assistance acknowledged in the repository.",
+      sections: [
+        { title: "System scope", bullets: ["The repository describes two operating modes: local keyboard control with a camera preview, and autonomous lane following.", "The prototype uses a Raspberry Pi 4, camera module, motor driver, and two DC motors."] },
+        { title: "Technical approach", bullets: ["An earlier lane-detection path used HSV thresholding, perspective transformation, histogram-based lane estimates, and proportional steering.", "The repository's final lane-following script instead thresholds the lower camera view and compares white-pixel counts on the image's left and right sides to choose steering direction.", "A separate local-control mode runs keyboard motor control alongside a camera preview; motor commands use Raspberry Pi GPIO/PWM."] },
+        { title: "Attribution", paragraphs: ["This project followed a tutorial-inspired approach. The repository acknowledges assistance; this page does not imply sole authorship of every component or design choice."] }
+      ],
+      technologies: ["Python", "OpenCV", "Raspberry Pi", "GPIO/PWM"],
+      media: [{ src: "assets/media/projects/autonomous-car/autonomous-car-flow.png", alt: "System flow diagram connecting the Pi camera, Raspberry Pi, motor driver, robot motors, router, keyboard, and display.", caption: "Repository system diagram for the camera, Raspberry Pi, motor-control, and keyboard/display workflow.", width: 591, height: 331 }],
+      videos: [{ title: "Autonomous car project demonstration", youtubeId: "_uvGQ6cCDds" }],
+      links: [{ label: "GitHub repository", url: "https://github.com/Safat99/openCV-based-Autonomous-car-with-Raspberry-Pi" }, { label: "Watch video demonstration", url: "https://www.youtube.com/watch?v=_uvGQ6cCDds" }]
+    },
+    {
+      slug: "statscope",
+      title: "StatScope",
+      eyebrow: "Research Planning Software · Educational Tool",
+      summary: "An interactive study-planning simulator for exploring hypothesis-testing errors, statistical power, and sample-size choices.",
+      contribution: "Built the Flutter/Dart application interfaces for distribution visualization, approximate sample-size calculations, and CSV-based treatment-pair comparisons.",
+      sections: [
+        { title: "Four learning and planning workflows", bullets: ["Learning Mode introduces hypothesis-testing concepts and statistical terminology.", "The error simulator visualizes Type I/II errors and statistical power.", "Sample-size calculators use documented normal-approximation calculations.", "Bulk Treatment Analysis compares selected/all treatment pairs from pasted CSV data and presents effect-size and sample-size planning estimates."] },
+        { title: "Scope", paragraphs: ["StatScope is an educational and research-planning tool. It is not presented as a validated statistical package; users should independently verify assumptions and calculations for formal study design."] }
+      ],
+      technologies: ["Flutter", "Dart", "Distribution visualization", "CSV analysis"],
+      interactiveDemo: { title: "Try the StatScope simulator", url: "https://safat99.github.io/statscope/", description: "Interact with the public web application. Its calculations are presented as an educational/research-planning tool and should be independently checked for formal study design." },
+      links: [{ label: "GitHub repository", url: "https://github.com/Safat99/statscope" }, { label: "Live demo", url: "https://safat99.github.io/statscope/" }]
+    },
+    {
+      slug: "sleep-stage-classification",
+      title: "Sleep-Stage Classification for NFLE Patients",
+      eyebrow: "Collaborative Research Project · Biomedical Signal Processing",
+      summary: "A collaborative sleep-scoring study involving recordings from the CAP Sleep Database for patients with nocturnal frontal lobe epilepsy.",
+      contribution: "Coauthored the related CNN study. The public repository preserves EDF/annotation preparation and exploratory Keras LSTM code; it is not a complete reproduction of the published CNN.",
+      sections: [
+        { title: "Project and dataset scope", bullets: ["The repository describes the CAP Sleep Database as containing 108 polysomnographic recordings, including 40 NFLE subjects; these are dataset-level counts, not Safat's individual contribution.", "The related paper studied 15 NFLE subjects. The repository contains EDF/annotation preparation and exploratory sequence-model code, not a complete reproduction of the paper's CNN."] },
+        { title: "Research output", paragraphs: ["The related paper is published in the Springer / ICO 2021 volume. The publication entry provides the DOI and complete authorship details."] }
+      ],
+      technologies: ["Python", "MNE", "Pandas", "TensorFlow/Keras"],
+      media: [{ src: "assets/media/projects/sleep-stage/sleep-stage-workflow.jpg", alt: "Project workflow diagram showing EEG signal preprocessing, EDF-to-CSV conversion, model training, evaluation, and sleep-stage prediction.", caption: "Workflow diagram from the public project repository. It documents the project pipeline, not a reproduction of the published CNN paper.", width: 1280, height: 778 }],
+      links: [{ label: "GitHub repository", url: "https://github.com/Safat99/Sleep_stage_classifciation_of_epilepsy_patient" }],
+      relatedOutputs: [{ label: "Published paper · Springer / ICO 2021", targetId: "pub-ico-2022", url: "https://doi.org/10.1007/978-3-030-93247-3_35" }]
+    },
+    {
+      slug: "emergency-vehicle-detection",
+      title: "Emergency Vehicle Detection",
+      eyebrow: "Collaborative Project · Computer Vision",
+      summary: "A vehicle-image workflow combining emergency/non-emergency classification with bounding-box prediction.",
+      contribution: "The project was collaborative. Available repository documentation describes the team workflow, but does not establish an individual division of implementation sufficient for sole-contribution claims.",
+      sections: [
+        { title: "Documented team experiment scope", bullets: ["The team README describes an 80/20 training/test split, YOLOv4-generated annotations, and VGG16/VGG19 classification and bounding-box regression experiments.", "It reports runs at 25, 100, and 250 epochs. These are repository-reported experimental settings, not independently reproduced results or an attribution of individual work."] },
+        { title: "Attribution", paragraphs: ["The methods here describe the documented project workflow. No individual performance result or sole implementation claim is assigned to Safat."] }
+      ],
+      technologies: ["TensorFlow/Keras", "OpenCV", "YOLOv4", "VGG16/VGG19"],
+      media: [{ src: "assets/media/projects/emergency-vehicle/emergency-vehicle-workflow.png", alt: "Project workflow diagram from vehicle-image input through YOLOv4-generated bounding boxes, dataset preparation, VGG16/VGG19 experiments, and prediction output.", caption: "Collaborative project workflow documented in the public repository; this figure is not an individual performance claim.", width: 1710, height: 320 }],
+      links: [{ label: "GitHub repository", url: "https://github.com/Safat99/emergency_vehicle_detection" }]
+    },
+    {
+      slug: "nodemcu-iot-box",
+      title: "NodeMCU IoT Box",
+      eyebrow: "Collaborative Project · Embedded Systems",
+      summary: "A fabricated controller for internet-connected relay switching and temperature/humidity monitoring.",
+      contribution: "Built NodeMCU firmware and interfaces around Firebase, DHT11 sensing, and four-relay control. Project documentation also describes PCB design/fabrication, a web dashboard, and an MIT App Inventor app.",
+      sections: [
+        { title: "System components", bullets: ["ESP8266/NodeMCU firmware connected sensor readings and relay control to Firebase.", "The documented system included a custom PCB, web dashboard, and companion mobile interface."] },
+        { title: "Research output", paragraphs: ["The work was presented at BIM 2021 as a conference paper. A public ResearchGate full-text record is available; no DOI or indexed proceedings record has been verified."] }
+      ],
+      technologies: ["ESP8266/NodeMCU", "Firebase", "JavaScript", "MIT App Inventor"],
+      media: [
+        { src: "assets/media/projects/iot-box/iot-box-working-system.webp", alt: "Assembled NodeMCU smart-home controller connected to relay modules, sensors, and household lights.", caption: "Project working setup shown in the public repository; the work was collaborative.", width: 1032, height: 581 },
+        { src: "assets/media/projects/iot-box/iot-box-circuit-schematic.png", alt: "Circuit schematic for the IoT Box controller, including NodeMCU, sensors, optocouplers, and relay channels.", caption: "Controller schematic from the public project repository. Open the image for the full-resolution diagram.", width: 1920, height: 1080 }
+      ],
+      videos: [{ title: "NodeMCU IoT Box project demonstration", youtubeId: "9XfIP5cwh9o" }],
+      links: [{ label: "GitHub repository", url: "https://github.com/Safat99/IoT-Box" }, { label: "Watch video demonstration", url: "https://www.youtube.com/watch?v=9XfIP5cwh9o" }, { label: "Conference paper full text · ResearchGate", url: "https://www.researchgate.net/publication/354860121_157-P-4_Development_and_Optimization_of_a_Real-time_Server-based_IoT_Box_A_Smart_Home_Automation_System_and_its_Subsequent_Fabrication" }],
+      relatedOutputs: [{ label: "BIM 2021 conference paper · presented", targetId: "bim-2021" }]
+    },
+    {
+      slug: "mechanical-vibration-analysis",
+      title: "Mechanical Vibration Analysis",
+      eyebrow: "Instrumentation · Signal Processing",
+      summary: "A sensor-to-analysis workflow for examining measured car-body vibration in time and frequency domains.",
+      contribution: "Collected two ADXL335 accelerometer signals through Arduino and CSV, then analyzed them using Gaussian smoothing, bandpass filtering, FFT, and MATLAB/Excel plots.",
+      sections: [
+        { title: "Measurement and analysis", bullets: ["Acquired two accelerometer signals using an Arduino and ADXL335 sensors.", "Processed recorded data with smoothing and bandpass filtering.", "Used FFT and time/frequency-domain plots to inspect the signals."] }
+      ],
+      technologies: ["ADXL335", "Arduino", "MATLAB", "Excel"],
+      media: [
+        { src: "assets/media/projects/mechanical-vibration/vibration-analysis-workflow.png", alt: "Flow diagram from unknown vibration measurement through ADXL335 sensing, Arduino data transfer, MATLAB noise reduction and FFT, and Excel plotting.", caption: "Project workflow diagram from the public repository.", width: 1662, height: 718 },
+        { src: "assets/media/projects/mechanical-vibration/bandpass-filter-plot.jpg", alt: "Two-panel project plot comparing an original vibration time series with its band-pass-filtered time series.", caption: "Example signal-processing figure from the project repository; shown as project evidence, not a validated performance benchmark.", width: 1365, height: 775 }
+      ],
+      videos: [{ title: "Mechanical vibration analysis demonstration", youtubeId: "p5eDBFT5zkI" }],
+      links: [{ label: "GitHub repository", url: "https://github.com/Safat99/Mechanical_Vibration_Analysis_with_MATLAB_and_Arduino" }, { label: "Watch video demonstration", url: "https://www.youtube.com/watch?v=p5eDBFT5zkI" }]
+    },
+    {
+      slug: "rma-undergraduate-robotics",
+      title: "RMA and Undergraduate Robotics",
+      eyebrow: "Robotics Involvement · CUET",
+      summary: "A selected account of robotics activities and student leadership associated with the Robo Mechatronics Association during Safat's undergraduate years.",
+      context: "Safat served as RMA Vice President from February 2021 to August 2022. The documented portfolio records participation in 17 inter- and intra-university robotics competitions and hackathons across his broader robotics involvement.",
+      contribution: "Leadership and participation are described at the level supported by the academic profile. This page does not claim sole design or construction of robots appearing in historical event media.",
+      sections: [
+        { title: "Leadership and community", bullets: ["Helped lead a chapter of more than 150 members.", "Organized university seminars, workshops, and competitions focused on mechatronics and industrial automation."] },
+        { title: "Robotics experience", paragraphs: ["Undergraduate robotics activity included competition and simulation experience. The undergraduate MRTA thesis reproduced an existing open-source ROS/Gazebo implementation and is not featured here as original algorithm development.", "Historical photographs remain private until event context, attribution, and participant permissions are resolved."] },
+        { title: "Related recognition", bullets: ["2018 · 2nd Runner-Up, Line-Follower Robotics Competition, Makers Fest, IEEE Student Branch CUET.", "2018 · 2nd Runner-Up, Formula 1 RC Race, ASRRO, CUET.", "2017 · 2nd Runner-Up, Inter-University Robo Fight, International Islamic University Chittagong."] }
+      ]
+    }
+  ],
+
   creator: {
-    title: "Content Creator",
-    
-    intro: "I also create developer focused and engineering content where I document hands on projects in robotics, IoT, embedded systems, and applied machine learning. My videos focus on practical implementations like autonomous robots, smart home systems, sensor based analysis, and hardware software integration, often explained step by step so others can learn from real projects. Alongside serious engineering topics, I enjoy adding a creative and light touch through simple explanations and occasional humor, because learning engineering should feel curious, engaging, and human.",
-    
-    hint: "Use the arrows to browse. Press play to load the video.",
+    title: "Technical Outreach & Content",
+    intro: "A small selection of public demonstrations accompanying robotics, IoT, and sensing projects.",
+    hint: "Use the arrows to browse selected technical videos.",
     
     videos: [
       {
         id: "_uvGQ6cCDds",
+        homepageSelected: true,
         title: "OpenCV based Autonomous Car with Raspberry Pi",
-        desc: `Inspired by "Murtaza's Workshop" a popular YouTube channel for robotics and AI though our Pi 4 has a poor configuration. As a result, we have to follow a different lightweight approach to solving all the problems. The video is long but I hope you will like this.
-                I couldn't finish this project without the help of Md. Iftekher Hossain vai and my friend Semonti did a tough job in making the video. So much grateful to them 😍 😍`,
+        desc: "Tutorial-inspired Raspberry Pi lane-following project using OpenCV. The repository acknowledges assistance from Md. Iftekher Hossain Nabil and video support from Semonti.",
         url: "https://www.youtube.com/watch?v=_uvGQ6cCDds",
       },
       {
@@ -875,6 +1015,7 @@ export const siteModel: SiteModel = {
 
       {
         id: "9XfIP5cwh9o",
+        homepageSelected: true,
         title: "NodeMCU based IoT-Box | A Smart Home Automation System",
         desc: "An IoT project of NodeMCU-based  IoT Box which is a fully embedded system of controlling AC outputs over the internet using an App and Web Dashboard. This project was done back in the days of Covid-19.",
         url: "https://www.youtube.com/watch?v=9XfIP5cwh9o",
@@ -916,6 +1057,7 @@ export const siteModel: SiteModel = {
       },
       {
         id: "p5eDBFT5zkI",
+        homepageSelected: true,
         title: "Mechanical Vibration Analysis using Arduino and ADXL335 Sensor",
         desc: `The main target of this project is to find unknown 
         vibrations and analyze them with respect to time. Two ADXL335 sensors were used. 
@@ -1151,7 +1293,14 @@ export const siteModel: SiteModel = {
                     "instructor": "James Black",
                     "courseUrl": "https://catalog.montana.edu/coursedescriptions/emec/",
                     "instructorUrl": "https://www.montana.edu/mie/directory/1992608/james-black",
-                    "description": "Support experimental work through laboratory instruction, sensor/instrument setup, preparation, and feedback on laboratory memos, while also assisting with grading homework for the associated theory coursework"
+                    "description": "Support experimental work through laboratory instruction, sensor/instrument setup, preparation, and feedback on laboratory memos, while also assisting with grading homework for the associated theory coursework",
+                    "media": {
+                        "src": "assets/media/teaching/emec-361/emec-361-instrumentation-lab.webp",
+                        "alt": "Digital oscilloscope displaying a waveform beside a function generator on an instrumentation lab bench.",
+                        "caption": "Instrumentation bench used in the EMEC 361 laboratory.",
+                        "width": 1600,
+                        "height": 1200
+                    }
                 },
                 {
                     "title": "CSCI 232 - Data Structures and Algorithms",

@@ -91,7 +91,7 @@ BITAC knowledge sharing, and secondary UIT experience. Preserved approved Hero.
 
 ## Phase 5: Research Evidence
 
-**Status:** Current
+**Status:** Complete | Approved
 
 Make research outputs and technical evidence directly scannable.
 
@@ -119,7 +119,7 @@ Make research outputs and technical evidence directly scannable.
   output references; publication relationships preserved.
 - No public archive, filters, galleries, extra robotics builds, or private artifacts.
 
-Phase 5 is Complete after owner approval of 5A, 5B, and 5C. Phase 6 is Not Started.
+Phase 5A, 5B, and 5C are approved. Phase 5 is Complete; Phase 6 is Current.
 
 ### Phase 5C: Approved
 
@@ -165,7 +165,7 @@ Important relationships include:
 
 ### Phase 6A: Visual Foundation, Theme Architecture, and Responsive Cleanup
 
-**Status:** Implemented | Awaiting Approval
+**Status:** Approved
 
 - Added independent Light/Dark/Auto base appearance and None/Rain/Snow atmosphere
   preferences. Auto follows the operating system; existing Rain/Snow effects remain
@@ -188,6 +188,88 @@ matches without dispatching live `MediaQueryList` change events, so dynamic
 Auto/reduced-motion updates were verified through the registered listeners in
 code and by reloading under each emulated preference rather than by a live OS
 preference change.
+
+### Phase 6B.1: Technical Toolkit, Credentials, and Legacy Homepage Triage
+
+**Status:** Implemented | Awaiting Approval
+
+- Replaced the technology-card wall with four compact, evidence-supported groups:
+  AI/ML & Scientific Computing; Robotics & Embedded Systems; Software & Distributed
+  Systems; and Data & Infrastructure. No ratings or proficiency claims are used.
+- No certificate records with exact titles, issuers, issue dates, and verification
+  links were found in the repository or academic profile. No credentials are shown
+  until evidence is supplied; credentials remain separate from Scholarships & Awards.
+- Renamed the post-Leadership Creator section to Technical Outreach & Content and
+  selected only three videos paired with established project evidence. Personal
+  videos remain in the model but are not rendered on the academic homepage.
+- Removed Travel and LinkedIn Recommendations from homepage rendering while preserving
+  their model data and components for possible secondary pages. Updated footer links
+  and replaced its legacy software-developer tagline.
+- Homepage now ends with Leadership, compact Technical Outreach & Content, then footer.
+- Phase 6B.2 media candidates: selected research, projects, teaching/outreach, and
+  leadership. Recommended future convention: `src/assets/media/` with profile,
+  research, projects, teaching, leadership, and outreach subfolders; use optimized
+  responsive images, useful alt text/captions, selective media, and externally hosted
+  videos. No directories or media assets were added.
+
+### Phase 6B.2: Public Media, Detail Pages, and Evidence Integration
+
+**Status:** Implemented | Awaiting Approval
+
+- Integrated the already-approved EMEC 361 instrumentation WebP into Teaching &
+  Mentoring within the EMEC 361 course entry, with descriptive alt text, intrinsic
+  dimensions, lazy loading, and a restrained responsive figure. It no longer appears
+  to represent all teaching assignments.
+- Added a small, provenance-documented set of public-repository diagrams and figures
+  to the relevant project detail pages. Three owner-documented YouTube demonstrations
+  have browser-playable, non-autoplay embeds. StatScope includes its interactive live
+  demo; its README screenshot paths are absent from the current repository tree, so no
+  substitute screenshot was created.
+- Kept RMA imagery private because publication/privacy review is still pending.
+  Hyperspectral research remains text-first; no substitute visual was introduced.
+- Added reusable, data-driven detail pages for the six primary projects and a
+  separate RMA / undergraduate robotics history page. Primary project cards and the
+  RMA leadership entry link to the corresponding detail pages.
+- Used `#/detail/<slug>` fragment routes. This keeps direct loads and refreshes on
+  the GitHub Pages base path while leaving existing section anchors intact; no router
+  dependency or server rewrite is required.
+- Preserved collaboration and contribution boundaries, linked verified repositories,
+  demonstrations, the BIM 2021 ResearchGate full text, and related research outputs.
+  Videos remain hosted externally; no raw videos or private documents are public.
+- The three proposed technical credentials remain unshown because exact credential
+  records and verification URLs are not present in the current local factual sources.
+- No verified institutional identity assets were available locally; no logos were
+  added. Phase 6B.3 News / Recent Updates and Phase 6C remain Not Started.
+- The EMEC 361 figure is attached only to its course card. The new public project
+  derivatives have full source/dimension/size/transformation records in the private
+  media shortlist. Repository screenshots for StatScope are missing from the live
+  tree; only its working app is embedded. Project-specific tutorials with known
+  statistical wording issues remain unlinked pending editorial correction.
+
+Phase 6B.2 is implemented and awaiting approval. Do not commit or push before owner
+approval.
+
+### Phase 6B.2 contribution and quantitative-evidence audit
+
+**Status:** Completed as a content-quality refinement; Phase 6B.2 remains Implemented | Awaiting Approval
+
+- Audited research, education, awards, teaching, professional experience, leadership,
+  projects, outreach, and all seven detail pages against the current academic profile,
+  owner-updated project notes, public repository documentation, and publisher records.
+- Added only sourced scope/contribution clarifications: Wiley's published author roles
+  for the CUET review; autonomous-car lane-detection paths and operating modes; StatScope's four
+  documented workflows; sleep-dataset aggregate scope; and emergency-project team
+  experiment settings with attribution caveats.
+- No improvement percentages or unverified model scores were added. The emergency
+  repository's undefined bounding-box metric and the sleep-paper score remain withheld.
+- Detailed claim-by-claim evidence and owner follow-up opportunities are in the ignored,
+  private `media-source/QUANTITATIVE_EVIDENCE_AUDIT.md`; no private provenance is copied
+  into public site content.
+- Verification: Node 22.23.2/npm 10.9.8 build and lint pass; `git diff --check` passes.
+  Browser checks covered the homepage and all seven detail routes at 1440px and 375px,
+  Light/Dark/Auto behavior and persistence, base-path media, and detail/back navigation.
+  No page overflow or application exceptions appeared. YouTube's embed logged the
+  browser's unsupported AV1/codec warning, so actual video decoding was not verified.
 
 Complete visual refinement and production readiness.
 

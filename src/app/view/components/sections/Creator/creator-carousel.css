@@ -1,7 +1,11 @@
 /* ===== PREMIUM CREATOR CARD CAROUSEL ===== */
 
 #creator.section {
-  padding: 80px 20px;
+  padding: 48px 20px;
+}
+
+#creator .hint {
+  margin: 10px 0 18px;
 }
 
 .hint {
@@ -18,7 +22,7 @@
   min-width: 0;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 40px 0;
+  padding: 20px 0;
   position: relative;
 }
 
@@ -72,8 +76,8 @@
   align-items: center;
   justify-content: center;
   gap: 30px;
-  padding: 60px 120px;
-  min-height: 600px;
+  padding: 36px 100px;
+  min-height: 0;
 }
 
 /* Video Card */
@@ -256,7 +260,7 @@
 /* Counter */
 .carousel-counter {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 20px;
   color: var(--text-muted);
   font-size: 16px;
   font-weight: 600;
@@ -267,7 +271,7 @@
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 30px;
+  margin-top: 16px;
 }
 
 .carousel-dot {
@@ -301,7 +305,7 @@
 /* Responsive */
 @media (max-width: 1200px) {
   .carousel-track {
-    padding: 60px 48px;
+    padding: 36px 48px;
   }
   .video-card {
     width: 400px;
@@ -310,7 +314,7 @@
 
 @media (max-width: 992px) {
   .carousel-track {
-    padding: 60px 44px;
+    padding: 36px 44px;
     gap: 20px;
   }
   .video-card {
@@ -324,8 +328,7 @@
 
 @media (max-width: 768px) {
   .carousel-track {
-    min-height: 0;
-    padding: 36px 16px;
+    padding: 24px 16px;
   }
   .video-card {
     width: 100%;

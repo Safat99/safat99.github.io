@@ -13,9 +13,7 @@ import PublicationView from "./components/sections/Publications/PublicationView"
 import ProjectsView from "./components/sections/Projects/ProjectsView";
 import ScholarshipsAwardsView from "./components/sections/Awards/ScholarshipsAwardsView";
 import CreatorView from "./components/sections/Creator/CreatorView";
-import TravelView from "./components/sections/Travel/TravelView";
 // import ContactView from "./components/sections/Contact/ContactView";
-import RecommendationsView from "./components/sections/Recommendations/RecommendationsView";
 import FooterView from "./components/sections/Footer/FooterView";
 
 import ThemeToggle from "./components/ui/ThemeToggle/ThemeToggle";
@@ -52,10 +50,6 @@ export default function HomeView() {
         <ExperienceView id="leadership" experience={model.leadershipExperience} />
 
         <CreatorView creator={model.creator} />
-
-        <TravelView travel={model.travel} />
-
-        <RecommendationsView recommendations={model.recommendations} />
         {/* <ContactView contact={model.contact} /> */}
         <FooterView contact={model.contact} brand={model.brand} />
       </main>

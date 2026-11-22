@@ -25,3 +25,8 @@ docs/private-sources/
 *.njsproj
 *.sln
 *.sw?
+
+
+# Private source media
+
+media-source/
