@@ -93,7 +93,7 @@ export default function RecommendationsSliderView({ items }: Props) {
               <div className="rec-header">
                 {item.photo ? (
                   <div className="rec-photo">
-                    <img src={publicAssetUrl(item.photo)} alt={item.name} />
+                    <img src={publicAssetUrl(item.photo)} alt={item.name} width={100} height={100} loading="lazy" decoding="async" />
                   </div>
                 ) : (
                   <div className="rec-photo rec-photo-placeholder">
@@ -121,7 +121,7 @@ export default function RecommendationsSliderView({ items }: Props) {
                 <a 
                   href={item.linkedin}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="rec-linkedin"
                   onClick={(e) => e.stopPropagation()}
                 >

@@ -30,6 +30,7 @@ export default function HomeView() {
 
   return (
     <>
+      <a className="skip-link" href="#top">Skip to main content</a>
       <canvas id="three-canvas" aria-hidden="true"></canvas>
 
       <TopBarView
@@ -38,7 +39,7 @@ export default function HomeView() {
         nav={model.nav}
       />
 
-      <main id="top" className="container">
+      <main id="top" className="container" tabIndex={-1}>
         <HeroView hero={model.hero} />
         <AboutView about={model.about} />
         <RecentUpdatesView updates={getVisibleRecentUpdates()} />
@@ -51,15 +52,11 @@ export default function HomeView() {
         <ProjectsView projects={model.projects} />
         <TechView tech={model.tech} />
         <ExperienceView id="leadership" experience={model.leadershipExperience} />
-
         <CreatorView creator={model.creator} />
-        {/* <ContactView contact={model.contact} /> */}
-        <FooterView contact={model.contact} brand={model.brand} />
       </main>
-      
-      
-       <BackToTopView />
-       <ThemeToggle />
+      <FooterView contact={model.contact} brand={model.brand} />
+      <BackToTopView />
+      <ThemeToggle />
     </>
   );
 }

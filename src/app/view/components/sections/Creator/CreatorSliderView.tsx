@@ -109,7 +109,7 @@ export default function CreatorSliderView({ items }: Props) {
 
           const embedSrc =
             platform === "youtube"
-              ? toYouTubeEmbedUrl(video.url, video.id)
+              ? toYouTubeEmbedUrl(video.id)
               : platform === "facebook"
               ? toFacebookEmbedUrl(video.url)
               : video.url;
@@ -149,8 +149,9 @@ export default function CreatorSliderView({ items }: Props) {
                     src={embedSrc}
                     title={video.title}
                     loading="lazy"
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    allow="clipboard-write; encrypted-media; picture-in-picture; web-share"
                     allowFullScreen
+                    referrerPolicy="strict-origin-when-cross-origin"
                   />
                 )}
               </div>
@@ -165,7 +166,8 @@ export default function CreatorSliderView({ items }: Props) {
                     className="card-link"
                     href={video.url}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
+                    aria-label={`Watch ${video.title} on YouTube (opens in a new tab)`}
                     onClick={(e) => e.stopPropagation()}
                   >
                     {openLabel}

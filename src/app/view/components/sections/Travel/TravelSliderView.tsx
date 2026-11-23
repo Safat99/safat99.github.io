@@ -108,7 +108,7 @@ export default function TravelSliderView({ items }: Props) {
                     current.src.endsWith("bd_foot.jpg") ? "fix-bd-foot" : ""
                   }`}
                 >
-                  <img src={publicAssetUrl(current.src)} alt={current.title} loading="lazy" />
+                  <img src={publicAssetUrl(current.src)} alt={current.title} loading="lazy" decoding="async" />
                 </div>
               </div>
 
@@ -131,7 +131,7 @@ export default function TravelSliderView({ items }: Props) {
                 </div>
                 <div className="travel-book-right">
                   <div className="travel-image-container">
-                    <img src={publicAssetUrl(current.src)} alt={current.title} loading="lazy" />
+                    <img src={publicAssetUrl(current.src)} alt={current.title} loading="lazy" decoding="async" />
                   </div>
                 </div>
               </div>
@@ -149,7 +149,7 @@ export default function TravelSliderView({ items }: Props) {
                 </div>
                 <div className="travel-book-right">
                   <div className="travel-image-container">
-                    <img src={publicAssetUrl(nextPage.src)} alt={nextPage.title} loading="lazy" />
+                    <img src={publicAssetUrl(nextPage.src)} alt={nextPage.title} loading="lazy" decoding="async" />
                   </div>
                 </div>
               </div>
@@ -172,7 +172,7 @@ export default function TravelSliderView({ items }: Props) {
                 </div>
                 <div className="travel-book-right">
                   <div className="travel-image-container">
-                    <img src={publicAssetUrl(prevPage.src)} alt={prevPage.title} loading="lazy" />
+                    <img src={publicAssetUrl(prevPage.src)} alt={prevPage.title} loading="lazy" decoding="async" />
                   </div>
                 </div>
               </div>
@@ -190,7 +190,7 @@ export default function TravelSliderView({ items }: Props) {
                 </div>
                 <div className="travel-book-right">
                   <div className="travel-image-container">
-                    <img src={publicAssetUrl(current.src)} alt={current.title} loading="lazy" />
+                    <img src={publicAssetUrl(current.src)} alt={current.title} loading="lazy" decoding="async" />
                   </div>
                 </div>
               </div>

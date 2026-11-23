@@ -16,7 +16,7 @@ export default function ContactView({ contact }: Props) {
 
       <div className="links">
         {contact.links.map((l) => (
-          <a key={l.url} href={l.url} target="_blank" rel="noreferrer">
+          <a key={l.url} href={l.url} target="_blank" rel="noopener noreferrer" aria-label={`${l.label} (opens in a new tab)`}>
             {l.label}
           </a>
         ))}

@@ -10,11 +10,14 @@ export default function DetailPageView({ page }: { page: DetailPage }) {
 
   return (
     <>
+      <a className="skip-link" href="#detail-main">Skip to main content</a>
       <header className="detail-topbar">
-        <a href={homeUrl(returnSection)} className="detail-back">← Back to {returnSection === "projects" ? "Selected Projects" : "Leadership"}</a>
-        <a href={homeUrl("top")} className="detail-home">Sarker Safat Mahmud</a>
+        <nav aria-label="Project navigation">
+          <a href={homeUrl(returnSection)} className="detail-back">← Back to {returnSection === "projects" ? "Selected Projects" : "Leadership"}</a>
+          <a href={homeUrl("top")} className="detail-home">Sarker Safat Mahmud</a>
+        </nav>
       </header>
-      <main className="detail-page container">
+      <main id="detail-main" className="detail-page container" tabIndex={-1}>
         <article>
           <header className="detail-intro">
             <p className="detail-eyebrow">{page.eyebrow}</p>
@@ -46,7 +49,7 @@ export default function DetailPageView({ page }: { page: DetailPage }) {
               <h2>Figures &amp; project evidence</h2>
               <div className="detail-media-grid">{page.media.map(media => <figure className="detail-figure" key={media.src}>
                 <a href={assetUrl(media.src)} target="_blank" rel="noopener noreferrer" aria-label={`Open full-size image: ${media.caption}`}>
-                  <img src={assetUrl(media.src)} alt={media.alt} width={media.width} height={media.height} loading="lazy" />
+                  <img src={assetUrl(media.src)} alt={media.alt} width={media.width} height={media.height} loading="lazy" decoding="async" />
                 </a>
                 <figcaption>{media.caption}</figcaption>
               </figure>)}</div>
@@ -78,6 +81,9 @@ export default function DetailPageView({ page }: { page: DetailPage }) {
           <p className="detail-return"><a href={homeUrl(returnSection)}>Return to {returnSection === "projects" ? "Selected Projects" : "Leadership"}</a></p>
         </article>
       </main>
+      <footer className="detail-footer">
+        <a href={homeUrl("top")}>Sarker Safat Mahmud | Research Portfolio</a>
+      </footer>
       <ThemeToggle />
     </>
   );

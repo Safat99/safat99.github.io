@@ -30,7 +30,7 @@ export default function HeroView({ hero }: Props) {
           <h1 id="academic-headline">{hero.headline}</h1>
           <p className="sub">{hero.subline}</p>
 
-          <div className="hero-cta" aria-label="Academic CV">
+          <div className="hero-cta">
             <a className="hero-resume-btn" href={`${import.meta.env.BASE_URL}cv/Sarker_Safat_Mahmud_Academic_CV.pdf`}
               target="_blank" rel="noopener noreferrer" aria-label="Academic CV (opens in a new tab)">
               Academic CV <span aria-hidden="true">↗</span>
@@ -56,7 +56,7 @@ export default function HeroView({ hero }: Props) {
 
         <div className="hero-media">
           <figure className="hero-portrait">
-            <img className="hero-photo" src={heroPhoto} alt="Sarker Safat Mahmud" />
+            <img className="hero-photo" src={heroPhoto} alt="Sarker Safat Mahmud" width={2048} height={1536} fetchPriority="high" decoding="async" />
             <figcaption className="hero-caption">{hero.location}</figcaption>
           </figure>
           <div className="hero-links" role="group" aria-label="Academic and project profiles">

@@ -17,8 +17,8 @@ export default function VideoCardView({ video }: Props) {
       title={video.title}
       subtitle={video.desc}
       headerRight={
-        <a href={video.url} target="_blank" rel="noreferrer">
-          Open
+        <a href={video.url} target="_blank" rel="noopener noreferrer" aria-label={`Watch ${video.title} on YouTube (opens in a new tab)`}>
+          Watch
         </a>
       }
     >
@@ -33,11 +33,12 @@ export default function VideoCardView({ video }: Props) {
         ) : (
           <iframe
             className="video-iframe"
-            src={toYouTubeEmbedUrl(video.url, video.id)}
+            src={toYouTubeEmbedUrl(video.id)}
             title={video.title}
             loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allow="encrypted-media; picture-in-picture"
             allowFullScreen
+            referrerPolicy="strict-origin-when-cross-origin"
           />
         )}
       </div>

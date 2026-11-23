@@ -3,9 +3,9 @@
 ## Project
 
 - React + TypeScript + Vite portfolio, deployed through GitHub Pages.
-- Preserve Vite's configured base path for public assets and links. Project detail
-  pages use `#/detail/<slug>` fragments so direct loads and refreshes work without
-  server rewrites; ordinary homepage anchors remain hash anchors.
+- Vite uses the `/` base for the `safat99.github.io` user site. Project detail pages
+  use `#/detail/<slug>` fragments so direct loads and refreshes work without server
+  rewrites; ordinary homepage anchors remain hash anchors.
 - Purpose: a research-first academic portfolio for Fall 2027 PhD applications.
 - Never invent academic facts, numbers, results, dates, publication status, or
   individual attribution. Use `docs/ACADEMIC_PROFILE.md` for factual content when
@@ -30,9 +30,17 @@ Content, Footer.
 - Phase 5 is complete.
 - Phase 6A is approved.
 - Phase 6B.1 and 6B.2 are implemented; 6B.2 includes seven evidence/detail routes.
-- Phase 6B.3 Recent Updates is current and implemented, awaiting owner approval.
+- Phase 6B.3 Recent Updates is implemented, awaiting owner approval.
 - Phase 6C is optional/deferred; no geolocation or weather service is required.
-- Phases 6D and 6E remain not started.
+- Phase 6D accessibility, performance, metadata, routing, and deployment readiness
+  is implemented; confirm GitHub Pages configuration and any custom domain before
+  publishing.
+- Phase 6E remains not started.
+
+The canonical origin currently follows the repository name and existing metadata:
+`https://safat99.github.io/`. Confirm that origin with the owner before deployment;
+no dedicated social-preview image is approved. The existing `public/logo.png` is
+wired as the favicon and touch icon but should be confirmed as final branding.
 
 Recent Updates are manually curated in `src/content/recentUpdates.ts`; the homepage
 sorts by date and shows three entries by default (configurable up to five). Add entries

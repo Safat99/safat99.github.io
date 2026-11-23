@@ -12,7 +12,7 @@ export default function RecommendationCardView({ recommendation }: Props) {
       <div className="recommendation-header">
         {recommendation.photo ? (
           <div className="recommendation-photo">
-            <img src={publicAssetUrl(recommendation.photo)} alt={recommendation.name} />
+            <img src={publicAssetUrl(recommendation.photo)} alt={recommendation.name} width={100} height={100} loading="lazy" decoding="async" />
           </div>
         ) : (
           <div className="recommendation-photo recommendation-photo-placeholder">
@@ -40,7 +40,7 @@ export default function RecommendationCardView({ recommendation }: Props) {
         <a 
           href={recommendation.linkedin}
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           className="recommendation-linkedin"
         >
           View on LinkedIn →

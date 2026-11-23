@@ -312,11 +312,30 @@ Planned scope:
   1440px and 375px found no page overflow, broken images, or app/console errors;
   Light/Dark/Auto schemes, external link safety, and keyboard focus were checked.
 
+### Phase 6D: Accessibility, Performance, Metadata, and Deployment Readiness
+
+**Status:** Implemented | Owner deployment confirmation pending
+
+- Added skip links, semantic landmarks, focusable main targets, descriptive
+  icon-only link labels, meaningful new-tab relationships, and a not-found route.
+- Preserved hash-based detail routing and aligned Vite's base with the user-site
+  root. Direct loads, refresh, history navigation, and all seven detail routes were
+  checked in the production preview.
+- Added route-aware titles/descriptions and Open Graph/Twitter metadata, conservative
+  Person JSON-LD, and root `robots.txt`/homepage sitemap. No OG image was invented.
+- Lazy-loaded below-the-fold images/embeds, added image decoding/dimensions, removed
+  YouTube autoplay, improved iframe fallbacks, and corrected obvious footer contrast.
+- Build, lint, diff check, keyboard skip, theme persistence/system changes, responsive
+  widths, and browser console were checked.
+- Owner follow-up: confirm the canonical/custom domain and GitHub Pages settings,
+  approve the existing logo as favicon/touch branding, and supply an OG image only
+  if desired. The GitHub Pages settings endpoint was unavailable for verification.
+
 ### Deferred future work
 
 - Phase 6C remains optional atmosphere/weather synchronization; geolocation,
   weather-service access, and automatic atmosphere switching are not required.
-- Phases 6D and 6E remain not started; their scope is not expanded here.
+- Phase 6E remains not started.
 
 Phase 6B.3 is implemented and awaiting approval. Do not commit or push before owner
 approval.

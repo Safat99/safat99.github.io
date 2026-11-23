@@ -552,3 +552,20 @@ application/console errors, and correct Light/Dark/Auto behavior under both emul
 system schemes. The WHISPERS, catalog, and 2025 scholarship links use safe new-tab
 attributes; keyboard focus is visible. Direct video playback was not claimed because
 the exact WHISPERS presentation URL was not supplied.
+
+### Phase 6D: Accessibility, Performance, Metadata, and Deployment Readiness
+
+Implemented: added skip links and semantic landmarks, explicit accessible labels,
+detail-route not-found handling, dynamic titles/descriptions/social metadata, minimal
+Person JSON-LD, and root sitemap/robots files. Aligned Vite's base with the
+`safat99.github.io` user-site root; preserved fragment detail routes. Images and
+embeds are lazy where appropriate; YouTube autoplay was removed and external
+fallbacks retained. The existing logo is wired as the site icon, but no OG image was
+chosen or generated.
+
+Verification: production build and lint passed; JS/CSS bundles are 291.19/55.25 KB
+(90.27/10.82 KB gzip). JSON-LD parsed; all seven routes, refresh, browser history,
+unknown route, skip-link focus, 1440/1024/768/375px layouts, Light/Dark/Auto,
+preference persistence, and browser console were checked in production preview.
+The GitHub Pages settings API was unavailable; owner confirmation of the canonical
+domain/custom domain and existing logo branding remains pending.

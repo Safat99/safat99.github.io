@@ -97,14 +97,23 @@ npm: 10.9.8
 ## Detail pages and media
 
 Detail pages use hash fragments (`#/detail/<slug>`) so GitHub Pages can serve and
-refresh them at the configured Vite base path without history rewrites or a router
-dependency. Existing section anchors such as `#projects` remain unchanged.
+refresh them at the root base for this `safat99.github.io` user site without history
+rewrites or a router dependency. Existing section anchors such as `#projects` remain
+unchanged. Unknown detail routes render a not-found page; no `404.html` redirect is
+needed for fragment routes.
 
 Only selected, reviewed derivatives under `public/assets/media/` may be referenced by
 the application. `media-source/` is archival/private and must never be imported into
 application code. Keep large videos externally hosted; project detail pages may use
 lazy YouTube players and a lazy embedded live web app. Figures use descriptive alt
 text, captions, intrinsic dimensions, and links to full-size local files.
+
+The app updates document titles and description/Open Graph/Twitter metadata on SPA
+route changes. The static Person JSON-LD uses only the owner's name, portfolio URL,
+and public profiles. `robots.txt` and `sitemap.xml` advertise the public homepage;
+fragment routes are not separate sitemap entries. No approved Open Graph image is
+configured. The Pages API did not expose a live site configuration during Phase 6D,
+so confirm the canonical origin and any custom domain before publishing.
 
 EMEC instrumentation media is scoped to the EMEC 361 course record. Selected diagrams
 and figures from the owner's public project repositories support the relevant detail
