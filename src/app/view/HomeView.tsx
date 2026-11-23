@@ -10,6 +10,8 @@ import ExperienceView from "./components/sections/Experience/ExperienceView";
 import EducationView from "./components/sections/Experience/EducationView";
 import TeachingMentoringView from "./components/sections/Experience/TeachingMentoringView";
 import PublicationView from "./components/sections/Publications/PublicationView";
+import RecentUpdatesView from "./components/sections/RecentUpdates/RecentUpdatesView";
+import { getVisibleRecentUpdates } from "../../content/recentUpdates";
 import ProjectsView from "./components/sections/Projects/ProjectsView";
 import ScholarshipsAwardsView from "./components/sections/Awards/ScholarshipsAwardsView";
 import CreatorView from "./components/sections/Creator/CreatorView";
@@ -39,6 +41,7 @@ export default function HomeView() {
       <main id="top" className="container">
         <HeroView hero={model.hero} />
         <AboutView about={model.about} />
+        <RecentUpdatesView updates={getVisibleRecentUpdates()} />
         <ExperienceView id="research" experience={model.researchExperience} />
         <PublicationView publication={model.publications} presentations={model.researchPresentations} />
         <EducationView education={model.education} />

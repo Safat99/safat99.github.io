@@ -177,7 +177,8 @@ Important relationships include:
   effects.
 - Bounded the Creator and Recommendations carousel tracks and made their cards shrink
   to the available viewport, addressing mobile page overflow at its source.
-- Phase 6B media integration and Phase 6C weather synchronization remain Not Started.
+- Phase 6B media integration has progressed through 6B.2; 6B.3 is recorded below.
+  Phase 6C remains optional and deferred.
 
 Verification completed with Node 22.23.2/npm 10.9.8: build, lint, and diff checks
 pass. Browser checks at 1440, 1024, 768, and 375 CSS pixels found no document-wide
@@ -205,7 +206,8 @@ preference change.
 - Removed Travel and LinkedIn Recommendations from homepage rendering while preserving
   their model data and components for possible secondary pages. Updated footer links
   and replaced its legacy software-developer tagline.
-- Homepage now ends with Leadership, compact Technical Outreach & Content, then footer.
+- Homepage includes Leadership, Recent Updates, compact Technical Outreach & Content,
+  then footer.
 - Phase 6B.2 media candidates: selected research, projects, teaching/outreach, and
   leadership. Recommended future convention: `src/assets/media/` with profile,
   research, projects, teaching, leadership, and outreach subfolders; use optimized
@@ -239,7 +241,7 @@ preference change.
 - The three proposed technical credentials remain unshown because exact credential
   records and verification URLs are not present in the current local factual sources.
 - No verified institutional identity assets were available locally; no logos were
-  added. Phase 6B.3 News / Recent Updates and Phase 6C remain Not Started.
+  added. Phase 6C remains optional and deferred.
 - The EMEC 361 figure is attached only to its course card. The new public project
   derivatives have full source/dimension/size/transformation records in the private
   media shortlist. Repository screenshots for StatScope are missing from the live
@@ -290,3 +292,31 @@ Planned scope:
   geolocation, network weather lookup, or automatic atmosphere switching in 6A
 - final CV/DOI/repository/demo link verification
 - production deployment QA
+
+### Phase 6B.3: Recent Updates / News
+
+**Status:** Implemented | Awaiting Approval
+
+- Added a small, manually curated local updates list and a restrained homepage
+  section. No LinkedIn scraping, CMS, or runtime external API calls are used.
+- Initial entries cover the WHISPERS 2026 presentation, Fall 2026 EMEC 361 teaching
+  appointment, and Crawford Wildlife Habitat Scholarship recognition.
+- The WHISPERS publication remains classified as accepted and is additionally
+  identified as presented. The official program and IEEE GRSS conference pages are
+  linked; no proceedings/paper URL is claimed.
+- The exact presentation-video URL is absent from local records and remains an owner
+  follow-up. IEEE/WHISPERS logos were not added.
+- LinkedIn may be a source/reference for future manually curated updates; the website
+  does not depend on LinkedIn scraping or runtime API access.
+- Node 22.23.2 verification passed: build, lint, and diff check. Browser checks at
+  1440px and 375px found no page overflow, broken images, or app/console errors;
+  Light/Dark/Auto schemes, external link safety, and keyboard focus were checked.
+
+### Deferred future work
+
+- Phase 6C remains optional atmosphere/weather synchronization; geolocation,
+  weather-service access, and automatic atmosphere switching are not required.
+- Phases 6D and 6E remain not started; their scope is not expanded here.
+
+Phase 6B.3 is implemented and awaiting approval. Do not commit or push before owner
+approval.

@@ -192,6 +192,8 @@ export type PublicationItem = {
   status: "accepted" | "published";
   url?: string;     // No link when none is verified
   cta?: string;    // "Open DOI"
+  presentedAt?: string;
+  evidenceLinks?: { label: string; url: string }[];
 };
 
 export type PublicationsModel = {
@@ -262,6 +264,11 @@ export const siteModel: SiteModel = {
         "href": "#about"
     },
     {
+        "id": "updates",
+        "label": "Updates",
+        "href": "#updates"
+    },
+    {
         "id": "research",
         "label": "Research",
         "href": "#research"
@@ -329,7 +336,7 @@ export const siteModel: SiteModel = {
         { label: "Grabcad", url: "https://grabcad.com/sarker.safat.mahmud-1", icon: "grabcad"}
       ]
     },
-    note: "My thesis work evaluates five benchmark hyperspectral datasets; a related paper has been accepted at WHISPERS 2026."
+    note: "My thesis work evaluates five benchmark hyperspectral datasets; related work was accepted and presented at IEEE WHISPERS 2026."
   },
   about: {
     title: "Research & Background",
@@ -486,7 +493,7 @@ export const siteModel: SiteModel = {
     items: [
       {
         title: "M.S. Thesis Research | Montana State University",
-        relatedOutputs: [{ label: "Evaluating Band Selection for Spectral-Spatial Hyperspectral Classification under Label Scarcity | WHISPERS 2026 · Accepted", targetId: "pub-whispers-2026" }],
+        relatedOutputs: [{ label: "Evaluating Band Selection for Spectral-Spatial Hyperspectral Classification under Label Scarcity | WHISPERS 2026 · Accepted and presented", targetId: "pub-whispers-2026" }],
         summary: "My thesis examines band selection and semi-supervised learning for hyperspectral image classification when labeled data are scarce.",
         when: "August 2025 - Present",
         bullets: [
@@ -1096,8 +1103,13 @@ export const siteModel: SiteModel = {
         year: 2026,
         venue: "Workshop on Hyperspectral Image and Signal Processing: Evolution in Remote Sensing (WHISPERS 2026).",
         status: "accepted",
-        desc: "Accepted paper on band selection for spectral-spatial hyperspectral classification under label scarcity.",
-        meta: "Sarker Safat Mahmud, Brad M. Whitaker, and John W. Sheppard (2026) | Workshop on Hyperspectral Image and Signal Processing: Evolution in Remote Sensing (WHISPERS 2026). | Accepted"
+        presentedAt: "November 18, 2026",
+        evidenceLinks: [
+          { label: "Program", url: "https://ieee-whispers.com/program/" },
+          { label: "Conference", url: "https://www.grss-ieee.org/event/2026-16th-workshop-on-hyperspectral-imaging-and-signal-processing-evolution-in-remote-sensing-whispers/" }
+        ],
+        desc: "Accepted and presented at IEEE WHISPERS 2026 in the Machine- and Deep Learning I session on November 18, 2026.",
+        meta: "Sarker Safat Mahmud, Brad M. Whitaker, and John W. Sheppard (2026) | Workshop on Hyperspectral Image and Signal Processing: Evolution in Remote Sensing (WHISPERS 2026) | Accepted and presented"
       },
       {
         id: "pub-wiley-2024",

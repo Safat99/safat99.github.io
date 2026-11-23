@@ -535,3 +535,20 @@ covered the homepage, all seven detail routes, Light/Dark/Auto persistence, loca
 media, and detail/back navigation without page overflow or app exceptions. YouTube
 embeds logged an unsupported AV1/codec warning in this browser, so actual decoding
 was not verified.
+### Phase 6B.3: Recent Updates / News
+
+Implemented | Awaiting Approval. Added a restrained homepage updates section backed
+by manually curated local data. Its three entries cover the WHISPERS 2026
+presentation, Fall 2026 EMEC 361 teaching appointment, and Crawford Wildlife Habitat
+Scholarship recognition. The WHISPERS output remains classified as accepted and is
+also identified as presented; official conference-program and IEEE GRSS event links
+are provided. No DOI/proceedings URL or presentation-video URL is claimed. The 2025
+Alumni Foundation article is explicitly scoped to the 2025 cohort, not the 2026
+award. LinkedIn scraping, runtime API calls, and IEEE/WHISPERS logos were not added.
+The exact presentation-video URL remains pending owner input.
+Verification: Node 22.23.2 build and lint passed; `git diff --check` passed. Browser
+checks at 1440px and 375px confirmed no horizontal overflow, no broken images, no
+application/console errors, and correct Light/Dark/Auto behavior under both emulated
+system schemes. The WHISPERS, catalog, and 2025 scholarship links use safe new-tab
+attributes; keyboard focus is visible. Direct video playback was not claimed because
+the exact WHISPERS presentation URL was not supplied.

@@ -17,6 +17,9 @@
 .research-outputs .output-venue { font-size: 0.9rem; }
 .research-outputs .output-authors strong { color: var(--experience-text); }
 .research-outputs .output-doi { display: inline-flex; align-items: center; min-height: 44px; font-size: 0.9rem; }
+.research-outputs .output-presentation-date { margin: 2px 0; font-size: .86rem; }
+.research-outputs .output-evidence-links { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 4px 0 0; padding: 0; list-style: none; }
+.research-outputs .output-evidence-links a { display: inline-flex; min-height: 40px; align-items: center; font-size: .9rem; }
 .research-presentations { margin-top: 32px; }
 @media (max-width: 700px) {
   .research-outputs .research-output-card { padding: 16px; scroll-margin-top: 220px; }

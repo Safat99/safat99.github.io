@@ -65,6 +65,12 @@ public/assets/media/
 docs/ACADEMIC_PROFILE.md
 - comprehensive verified academic profile
 
+Recent Updates
+- manually curated typed records in `src/app/model/siteModel.ts`
+- rendered near the end of the academic homepage
+- LinkedIn is an optional source/reference only; no scraping or runtime API calls
+- the WHISPERS presentation video URL remains pending owner input
+
 ## Source hierarchy
 
 Current CV/profile
