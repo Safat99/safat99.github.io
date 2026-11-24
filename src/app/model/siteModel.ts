@@ -187,6 +187,12 @@ export type PublicationItem = {
   featured?: boolean;
   title: string;
   desc: string;
+  problem?: string;
+  approach?: string;
+  studyContribution?: string;
+  personalRole?: string;
+  quantitativeHighlights?: string[];
+  relatedLink?: { label: string; url: string };
   meta: string;
   authors: string[];
   year: number;
@@ -215,7 +221,7 @@ export type EducationModel = {
 
 export type ResearchPresentationsModel = {
   title: string;
-  items: { id: string; title: string; authors: string[]; year: number; venue: string; location: string; status: "presented"; type?: "conferencePaper" | "presentation"; month?: string; fullTextUrl?: string; authorVerificationPending?: boolean }[];
+  items: { id: string; title: string; authors: string[]; year: number; venue: string; location: string; status: "presented"; type?: "conferencePaper" | "presentation"; month?: string; fullTextUrl?: string; videoUrl?: string; slidesUrl?: string; problem?: string; approach?: string; result?: string; personalRole?: string; quantitativeHighlights?: string[]; visual?: { src: string; alt: string; caption: string; width: number; height: number }; relatedLink?: { label: string; url: string }; authorVerificationPending?: boolean }[];
 };
 
 export type ScholarshipsAndAwardsModel = {
@@ -1119,7 +1125,13 @@ export const siteModel: SiteModel = {
           { label: "Conference", url: "https://www.grss-ieee.org/event/2026-16th-workshop-on-hyperspectral-imaging-and-signal-processing-evolution-in-remote-sensing-whispers/" },
           { label: "Slides", url: "assets/media/research/hyperspectral/whispers-2026-presentation.pdf" }
         ],
-        desc: "This study compared three band-selection methods with two lightweight 3D CNN classifiers across five hyperspectral datasets and three band budgets. It found a strong cross-dataset operating point and evaluated pseudo-labeling under matched label-scarcity conditions.",
+        problem: "Spectral dimensionality and limited expert labels constrain hyperspectral image classification.",
+        approach: "Compared IBRA+GSS, SSEP, and SRPA with two lightweight 3D CNN architectures under a unified five-dataset framework.",
+        studyContribution: "Hyper3DNetLite with IBRA+GSS had the strongest overall cross-dataset ranking; pseudo-labeling improved matched-label baselines in selected low- and intermediate-label settings.",
+        personalRole: "Coauthored the published study.",
+        desc: "A unified hyperspectral band-selection and label-scarcity study.",
+        quantitativeHighlights: ["5 datasets", "3 band budgets", "8 / 25 SSL improvements"],
+        relatedLink: { label: "M.S. Thesis Research", url: "#research" },
         visual: {
           src: "assets/media/research/hyperspectral/whispers-2026-experimental-pipeline.webp",
           alt: "Unified experimental pipeline for the WHISPERS 2026 hyperspectral band-selection study.",
@@ -1140,7 +1152,13 @@ export const siteModel: SiteModel = {
         year: 2024,
         venue: "Engineering Reports, Wiley.",
         status: "published",
-        desc: "Review of multi-robot path-planning approaches, comparing methods and their strengths and limitations.",
+        problem: "Researchers need a systematic comparison of path-planning methods for collaborative robots in uncertain and dynamic environments.",
+        approach: "Categorized classical, heuristic, and AI-based approaches and analyzed their strength, limitations, environments, experiments, and hybridization.",
+        studyContribution: "The review synthesized 109 papers across 111 cases and identified how hybrid and AI-based approaches are increasingly used for dynamic, real-time planning.",
+        personalRole: "Worked in data curation, investigation, software, visualization, formal analysis, and writing-review and editing.",
+        desc: "A comparative review of multi-robot path planning across classical, heuristic, and AI-based methods.",
+        quantitativeHighlights: ["109 papers", "111 cases", "61.3% hybrid approaches"],
+        relatedLink: { label: "Multi-Robot Research Experience", url: "#research" },
         meta: "S. Banik, S. C. Banik, and S. S. Mahmud (2024) | Engineering Reports, Wiley. | Published",
         url: "https://doi.org/10.1002/eng2.13035",
         cta: "Open DOI"
@@ -1157,7 +1175,20 @@ export const siteModel: SiteModel = {
         year: 2022,
         venue: "Intelligent Computing & Optimization (ICO 2021), Lecture Notes in Networks and Systems, Vol. 371, Springer",
         status: "published",
-        desc: "Conference chapter presenting a CNN-based approach to sleep scoring for NFLE patients.",
+        problem: "Manual sleep-stage scoring is expert-dependent and difficult to scale for patients with nocturnal frontal lobe epilepsy (NFLE).",
+        approach: "Applied a 1D deep CNN to six EEG channels from NFLE PSG recordings, with preprocessing and R&K sleep-stage annotations.",
+        studyContribution: "The study investigated automatic sleep-stage scoring for 15 NFLE participants and reported 60.46% accuracy in the paper.",
+        personalRole: "Coauthored, developed the system and ran all the experiments of the published study.",
+        desc: "A Springer/ICO conference chapter presenting a CNN-based approach to sleep scoring for NFLE patients.",
+        quantitativeHighlights: ["15 NFLE participants", "8-hour sleep", "60.46% reported accuracy"],
+        relatedLink: { label: "View Sleep-Stage Project", url: "#/detail/sleep-stage-classification" },
+        visual: {
+          src: "assets/media/projects/sleep-stage/sleep-stage-workflow.jpg",
+          alt: "Exploratory sleep-stage project workflow from EDF preparation through model evaluation.",
+          caption: "The flow diagram of the complete study.",
+          width: 1280,
+          height: 778
+        },
         meta: "Sarker Safat Mahmud, Md. Rakibul Islam Prince, Md. Shamim, Sarker Shahriar Mahmud (2022) | Intelligent Computing & Optimization (ICO 2021), Lecture Notes in Networks and Systems, Vol. 371, Springer | Published",
         url: "https://doi.org/10.1007/978-3-030-93247-3_35",
         cta: "Open DOI"
@@ -1173,7 +1204,12 @@ export const siteModel: SiteModel = {
         year: 2022,
         venue: "Journal of Integrated and Advanced Engineering, 2(2), 147-157.",
         status: "published",
-        desc: "Design and fabrication of a conveyor-belt system for color- and weight-based sorting.",
+        problem: "Manual sorting by color and weight is slow, labor-intensive, and inconsistent.",
+        approach: "Built an Arduino-controlled conveyor prototype using an RGB color sensor, strain-gauge load cell, DC motor, servo motors, and collection bins.",
+        studyContribution: "The study fabricated a low-cost sorting prototype and evaluated calibration and 21-sample sorting performance.",
+        personalRole: "Experiment setup, development of the full system, design of the CAD model, Arduino Coding etc.",
+        desc: "A fabricated conveyor-belt system that sorts objects by RGB color and weight.",
+        quantitativeHighlights: ["100% color accuracy", "99% overall weight accuracy", "21-sample sorting test"],
         meta: "T. J. Nuva, M. I. Ahmed, and S. S. Mahmud (2022) | Journal of Integrated and Advanced Engineering, 2(2), 147-157. | Published",
         url: "https://doi.org/10.51662/jiae.v2i2.87",
         cta: "Open DOI"
@@ -1396,6 +1432,21 @@ export const siteModel: SiteModel = {
         type: "conferencePaper",
         month: "September",
         fullTextUrl: "https://www.researchgate.net/publication/354860121_157-P-4_Development_and_Optimization_of_a_Real-time_Server-based_IoT_Box_A_Smart_Home_Automation_System_and_its_Subsequent_Fabrication",
+        videoUrl: "https://youtu.be/bHaUdkjGjU0",
+        slidesUrl: "assets/media/research/iot-box/bim-2021-iot-box-slides.pdf",
+        problem: "Existing home-automation controllers often compromise cost, remote control, security, or hardware integration.",
+        approach: "Designed a compact NodeMCU and Firebase system with four relay channels, web/mobile interfaces, and a custom PCB.",
+        result: "Stable-connection trials recorded 93 successful operations and 7 errors across 100 trials.",
+        personalRole: "presenter, development of the full hardware setup, NodeMCU-Firebase communication, App development",
+        quantitativeHighlights: ["100 trials", "93 successful", "7 failed"],
+        relatedLink: { label: "View NodeMCU IoT Box", url: "#/detail/nodemcu-iot-box" },
+        visual: {
+          src: "assets/media/projects/iot-box/iot-box-working-system.webp",
+          alt: "Assembled NodeMCU IoT Box controller connected to relays and switches.",
+          caption: "The working project setup; the photo documents the working prototype associated with this presentation.",
+          width: 1032,
+          height: 581
+        },
         // Preserve older source data until the seven-author paper byline can be verified.
         // The incomplete list is not rendered publicly while this flag is true.
         authorVerificationPending: true,

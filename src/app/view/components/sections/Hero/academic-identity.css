@@ -118,8 +118,9 @@
 }
 .section.academic-about .section-header { margin-bottom: 20px; }
 .section.academic-about h2 { color: var(--identity-text); }
+.section.academic-about .section-header,
 .academic-background,
-.academic-applications { max-width: 78ch; margin-inline: auto; }
+.academic-applications { max-width: 78ch; margin-inline: 0; }
 .academic-applications { margin-top: 24px; }
 .hero.academic-hero :focus-visible,
 .section.academic-about :focus-visible { outline: 2px solid var(--identity-accent); outline-offset: 4px; }
