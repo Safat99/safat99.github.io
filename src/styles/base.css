@@ -26,6 +26,10 @@
   --content-max: 1040px;
   --content-pad: 24px;
   --cube-size: 400px;
+  --font-size-body: 1rem;
+  --font-size-supporting: 0.94rem;
+  --font-size-metadata: 0.84rem;
+  --line-height-reading: 1.68;
 }
 
 /* --------------------
@@ -47,7 +51,8 @@ body {
     Ubuntu, "Helvetica Neue", Arial, sans-serif;
   background: var(--page-bg);
   color: var(--text-primary);
-  line-height: 1.6;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-reading);
 }
 
 html, body {
@@ -161,9 +166,30 @@ main.container {
 }
 
 
-@media (min-width: 1400px) {
+@media (min-width: 1200px) {
   .container {
-    max-width: 1180px;
+    max-width: 1280px;
+  }
+
+  .topbar-inner {
+    --container: 1240px;
+  }
+
+  main.container > .section {
+    max-width: 1240px;
+    margin-inline: auto;
+  }
+
+  main.container > .section.academic-about,
+  main.container > .section.recent-updates-section,
+  main.container > .section.academic-experience:not(#research):not(#publications) {
+    max-width: 1100px;
+  }
+
+  main.container > .section.academic-experience:not(#research):not(#publications) .exp-list,
+  main.container > .section#research .exp-item:not(.exp-item--with-evidence) {
+    max-width: 1000px;
+    margin-inline: auto;
   }
 }
 
@@ -185,9 +211,9 @@ main.container {
 }
 
 .section-subtitle {
-  max-width: 720px;
+  max-width: 76ch;
   color: var(--text-muted);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .section h2,
@@ -198,7 +224,9 @@ main.container {
 
 /* text rhythm */
 .section p {
-  max-width: 760px;
+  max-width: 76ch;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-reading);
 }
 
 .section ul {
@@ -569,7 +597,8 @@ main.container {
 }
 
 .hint {
-  font-size: 0.85rem;
+  font-size: var(--font-size-supporting);
+  line-height: 1.6;
   color: var(--text-muted);
   margin-bottom: 1rem;
 }
@@ -1284,6 +1313,15 @@ main.container {
   box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4);
 }
 
+@media (max-width: 600px) {
+  .back-to-top-btn {
+    right: 8px;
+    bottom: 76px;
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+}
 
 /* prokject cards buttons */
 .card-actions {

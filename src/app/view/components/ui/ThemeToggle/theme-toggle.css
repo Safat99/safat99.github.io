@@ -99,8 +99,13 @@
 
 @media (max-width: 600px) {
   .theme-toggle {
-    right: 14px;
+    right: 8px;
     bottom: 14px;
+  }
+
+  .theme-toggle-btn {
+    width: 44px;
+    height: 44px;
   }
 }
 

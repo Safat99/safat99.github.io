@@ -220,8 +220,8 @@
 }
 
 .card-desc {
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: var(--font-size-supporting);
+  line-height: 1.65;
   color: var(--text-secondary);
   margin: 0 0 16px 0;
 }
@@ -235,7 +235,7 @@
   border: 1px solid var(--border-color);
   border-radius: 8px;
   color: var(--link-color);
-  font-size: 13px;
+  font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;

@@ -31,7 +31,7 @@
 
 /* Footer Container */
 .footer-container {
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 80px 40px 30px;
   position: relative;
@@ -78,14 +78,14 @@
 
 .footer-tagline {
   color: var(--text-secondary);
-  font-size: 15px;
+  font-size: var(--font-size-supporting);
   line-height: 1.6;
   margin: 0 0 16px 0;
 }
 
 .footer-location {
   color: var(--text-muted);
-  font-size: 14px;
+  font-size: var(--font-size-metadata);
   margin: 0;
 }
 
@@ -111,7 +111,7 @@
 
 .footer-link {
   color: var(--text-secondary);
-  font-size: 15px;
+  font-size: var(--font-size-supporting);
   text-decoration: none;
   transition: all 0.3s ease;
   display: inline-block;
@@ -141,7 +141,7 @@
   border: 1.5px solid rgba(59, 130, 246, 0.3);
   border-radius: 10px;
   color: var(--link-color);
-  font-size: 14px;
+  font-size: var(--font-size-supporting);
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -196,7 +196,7 @@
 
 .footer-copyright {
   color: var(--text-muted);
-  font-size: 14px;
+  font-size: var(--font-size-metadata);
   margin: 0;
 }
 
@@ -209,7 +209,7 @@
   border: 1px solid var(--border-color);
   border-radius: 10px;
   color: var(--text-secondary);
-  font-size: 14px;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -311,12 +311,12 @@
   }
   
   .footer-tagline {
-    font-size: 14px;
+    font-size: 0.9rem;
   }
   
   .footer-email {
     padding: 10px 16px;
-    font-size: 13px;
+    font-size: 0.9rem;
   }
   
   .footer-social {

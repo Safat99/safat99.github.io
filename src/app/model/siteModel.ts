@@ -55,6 +55,7 @@ export type ExperienceItem = {
   courses?: { title: string; instructor: string; description: string; courseUrl?: string; instructorUrl?: string; when?: string; media?: { src: string; alt: string; caption: string; width: number; height: number } }[];
   contextLink?: { label: string; url: string; note: string };
   highlights?: string[]; // Explicitly label personal contribution vs project/team scope.
+  evidence?: { highlights?: string[] };
   detailSlug?: string;
 };
 
@@ -183,6 +184,7 @@ export type TravelModel = {
 
 export type PublicationItem = {
   id: string;
+  featured?: boolean;
   title: string;
   desc: string;
   meta: string;
@@ -194,6 +196,7 @@ export type PublicationItem = {
   cta?: string;    // "Open DOI"
   presentedAt?: string;
   evidenceLinks?: { label: string; url: string }[];
+  visual?: { src: string; alt: string; caption: string; width: number; height: number };
 };
 
 export type PublicationsModel = {
@@ -497,8 +500,9 @@ export const siteModel: SiteModel = {
         summary: "My thesis examines band selection and semi-supervised learning for hyperspectral image classification when labeled data are scarce.",
         when: "August 2025 - Present",
         bullets: [
-          "Evaluated multiple band-selection methods with lightweight 3D CNN classifiers under a unified experimental framework.",
-          "Investigated spectral reduction and classification under limited labeled-data conditions.",
+          "Compared three band-selection methods and two lightweight 3D CNN classifiers across five datasets and 5-, 20-, and 50-band budgets.",
+          "Hyper3DNetLite was part of the best configuration in 13 of 15 dataset/band settings; no pipeline was statistically superior across all settings.",
+          "Pseudo-labeling improved matched supervised baselines in selected low- and intermediate-label settings, but did not compensate for weak initial models.",
           "Current work explores computationally efficient band-selection approaches and further semi-supervised learning strategies."
         ],
         advisor: "Dr. Brad Whitaker",
@@ -512,9 +516,12 @@ export const siteModel: SiteModel = {
           "semi-supervised learning",
           "learning with limited labeled data"
         ],
-        highlights: [
-          "Research scope: 5 benchmark hyperspectral datasets evaluated."
-        ]
+        evidence: {
+          highlights: [
+            "Unified scope: 90 dataset–budget–pipeline evaluations.",
+            "Hyper3DNetLite + IBRA+GSS had the best overall cross-dataset ranking."
+          ]
+        }
       },
       {
         "title": "Graduate Research Assistant | TrialWear, Montana State University",
@@ -1094,6 +1101,7 @@ export const siteModel: SiteModel = {
     items: [
       {
         id: "pub-whispers-2026",
+        featured: true,
         title: "Evaluating Band Selection for Spectral-Spatial Hyperspectral Classification under Label Scarcity",
         authors: [
           "Sarker Safat Mahmud",
@@ -1105,10 +1113,20 @@ export const siteModel: SiteModel = {
         status: "accepted",
         presentedAt: "November 18, 2026",
         evidenceLinks: [
+          { label: "Paper", url: "https://ieee-whispers.com/program/papers/WHISPERS_2026_paper__117.pdf" },
+          { label: "Presentation Video", url: "https://www.youtube.com/watch?v=6daVOa4B1C4" },
           { label: "Program", url: "https://ieee-whispers.com/program/" },
-          { label: "Conference", url: "https://www.grss-ieee.org/event/2026-16th-workshop-on-hyperspectral-imaging-and-signal-processing-evolution-in-remote-sensing-whispers/" }
+          { label: "Conference", url: "https://www.grss-ieee.org/event/2026-16th-workshop-on-hyperspectral-imaging-and-signal-processing-evolution-in-remote-sensing-whispers/" },
+          { label: "Slides", url: "assets/media/research/hyperspectral/whispers-2026-presentation.pdf" }
         ],
-        desc: "Accepted and presented at IEEE WHISPERS 2026 in the Machine- and Deep Learning I session on November 18, 2026.",
+        desc: "This study compared three band-selection methods with two lightweight 3D CNN classifiers across five hyperspectral datasets and three band budgets. It found a strong cross-dataset operating point and evaluated pseudo-labeling under matched label-scarcity conditions.",
+        visual: {
+          src: "assets/media/research/hyperspectral/whispers-2026-experimental-pipeline.webp",
+          alt: "Unified experimental pipeline for the WHISPERS 2026 hyperspectral band-selection study.",
+          caption: "Unified experimental pipeline: five benchmark datasets, controlled supervised comparison, and matched pseudo-labeling analysis.",
+          width: 1200,
+          height: 900
+        },
         meta: "Sarker Safat Mahmud, Brad M. Whitaker, and John W. Sheppard (2026) | Workshop on Hyperspectral Image and Signal Processing: Evolution in Remote Sensing (WHISPERS 2026) | Accepted and presented"
       },
       {

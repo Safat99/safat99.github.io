@@ -8,7 +8,10 @@ function formatDate(date: string) {
 }
 
 function UpdateLink({ label, url }: { label: string; url: string }) {
-  return <a href={url} target="_blank" rel="noopener noreferrer" aria-label={`${label} (opens in a new tab)`}>{label}<span aria-hidden="true"> ↗</span></a>;
+  const href = url.startsWith("assets/")
+    ? `${import.meta.env.BASE_URL}${url}`
+    : url;
+  return <a href={href} target="_blank" rel="noopener noreferrer" aria-label={`${label} (opens in a new tab)`}>{label}<span aria-hidden="true"> ↗</span></a>;
 }
 
 export default function RecentUpdatesView({ updates }: { updates: RecentUpdate[] }) {

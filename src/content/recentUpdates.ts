@@ -30,10 +30,13 @@ export const recentUpdates: RecentUpdate[] = [
     category: "Presentation",
     title: "Presented at IEEE WHISPERS 2026",
     summary: "I presented our accepted paper on band selection for hyperspectral image classification under label scarcity in the conference’s Machine- and Deep Learning I session in Glasgow.",
-    sourceLabel: "Program",
-    sourceUrl: "https://ieee-whispers.com/program/",
+    sourceLabel: "Paper",
+    sourceUrl: "https://ieee-whispers.com/program/papers/WHISPERS_2026_paper__117.pdf",
     secondaryLinks: [
-      { label: "Conference", url: "https://www.grss-ieee.org/event/2026-16th-workshop-on-hyperspectral-imaging-and-signal-processing-evolution-in-remote-sensing-whispers/" }
+      { label: "Presentation Video", url: "https://www.youtube.com/watch?v=6daVOa4B1C4" },
+      { label: "Program", url: "https://ieee-whispers.com/program/" },
+      { label: "Conference", url: "https://www.grss-ieee.org/event/2026-16th-workshop-on-hyperspectral-imaging-and-signal-processing-evolution-in-remote-sensing-whispers/" },
+      { label: "Slides", url: "assets/media/research/hyperspectral/whispers-2026-presentation.pdf" }
     ],
     featured: true
   },

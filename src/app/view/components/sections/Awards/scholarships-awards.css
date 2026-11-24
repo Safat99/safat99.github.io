@@ -25,10 +25,10 @@
   margin-top: 0;
 }
 
-.academic-awards .award-organization,
-.academic-awards .recognition-meta {
-  font-size: 0.85rem;
+.academic-awards .award-organization {
+  font-size: var(--font-size-supporting);
 }
+.academic-awards .recognition-meta { font-size: var(--font-size-metadata); }
 
 .academic-awards .award-evidence {
   margin-top: 14px;
@@ -42,7 +42,7 @@
 }
 
 .academic-awards .award-evidence p {
-  font-size: 0.8rem;
+  font-size: var(--font-size-supporting);
   margin: 2px 0 0;
 }
 
@@ -81,7 +81,7 @@
 
 .academic-awards .competition-card li span {
   color: var(--experience-muted);
-  font-size: 0.85rem;
+  font-size: var(--font-size-supporting);
   margin-top: 3px;
 }
 
@@ -90,7 +90,7 @@
   outline-offset: 4px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .academic-awards .scholarship-grid,
   .academic-awards .recognition-grid {
     grid-template-columns: minmax(0, 1fr);

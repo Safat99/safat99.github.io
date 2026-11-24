@@ -15,34 +15,66 @@
 .academic-experience h4 { color: var(--experience-text); }
 .academic-experience h3 { font-size: 1.05rem; line-height: 1.5; margin: 0 0 8px; }
 .academic-experience h4 { font-size: 0.95rem; line-height: 1.5; margin: 0 0 6px; }
-.academic-experience p { color: var(--experience-muted); line-height: 1.7; margin: 8px 0; max-width: 85ch; }
+.academic-experience p { color: var(--experience-muted); line-height: var(--line-height-reading); margin: 8px 0; max-width: 76ch; }
 .academic-experience .academic-meta { font-size: 0.85rem; margin: 4px 0; }
-.academic-experience .academic-topic { color: var(--experience-accent); font-size: 0.9rem; }
+.academic-experience .academic-advisor,
+.academic-experience .academic-instructor { font-size: var(--font-size-supporting); }
+.academic-experience .academic-topic { color: var(--experience-accent); font-size: var(--font-size-supporting); }
 .academic-experience .exp-item,
 .academic-experience .exp-item.is-open,
 .academic-experience .academic-education-card { border: 1px solid var(--experience-border); background: transparent; box-shadow: none; border-radius: 12px; min-width: 0; }
 .academic-entry-header,
 .academic-education-card { padding: 20px; }
-.academic-experience .academic-details-button { margin: 0 20px 16px; padding: 8px 12px; min-height: 44px; border: 1px solid var(--experience-border); border-radius: 8px; background: transparent; color: var(--experience-accent); cursor: pointer; font: inherit; font-size: 0.85rem; }
+.academic-experience .academic-details-button { margin: 0 20px 16px; padding: 8px 12px; min-height: 44px; border: 1px solid var(--experience-border); border-radius: 8px; background: transparent; color: var(--experience-accent); cursor: pointer; font: inherit; font-size: var(--font-size-supporting); }
 .academic-experience .exp-panel-inner { padding: 0 20px 20px; border-color: var(--experience-border); }
 .academic-experience .exp-bullets { color: var(--experience-muted); }
 .academic-experience a { color: var(--experience-accent); text-decoration: underline; text-underline-offset: 3px; }
 .academic-experience :focus-visible { outline: 2px solid var(--experience-accent); outline-offset: 4px; }
 .academic-experience .academic-context,
-.academic-experience .academic-technologies { font-size: 0.85rem; overflow-wrap: anywhere; }
+.academic-experience .academic-technologies { font-size: var(--font-size-supporting); overflow-wrap: anywhere; }
+.academic-evidence {
+  align-self: stretch;
+  margin: 20px;
+  padding: 18px;
+  border: 1px solid var(--experience-border);
+  border-radius: 10px;
+  background: var(--surface-raised);
+}
+.academic-evidence h4 { margin-bottom: 10px; }
+.academic-evidence ul { display: grid; gap: 10px; margin: 0; padding-left: 18px; color: var(--experience-muted); }
+.academic-evidence li { line-height: 1.6; }
 .academic-courses { display: grid; gap: 20px; padding-top: 20px; }
 .academic-course-media { max-width: 560px; margin: 14px 0 0; padding: 10px; border: 1px solid var(--experience-border); border-radius: 10px; background: var(--surface-raised); }
 .academic-course-media img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 7px; }
 .academic-course-media figcaption { padding: 8px 2px 0; color: var(--experience-muted); font-size: .82rem; line-height: 1.5; }
-.academic-detail-link { margin: 0 20px 16px !important; font-size: .9rem; }
+.academic-detail-link { margin: 0 20px 16px !important; font-size: var(--font-size-supporting); }
 .academic-detail-link a, .project-detail-link a { font-weight: 650; }
 .academic-education-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .academic-education-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (min-width: 1100px) {
+  .academic-experience .exp-item--with-evidence {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    align-items: start;
+    gap: 0 16px;
+  }
+  .academic-experience .exp-item--with-evidence .academic-entry-header,
+  .academic-experience .exp-item--with-evidence .academic-details-button,
+  .academic-experience .exp-item--with-evidence .exp-panel { grid-column: 1; }
+  .academic-experience .exp-item--with-evidence .academic-evidence {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+  }
+  .academic-experience .exp-item--with-evidence .academic-details-button { justify-self: start; }
+}
+@media (max-width: 700px) {
   .academic-entry-header, .academic-education-card { padding: 16px; }
   .academic-experience .academic-details-button { margin-left: 16px; }
   .academic-experience .exp-panel-inner { padding: 0 16px 16px; }
   .academic-detail-link { margin-left: 16px !important; }
+  .academic-evidence { margin: 16px; padding: 16px; }
 }
 /* Keep new academic anchor headings below the wrapping sticky navigation. */
 .section.academic-experience,

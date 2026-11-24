@@ -15,14 +15,15 @@
 .academic-projects .card-body { padding: 0; }
 .academic-projects .card-title { overflow-wrap: anywhere; margin: 0; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0 0 14px; }
-.project-tags li { border: 1px solid var(--experience-border); border-radius: 999px; padding: 3px 8px; color: var(--experience-muted); font-size: 0.75rem; line-height: 1.5; }
+.project-tags li { border: 1px solid var(--experience-border); border-radius: 999px; padding: 3px 8px; color: var(--experience-muted); font-size: 0.8rem; line-height: 1.5; }
 .academic-projects .project-status { color: var(--experience-accent); font-size: 0.8rem; font-weight: 600; }
-.academic-projects .project-contribution { font-size: 0.9rem; }
-.academic-projects .project-technologies { font-size: 0.8rem; }
+.academic-projects .card-body { font-size: var(--font-size-body); line-height: var(--line-height-reading); }
+.academic-projects .project-contribution { font-size: var(--font-size-body); }
+.academic-projects .project-technologies { font-size: 0.9rem; }
 .project-evidence { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 12px; }
-.project-evidence a { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; font-size: 0.85rem; }
+.project-evidence a { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; font-size: var(--font-size-supporting); }
 .academic-projects .related-outputs { border-top: 1px solid var(--experience-border); padding-top: 12px; }
-.academic-projects .project-detail-link { margin: 10px 0 0; font-size: .9rem; }
+.academic-projects .project-detail-link { margin: 10px 0 0; font-size: var(--font-size-supporting); }
 .academic-projects .project-detail-link a { color: var(--experience-accent); text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 800px) {
   .selected-project-grid { grid-template-columns: minmax(0, 1fr); }
@@ -37,7 +38,7 @@
 
 .academic-projects .card-subtitle {
   color: var(--experience-muted);
-  font-size: 0.85rem;
+  font-size: var(--font-size-supporting);
   font-weight: 400;
   margin: 6px 0 0;
   overflow-wrap: anywhere;
