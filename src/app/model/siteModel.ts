@@ -654,6 +654,42 @@ export const siteModel: SiteModel = {
   "intro": "Selected implementations across robotics, sensing, machine learning, and research software, with code, demonstrations, and related outputs.",
   "items": [
     {
+      "title": "Multi-Robot Path Planning with A*, Q-Learning & DQN",
+      "subtitle": "Exploratory Multi-Agent Navigation & Learning",
+      "detailSlug": "multi-robot-path-planning",
+      "selection": "primary",
+      "status": "Historical exploratory research prototype · 2024",
+      "tags": [
+        "Robotics",
+        "Multi-Agent Systems",
+        "Path Planning",
+        "Reinforcement Learning"
+      ],
+      "desc": "An exploratory comparison of a spatially prioritized A* planner and tabular Q-learning on a fixed grid, plus a separate DQN warehouse-navigation prototype.",
+      "contribution": "Built and analyzed grid-based navigation prototypes spanning prioritized A*, tabular Q-learning, and DQN experiments; recovered historical artifacts and documented failure modes, reproducibility limits, and next research directions.",
+      "technologies": [
+        "Python",
+        "TensorFlow / Keras",
+        "OpenAI Gym",
+        "NumPy",
+        "Matplotlib",
+        "Pygame"
+      ],
+      "evidenceLinks": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/Safat99/multi-robot-path-finding"
+        }
+      ],
+      "relatedOutputs": [
+        {
+          "label": "Related Publication · Path Planning Approaches in Multi-Robot System: A Review",
+          "targetId": "pub-wiley-2024",
+          "url": "https://doi.org/10.1002/eng2.13035"
+        }
+      ]
+    },
+    {
       "title": "OpenCV-Based Autonomous Car with Raspberry Pi",
       "detailSlug": "opencv-autonomous-car",
       "selection": "primary",
@@ -903,6 +939,163 @@ export const siteModel: SiteModel = {
 },
 
   detailPages: [
+    {
+      slug: "multi-robot-path-planning",
+      title: "Multi-Robot Path Planning with A*, Q-Learning & DQN",
+      eyebrow: "Historical Exploratory Research Prototype · 2024",
+      summary: "An owner-developed exploration of classical and learning-based navigation for two-robot grid scenarios and a separate warehouse pickup-and-delivery prototype.",
+      context: "The implementation was developed in October–November 2024 and recovered and documented again in 2026. The repository is not presented as a validated benchmark or published study.",
+      contribution: "Implemented and inspected the recovered prototypes, including spatially prioritized A*, independent tabular Q-learning, a TensorFlow/Keras DQN warehouse environment, and historical experimental outputs.",
+      sections: [
+        {
+          title: "Research framing",
+          paragraphs: [
+            "How do classical search and reward-driven learning behave in constrained multi-robot grid navigation, and what failure modes emerge when extending the problem to dynamic pickup-and-delivery tasks?",
+            "The repository contains three distinct experimental formulations. They are presented separately rather than as a unified benchmark."
+          ]
+        },
+        {
+          title: "Research snapshot",
+          bullets: [
+            "Problem: Coordinating multiple agents through obstacle-constrained navigation and dynamic pickup/delivery.",
+            "Approaches: Prioritized A*, tabular Q-learning, and an exploratory DQN formulation.",
+            "Evidence: Recovered paths, training artifacts, checkpoints, and historical test plots.",
+            "Main lesson: Reward and state representations can produce apparently high reward without successful multi-robot task completion."
+          ]
+        },
+        {
+          title: "Project-level evidence",
+          bullets: [
+            "Fixed classical/learning scenario: 10 × 10 grid.",
+            "Fleet size: 2 robots.",
+            "Static obstacles: 11 cells.",
+            "Recovered approaches: A* + tabular Q-learning + DQN.",
+            "Recovered DQN evaluations: 0% reported success across 5 test episodes on both 5 × 5 and 10 × 10 grids."
+          ]
+        },
+        {
+          title: "Track 1 — Prioritized A* search",
+          bullets: [
+            "Uses the fixed 10 × 10 grid, two robots, 11 static obstacles, eight-direction movement, unit edge costs, and a Euclidean heuristic.",
+            "The first robot's priority-queue path is reconstructed; the second robot excludes cells used by the first robot's returned path.",
+            "This is a spatially prioritized planner, not Conflict-Based Search, a time-expanded MAPF solver, or a proof of globally optimal collision-free planning.",
+            "Euclidean distance with unit-cost diagonal moves is not generally admissible here, so optimality is not guaranteed.",
+            "Recovered saved paths contain 10 transitions for robot 1 and 9 transitions for robot 2, for 19 summed transitions."
+          ]
+        },
+        {
+          title: "Track 2 — Tabular Q-learning",
+          bullets: [
+            "Uses the same fixed 10 × 10 scenario and two independent 100 × 4 Q-tables with cardinal actions.",
+            "Training settings include learning rate 0.05, discount factor 0.95, epsilon 0.1, step reward −1, and goal occupancy reward +100.",
+            "The declared −50 collision penalty was not applied in the training update. Proposed same-cell moves were reverted, but edge-swap conflicts were not checked.",
+            "The goal reward can repeat, and the final saved path is the last completed training trajectory rather than held-out evaluation.",
+            "The 3,000-episode run reports 25.96 mean joint steps and approximately 0.88 proposed same-cell collisions per episode; later logging disagrees at 25.54 and 0.78.",
+            "Recovered action counts and timing are not fair performance comparisons with A*: the movement sets, path conventions, and training/inference scopes differ."
+          ]
+        },
+        {
+          title: "Track 3 — DQN warehouse prototype",
+          bullets: [
+            "A separate dynamic pickup-and-delivery Gym environment with four corner delivery stations, eight cardinal/diagonal actions, random tasks, and dynamically replenished assignments.",
+            "Architecture: 2N observation inputs → Dense(24, ReLU) → Dense(24, ReLU) → 8 linear actions.",
+            "Uses TensorFlow/Keras, Adam/MSE, learning rate 0.001, discount 0.95, replay capacity 2,000, batch size 32, epsilon 1.0, 0.995 decay, and minimum epsilon 0.01.",
+            "The public script used five robots in a 25-episode default, while repository notes report earlier two-robot training and approximately 53–54 completed episodes; configuration and checkpoint provenance are incomplete.",
+            "This is an exploratory warehouse prototype, not a validated independent or centralized multi-agent DQN algorithm."
+          ]
+        },
+        {
+          title: "Recovered DQN historical evaluation",
+          bullets: [
+            "The 5 × 5 and 10 × 10 recovered plots use 2 robots and 5 test episodes with 400 steps per episode.",
+            "Both reported 0% success.",
+            "Approximate mean cumulative rewards read from the plots are about 5,976 for 5 × 5 and 4,579 for 10 × 10.",
+            "High accumulated reward coexisted with zero reported task success. This is evidence of a reward-design or state-representation failure mode, not good task performance."
+          ]
+        },
+        {
+          title: "What the experiments revealed",
+          paragraphs: [
+            "The DQN observation contains robot coordinates only. Goal and task state are missing, so the policy cannot directly condition movement on assigned tasks.",
+            "The observation width is 2N, making weights tied to fleet size. A model trained for one robot count cannot directly accept another.",
+            "The same global state is passed to the shared network for every robot, and greedy actions can therefore become identical across robots.",
+            "The recovered replay formulation stores and applies global targets to a shared action formulation rather than implementing a validated multi-agent DQN.",
+            "Rewarding delivery-station occupancy with +10 instead of verified pickup/drop-off completion creates a reward loophole: if two robots share a station, the station reward can outweigh same-cell penalties.",
+            "Dynamic replenishment and task/goal bookkeeping also weaken interpretation of the recorded completion condition."
+          ]
+        },
+        {
+          title: "Negative result and methodological lesson",
+          paragraphs: [
+            "The DQN prototype did not produce validated task success, but the experiment exposed weaknesses in reward shaping, observation design, fixed-fleet representations, replay bookkeeping, and evaluation methodology.",
+            "The value of this project is the exploratory implementation and empirical failure analysis, including willingness to report negative results and incomplete reproducibility."
+          ]
+        },
+        {
+          title: "Next research steps",
+          bullets: [
+            "Align action sets and scenario seeds for fair classical/learning comparisons; separate training time from inference time.",
+            "Track deliveries, vertex conflicts, edge conflicts, timeout, and throughput explicitly.",
+            "Use robot-specific, goal-aware observations and support variable fleet sizes.",
+            "Repair task/replay-state bookkeeping and add held-out evaluation with episode caps.",
+            "Evaluate across multiple seeds, maps, and fleet sizes.",
+            "Implement a genuine space-time planner or Conflict-Based Search baseline and document collision and optimality guarantees.",
+            "Replace a reward loophole with verified delivery outcomes and task-specific success metrics."
+          ]
+        }
+      ],
+      technologies: ["Python", "TensorFlow / Keras", "OpenAI Gym", "NumPy", "Matplotlib", "Pygame"],
+      media: [
+        {
+          src: "assets/media/projects/multi-robot-path-planning/recovered-paths.png",
+          alt: "Recovered grid plot comparing prioritized A-star and Q-learning trajectories for two robots and a 10 by 10 obstacle map.",
+          caption: "Recovered A* and Q-learning trajectories. Starts/goals and obstacles are preserved from the notebook; repeated locations indicate waiting/revisiting. The Q-learning trajectory is the last completed training trajectory, not a proven shortest path.",
+          width: 1800,
+          height: 900
+        },
+        {
+          src: "assets/media/projects/multi-robot-path-planning/q-learning-reward-output.png",
+          alt: "Historical saved reward output from the 1000-episode tabular Q-learning notebook run.",
+          caption: "Historical saved reward output from the 1,000-episode Q-learning notebook run. This is a recovered training artifact, not a validated learning curve or held-out evaluation.",
+          width: 589,
+          height: 455
+        },
+        {
+          src: "assets/media/projects/multi-robot-path-planning/dqn-5x5.png",
+          alt: "Three-panel historical DQN evaluation plot for a 5 by 5 grid with reward, step count, and success-rate panels.",
+          caption: "Recovered historical 5 × 5 DQN evaluation: 2 robots, 5 test episodes, 400 steps per episode, and 0% reported success. Raw arrays/checkpoint context is only partially verified.",
+          width: 1200,
+          height: 500
+        },
+        {
+          src: "assets/media/projects/multi-robot-path-planning/dqn-10x10.png",
+          alt: "Three-panel historical DQN evaluation plot for a 10 by 10 grid with reward, step count, and success-rate panels.",
+          caption: "Recovered historical 10 × 10 DQN evaluation: 2 robots, 5 test episodes, 400 steps per episode, and 0% reported success. Reward means are approximate readings from the plot.",
+          width: 1200,
+          height: 500
+        },
+        {
+          src: "assets/media/projects/multi-robot-path-planning/simulation-video-frames.png",
+          alt: "Recovered simulation montage showing first, middle, and final frames of historical three-robot grid simulations.",
+          caption: "Recovered frames from historical three-robot grid simulations. These provide qualitative navigation demonstrations; the generating algorithm and continuous-time collision guarantees are not established by the surviving artifacts.",
+          width: 960,
+          height: 1040
+        }
+      ],
+      links: [
+        {
+          label: "View GitHub / Full Experimental Notes",
+          url: "https://github.com/Safat99/multi-robot-path-finding"
+        }
+      ],
+      relatedOutputs: [
+        {
+          label: "Related Publication · Path Planning Approaches in Multi-Robot System: A Review",
+          targetId: "pub-wiley-2024",
+          url: "https://doi.org/10.1002/eng2.13035"
+        }
+      ]
+    },
     {
       slug: "opencv-autonomous-car",
       title: "OpenCV-Based Autonomous Car with Raspberry Pi",
